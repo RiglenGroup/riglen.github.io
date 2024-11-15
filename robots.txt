@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /*.xls$
+Disallow: /*.pdf$
+Disallow: /*.png$
+Disallow: /*.jpg$
+
+Sitemap: https://www.riglen.com/sitemap.xml
