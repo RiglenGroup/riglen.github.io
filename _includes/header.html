@@ -17,55 +17,6 @@
       		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
           			<li class="nav-item">
-            			<a class="nav-link page-scroll" href="/solutions">Solutions</a>
-          			</li>
-
-	  				<li class="nav-item dropdown hidden">
-            			<a class="nav-link" href="/solutions" role="button" data-bs-toggle="dropdown"
-	       				   aria-haspopup="true" aria-expanded="false">
-	      					Solutions
-	    				</a>
-	    
-	    				<div class="dropdown-menu dropdown-menu-end">
-	      					<h6 class="dropdown-item-text">
-								<a class="text-decoration-none text-black" href="/solutions/">Solutions</a>
-	      					</h6>
-	      					<hr class="dropdown-divider">
-	      					{% assign categories = site.data.categories | where: 'type', 'solutions' | sort: 'title' %}
-	      					{% for category in categories %}
-	      					<a class="dropdown-item" href="/solutions/{{ category.name }}/">{{ category.title }}</a>
-	      					{% endfor %}
-	    				</div>
-          			</li>
-          			<li class="nav-item dropdown hidden">
-            			<a class="nav-link" href="/insights" role="button" data-bs-toggle="dropdown"
-	       				   aria-haspopup="true" aria-expanded="false">
-	      				Insights
-	    				</a>
-	    
-	    				<div class="dropdown-menu dropdown-menu-end">
-	      					<h6 class="dropdown-item-text">Insights</h6>
-	      					<hr class="dropdown-divider">
-							<a class="dropdown-item"
-							   href="/insights/blog">
-								Blog
-							</a>
-							<a class="dropdown-item"
-	 						   href="/insights/press">
-								Press
-							</a>
-							<a class="dropdown-item"
-	 						   href="/insights/stories">
-								Stories
-							</a>
-	    				</div>
-					</li>
-
-          			<li class="nav-item hidden">
-            			<a class="nav-link page-scroll" href="/trainings">Trainings</a>
-          			</li>
-	  
-          			<li class="nav-item">
             			<a class="nav-link page-scroll" href="/#about">About Us</a>
           			</li>
 	  
@@ -77,19 +28,6 @@
 	      					<i class="fa-solid fa-envelope"></i>
 	    				</button>
           			</li>
-	  				<li class="nav-item hidden">
-            			<button class="btn h-100 pe-0"
-		    					type="button"
-		    					data-bs-toggle="modal"
-		    					data-bs-target="#SearchModal">
-	      					<i class="fa-solid fa-magnifying-glass"></i>
-	    				</button>
-          			</li>
-	  				<li class="nav-item disabled hidden">
-            			<a class="page-scroll pe-0">
-	      					<i class="fa-solid fa-globe"></i>
-	    				</a>
-	  				</li>
 				</ul>
       		</div>
       		<!-- /.navbar-collapse -->
