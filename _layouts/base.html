@@ -1,0 +1,92 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% if site.google_analytics %}{% include google_analytics.html %}{% endif %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.description }}">
+    <meta name="author" content="{{ site.name }}">
+    
+    {%- seo -%}
+    {% include favicon.html %}
+        
+    <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.11.1/css/flag-icons.min.css"
+      integrity="sha512-ZQKxM5Z+PmOVa/VmISvHcqlUgzPejY92+I+sur69qiB7Vd+dAaDNMwy7AnRr6HcFbYY4so1FFPBgugE5s2jm7Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="/assets/css/bootswatch-v3.2.0.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/fonts.css" type="text/css">
+    <style>
+      {% capture scss_sheet %}{% include style.scss %}{% endcapture %}
+      {{ scss_sheet | scssify }}
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+	    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+	    crossorigin="anonymous"
+	    referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"
+	    integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A=="
+	    crossorigin="anonymous"
+	    referrerpolicy="no-referrer"></script>
+    
+  </head>
+  
+  <body class="{{ layout.class }}">
+    {% include header.html %}
+
+    {{ content }}
+
+    {% include modal_search.html %}
+    {% include modal_contact.html %}
+    {% include cookie_consent.html %}
+    {% include footer.html %}
+    
+    <script>
+      function scrollFunction() {
+	var pos = document.body.scrollTop || document.documentElement.scrollTop;
+	if ( pos > $("#main-header").outerHeight() ) {
+	  $("#main-header").removeClass("transparent");
+	  
+	} else {
+	  $("#main-header").addClass("transparent");
+	}
+      };
+      window.addEventListener('load', scrollFunction);
+      window.addEventListener('scroll', scrollFunction);
+
+      $('.counter').each(function () {
+	$(this).prop('Counter', 0).animate({
+          Counter: $(this).data("number")
+	}, {
+          duration: 2500,
+          easing: 'swing',
+          step: function (now) {
+            $(this).text(Math.ceil(now).toLocaleString("{{ site.lang }}"));
+          }
+	});
+      });    
+    </script>
+  </body>    
+</html>

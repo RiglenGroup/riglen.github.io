@@ -1,0 +1,100 @@
+<header id="main-header" class="transparent">
+	<nav class="navbar navbar-expand-lg navbar-fixed-top navbar-shrink navbar-default bg-light">
+    	<div class="container">
+      		<a class="navbar-brand m-0 p-3" href="/">
+				<img src="/assets/img/logo-banner.320x132.transparent.png" alt="Logo NavBar" height="100%">
+      		</a>
+      		<button class="navbar-toggler"
+	      			type="button"
+	      			data-bs-toggle="collapse"
+	      			data-bs-target="#navbarScroll"
+	      			aria-controls="navbarScroll"
+	      			aria-expanded="false"
+	      			aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+      		</button>
+      		<!-- Collect the nav links, forms, and other content for toggling -->
+      		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+          			<li class="nav-item">
+            			<a class="nav-link page-scroll" href="/solutions">Solutions</a>
+          			</li>
+
+	  				<li class="nav-item dropdown hidden">
+            			<a class="nav-link" href="/solutions" role="button" data-bs-toggle="dropdown"
+	       				   aria-haspopup="true" aria-expanded="false">
+	      					Solutions
+	    				</a>
+	    
+	    				<div class="dropdown-menu dropdown-menu-end">
+	      					<h6 class="dropdown-item-text">
+								<a class="text-decoration-none text-black" href="/solutions/">Solutions</a>
+	      					</h6>
+	      					<hr class="dropdown-divider">
+	      					{% assign categories = site.data.categories | where: 'type', 'solutions' | sort: 'title' %}
+	      					{% for category in categories %}
+	      					<a class="dropdown-item" href="/solutions/{{ category.name }}/">{{ category.title }}</a>
+	      					{% endfor %}
+	    				</div>
+          			</li>
+          			<li class="nav-item dropdown hidden">
+            			<a class="nav-link" href="/insights" role="button" data-bs-toggle="dropdown"
+	       				   aria-haspopup="true" aria-expanded="false">
+	      				Insights
+	    				</a>
+	    
+	    				<div class="dropdown-menu dropdown-menu-end">
+	      					<h6 class="dropdown-item-text">Insights</h6>
+	      					<hr class="dropdown-divider">
+							<a class="dropdown-item"
+							   href="/insights/blog">
+								Blog
+							</a>
+							<a class="dropdown-item"
+	 						   href="/insights/press">
+								Press
+							</a>
+							<a class="dropdown-item"
+	 						   href="/insights/stories">
+								Stories
+							</a>
+	    				</div>
+					</li>
+
+          			<li class="nav-item hidden">
+            			<a class="nav-link page-scroll" href="/trainings">Trainings</a>
+          			</li>
+	  
+          			<li class="nav-item">
+            			<a class="nav-link page-scroll" href="/#about">About Us</a>
+          			</li>
+	  
+          			<li class="nav-item">
+	    				<button class="btn h-100 pe-0"
+		    					type="button" 
+		    					data-bs-toggle="modal"
+		    					data-bs-target="#ContactModal">
+	      					<i class="fa-solid fa-envelope"></i>
+	    				</button>
+          			</li>
+	  				<li class="nav-item hidden">
+            			<button class="btn h-100 pe-0"
+		    					type="button"
+		    					data-bs-toggle="modal"
+		    					data-bs-target="#SearchModal">
+	      					<i class="fa-solid fa-magnifying-glass"></i>
+	    				</button>
+          			</li>
+	  				<li class="nav-item disabled hidden">
+            			<a class="page-scroll pe-0">
+	      					<i class="fa-solid fa-globe"></i>
+	    				</a>
+	  				</li>
+				</ul>
+      		</div>
+      		<!-- /.navbar-collapse -->
+    	</div>
+    	<!-- /.container-fluid -->
+  	</nav>
+	<div class="container-fluid hr mx-auto"></div>
+</header>

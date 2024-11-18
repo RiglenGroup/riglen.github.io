@@ -1,0 +1,16 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  function addAnalytics() {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    const cookie_consent_settings = getCookie();
+
+    if (cookie_consent_settings['data']['tracking'] || false) {
+      gtag('js', new Date());
+      gtag('config', "{{ site.google_analytics }}", {});
+    } 
+  }
+</script>
+

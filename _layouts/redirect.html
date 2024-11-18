@@ -1,0 +1,17 @@
+---
+layout: none
+---
+<html lang="{{ site.locale | slice: 0,2 | default: "en" }}">
+  <head>
+  {%- if page.redirect contains "://" %}
+    <meta http-equiv="refresh" content="0;url={{ page.redirect }}">
+    <link rel="canonical" href="{{ page.redirect }}">
+    <script>location="{{ page.redirect }}"</script>
+  {%- else -%}
+    <meta http-equiv="refresh" content="0;url={{ page.redirect | default: '/' | relative_url }}">
+    <link rel="canonical" href="{{ page.redirect | absolute_url }}">
+    <script>location="{{ page.redirect | relative_url }}"</script>
+  {% endif %}
+    <meta name="robots" content="noindex">
+  </head>
+</html>

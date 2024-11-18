@@ -1,0 +1,114 @@
+<div id="SearchModal" class="modal fade"
+     data-bs-keyboard="true"
+     tabindex="-1"
+     aria-labelledby="SearchModalLabel"
+     aria-hidden="true"
+     style="opacity: 1;background: rgba(1, 1, 1, 0.8);">
+  
+  <div class="modal-dialog position-absolute start-50 translate-middle-x" role="document"
+       style="top: 5%;max-height: 80%;overflow: auto">
+    <div class="modal-content mx-auto w-100 h-100">
+      <div class="modal-header bg-light py-4">
+
+	<form class="search-form w-100">
+	  <div class="input-group px-3 mx-auto"
+	       style="align-items: center;
+		      background: #fff;
+		      border-radius: 4px;
+		      box-shadow: inset 0 0 0 2.5px #BF3100;
+		      display: flex;
+		      margin: 0;
+		      height: 45px;
+		      padding: 1%;
+		      position: relative;
+		      width: 100%;
+		      color: #BF3100;
+		      border-radius: 0.375rem;">
+	    <label id="search-label"
+		   class="form-label m-auto p-auto col-auto p-2 me-2"
+		   for="search-input">
+	      <i class="fa-solid fa-magnifying-glass"></i>
+	    </label>
+	    <input class="col m-auto p-auto mx-2 text-muted bg-transparent"
+		   aria-autocomplete="both"
+		   aria-labelledby="search-label"
+		   id="search-input"
+		   autocomplete="off"
+		   autocorrect="off"
+		   autocapitalize="off"
+		   enterkeyhint="go"
+		   spellcheck="false"
+		   autofocus="true"
+		   placeholder="Search"
+		   maxlength="64"
+		   type="search">
+	    <button type="reset"
+		    title="Clear the query"
+		    class="col-auto m-auto p-auto search-reset p-2 ps-3 ms-2"
+		    aria-label="Clear the query">
+	      <i class="fa-solid fa-xmark"></i>
+	    </button>
+	  </div>
+	</form>
+	
+      </div>
+      <div class="modal-body">
+	<div id="search-container">
+	  <ul id="search-results" style="color:#BF3100;"></ul>
+	</div>
+      </div>
+
+      <div class="modal-footer justify-content-between py-2 bg-light">
+	<ul class="DocSearch-Commands d-flex my-2"
+	    style="color: var(--docsearch-muted-color);
+		   display: flex;
+		   list-style: none;
+		   margin: 0;
+		   padding: 0;">
+	  <li class="hidden me-2" style="align-items: center; display: flex;">
+	    <kbd class="px-2 me-2 DocSearch-Commands-Key"
+		 style="background-color: rgba(191, 49, 0, 0.9);">
+	      <i class="fa-solid fa-arrow-turn-down" style="transform: rotate(90deg);"></i>
+	    </kbd>
+	    <span class="DocSearch-Label text-muted">to select</span>
+	  </li>
+	  <li class="hidden me-2" style="align-items: center; display: flex;">
+	    <kbd class="px-2 me-2 DocSearch-Commands-Key"
+		 style="background-color: rgba(191, 49, 0, 0.9);">
+	      <i class="fa-solid fa-arrow-down"></i>
+	    </kbd>
+	    <kbd class="px-2 me-2 DocSearch-Commands-Key"
+		 style="background-color: rgba(191, 49, 0, 0.9);">
+	      <i class="fa-solid fa-arrow-up"></i>
+	    </kbd>
+	    <span class="DocSearch-Label text-muted">to navigate</span>
+	  </li>
+	  <li class="me-2" style="align-items: center; display: flex;">
+	    <kbd class="px-2 me-2 DocSearch-Commands-Key"
+		 style="background-color: rgba(191, 49, 0, 0.9);">
+	      <i class="fa-solid fa-e"></i>
+	    </kbd>
+	    <span class="DocSearch-Label text-muted">to close</span>
+	  </li>
+	</ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/js/simple-jekyll-search.min.js" type="text/javascript"></script>
+  <script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      searchResultTemplate: `
+         <li>
+            <a class="font-weight-bold text-decoration-none" href="{url}">{title}</a>
+            <br>
+            <span class="text-uppercase text-muted post-meta">{type}</span>
+         </li>
+      `,
+      json: '/api/search.json'
+    });
+  </script>
+  
+</div>

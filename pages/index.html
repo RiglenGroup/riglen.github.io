@@ -1,0 +1,81 @@
+---
+layout: page
+title: Home
+permalink: /
+subtitle: |
+   Building Futures Together
+description: |
+     At Riglen we deliver innovative solutions designed to empower your business. By partnering closely with you, we create custom strategies that meet your unique needs, driving success and growth on every step of the way.
+---
+
+<div id="main-content"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-main"
+  data-bs-offset="0"
+  tabindex="0">
+
+  <section  id="intro" class="intro d-flex align-items-center justify-content-center">
+    <div class="container m-auto">
+      <div class="content row align-items-center justify-content-start">
+        <div class="col-8 col-md-8 hero-text">
+          <h1 class="lato-black">{{ page.subtitle }}</h1>
+        </div>
+      </div>
+      <div class="content row align-items-center justify-content-start">
+        <div class="col-12 col-md-12 pe-5 hero-text">
+          <h2 class="lato-regular pe-5"
+	      style="text-transform: none">{{ page.description }}</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="principles" class="principles">
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-12 text-center">
+          <h2 class="section-heading">Philosophy</h2>
+          <h3 class="section-subheading text-muted col-9 mx-auto mb-5">Riglen actively understands, engages, and empowers its clients</h3>
+	</div>
+      </div>
+      <div class="row row-cols-2 row-cols-md-3 g-4 justify-content-center">
+	{% for principle in site.data.principles %}
+	<div class="col">
+	  <div class="card h-100">
+	    <div class="card-body">
+	      <h5 style="text-decoration-color: {{ principle.color | default: 'gray' }}"
+		  class="card-title">{{ principle.name }}</h5>
+	      <p class="card-text">{{ principle.description }}</p>
+	    </div>
+	  </div>
+	</div>
+	{% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about d-flex align-items-center pt-5 py-4">
+    <div class="container m-auto">
+      <div class="row">
+	<div class="col-lg-12 text-center">
+          <h2 class="section-heading">About Us</h2>
+          <h3 class="section-subheading text-muted col-9 mx-auto mb-5">Riglen, Building Futures Together</h3>
+	</div>
+      </div>
+      <div class="row row-cols-2">
+	<div class="description col-6 pe-4">
+	  <p>We are a young, dynamic and forward-thinking company with several years of experience in the IT industry. Innovation is in our DNA. We specialize in IT consultancy and solutions, we excel in Cloud, Engineering, Security, and FinOps.<br>
+	  We believe that in the transformational journey, the challenge is not just technological but cultural. At Riglen, we understand that every partner has their own unique perspective, which is why we use the right lens to oversee and define tailored solutions that fit their specific needs.<br>
+	  Our deep expertise and technological insight empower us to guide your business toward success. Let’s ignite your transformation and achieve the desired results together.</p>
+	</div>	
+	<div class="col-6 px-5">
+	  <figure class="figure px-5">
+	    <img class="figure-img img-fluid rounded-4 shadow-lg m-auto" loading="lazy"
+		 src="/assets/img/about/about-banner.jpeg"/>
+	  </figure>
+	</div>
+      </div>
+    </div>
+  </section>
+</div>
+

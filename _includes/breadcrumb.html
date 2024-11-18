@@ -1,0 +1,22 @@
+<div class="nav-path row position-relative pb-4">
+  <nav aria-label="breadcrumb px-0">
+    <ol class="breadcrumb" style="z-index:50;">
+      {% assign url = page.url | remove:'.html' | split: "/"  %}
+      {% for item in url %}
+      {% assign path = url | slice: 0, forloop.index | join: "/" %}
+      {% if forloop.first %}
+      <li class="breadcrumb-item">
+	<a href="/"><i class="fa-solid fa-house"></i></a>
+      </li>
+      {% elsif forloop.last %}
+      <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+      {% else %}
+      {% assign bread = site.pages | where: 'permalink', path | first %}
+      <li class="breadcrumb-item">
+	<a href="{{ path }}">{{ bread.title | default: item }}</a>
+      </li>
+      {% endif %}
+      {% endfor %}	    
+    </ol>
+  </nav>
+</div>

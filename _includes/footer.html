@@ -1,0 +1,104 @@
+  <footer id="main-footer" class="text-center text-lg-start text-dark">
+    <section class="social p-0">
+      <div class="container">
+	<div class="d-flex justify-content-between py-4 text-white">
+      <div class="me-5">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <div>
+	{% if site.feed %}
+	<a href="/feed/" class="text-decoration-none text-white ms-4">
+	  <i class="fa-solid fa-rss scale-150-hover"></i>
+	</a>
+	{% endif %}
+	{% assign social = site.data.social | where: 'enabled', true | reverse %}
+	{% for s in social %}
+        <a href="{{ s.link }}" class="text-decoration-none text-white ms-4">
+          <i class="{{ s.icon }} scale-150-hover" aria-hidden="true"></i>
+        </a>
+	{% endfor %}
+      </div>
+      </div>
+      </div>
+    </section>
+    <section class="" style="padding:0px;color:black">
+      <div class="container text-center text-md-start mt-1">
+        <div class="row mt-3">
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-md-0 mb-4">
+	    {% for nav-item in site.data.nav_footer %}
+            <h6 class="nav-link text-uppercase fw-bold" style="margin-bottom: 2rem !important;">
+	      <a class="text-decoration-none text-black"
+		 href="{{ nav-item.link }}">
+		{{ nav-item.name }}
+	      </a>
+	    </h6>
+	    {% endfor %}
+          </div>
+          <div class="col-md-6 col-lg-5 col-xl-5 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-0">
+	      <a class="text-decoration-none text-black" href="/solutions/">Solutions</a>
+	    </h6>
+            <hr
+                class="my-1 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+              />
+	    <div class="row mx-auto">
+	      <!-- {% assign solutions = site.solutions | where: "featured", true %} -->
+	      {% assign solutions = site.solutions | group_by: 'category' %}
+	      {% for solution in solutions limit: 8 %}
+	      {% assign category = site.data.categories | where: "type", "solutions" | where: 'name', solution.name | first %}
+	      {% assign counter = forloop.index | modulo:3 %}
+	      {% if counter == 1 %}
+	      <div class="col-6 px-0">
+	      {% endif %}
+                <p class="text-wrap text-uppercase">
+		  <a class="nav-link text-dark" href="/solutions/{{ category.name }}">
+		    {{ category.title }}
+		  </a>
+		</p>
+	      {% if forloop.last or counter == 0 %}
+	      </div>
+	      {% endif %}
+	      {% endfor %}	      
+	    </div>
+          </div>
+	  <div class="col"></div>
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 hidden">
+            <h6 class="text-uppercase fw-bold mb-0">Insights</h6>
+            <hr
+                class="my-1 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p class="text-uppercase">
+              <a class="nav-link text-dark" href="/insights/blog/">Blog</a>
+            </p>
+            <p class="text-uppercase">
+              <a class="nav-link text-dark" href="/insights/press">Press</a>
+            </p>
+            <p class="text-uppercase">
+              <a class="nav-link text-dark" href="/insights/stories">Stories</a>
+            </p>
+          </div>
+          <div class="col-md-2 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <h6 class="text-uppercase fw-bold mb-0">Contact</h6>
+            <hr
+                class="my-1 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p class="text-truncate" style="max-width: 95%;">
+	      <i class="fas fa-home me-3"></i>{{ site.contact.headquarter }}
+	    </p>
+            <p class="text-truncate" style="max-width: 95%;">
+	      <i class="fas fa-envelope me-3"></i>{{ site.contact.email }}
+	    </p>
+            <p class="text-truncate" style="max-width: 95%;">
+	      <i class="fas fa-phone me-3"></i>{{ site.contact.phone }}
+	    </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="copyright text-center p-3">
+      © {{ site.name }} {{ 'now' | date: "%Y" }}. All rights reserved.
+    </div>
+  </footer>

@@ -1,0 +1,23 @@
+- username: RiglenGroup
+  link: https://github.com/RiglenGroup
+  type: github
+  icon: fab fa-github
+  enabled: true
+
+- username: RiglenGroup
+  link: https://linkedin.com/company/RiglenGroup
+  type: linkedin
+  icon: fab fa-linkedin
+  enabled: true
+
+- username: RiglenGroup
+  link: https://facebook.com/RiglenGroup
+  type: facebook
+  icon: fab fa-facebook-f
+  enabled: false
+
+- username: RiglenGroup
+  link: https://instagram.com/RiglenGroup
+  type: instagram
+  icon: fab fa-instagram
+  enabled: false
