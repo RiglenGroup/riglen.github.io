@@ -2,13 +2,13 @@
   link: https://github.com/RiglenGroup
   type: github
   icon: fab fa-github
-  enabled: true
+  enabled: false
 
 - username: RiglenGroup
   link: https://linkedin.com/company/RiglenGroup
   type: linkedin
   icon: fab fa-linkedin
-  enabled: true
+  enabled: false
 
 - username: RiglenGroup
   link: https://facebook.com/RiglenGroup
