@@ -45,7 +45,7 @@ class: page
   {{ content }}
 
   <section id="related" class="related py-5 pb-1"
-	   style="padding-top:5vh !important;background-color:rgba(236,236,237,0.5) !important">
+	  style="padding-top:5vh !important;background-color:rgba(236,236,237,0.5) !important">
     {% assign related = "" | split: "," %}
 
     {% for svc in page.related %}
@@ -69,48 +69,49 @@ class: page
     {% endfor %}
     {% endfor %}
     
+    {% if related.size > 0 %}
     <div class="container m-auto pt-5">
       <div class="row mb-2">
-	<h2>Related Services and Solutions</h2>
+	      <h2>Related Services and Solutions</h2>
       </div>
       <div class="carousel slide carousel-fade"
-	   data-bs-ride="pause" data-bs-interval="10000">
+	         data-bs-ride="pause" data-bs-interval="10000">
         <div class="carousel-inner" role="listbox" style="height:425px;">
-	  {% for svc in related limit: 9%}
-	  {% assign counter = forloop.index | modulo:3 %}
-	  {% if counter == 1 %}
-	  <div class="carousel-item h-100{% if forloop.index == 1 %} active{% endif %}">
-	    <div class="card-deck row row-cols-2 row-cols-lg-3 h-100">
+          {% for svc in related limit: 9 %}
+          {% assign counter = forloop.index | modulo: 3 %}
+          {% if counter == 1 %}
+          <div class="carousel-item h-100{% if forloop.index == 1 %} active{% endif %}">
+            <div class="card-deck row row-cols-2 row-cols-lg-3 h-100">
           {% endif %}
-	      <div class="col col-md-4 px-4 pt-4">
-		<div class="card border-0 rounded-4" style="height:300px;">
-		  <div class="bg-image position-relative w-100 h-100 rounded-4">
-		    <div class="related-type text-center position-absolute rounded-4">
-		      <span class="d-block text-uppercase">{{ svc.type }}</span>
-		    </div>
-		    <img class="img-fluid rounded-4 w-100 h-100"
-			 src="{{ svc.img }}" alt="{{ svc.name }}"
-			 style="object-fit:cover;overflow:hidden;">
-		  </div>
-		  <div class="card-body card-img-overlay mx-auto pb-0"
-		       style="top:75%;width:90%;background-color:white;height:50%">
-		    <h5 class="card-title crop-text-lines-2">{{ svc.title }}</h5>
-		    <div class="card-text text-muted crop-text-lines-3">
-		      {{ svc.description | markdownify }}
-		    </div>
-		  </div>
-		  <a href="{{ svc.url }}" class="stretched-link"></a>
-		</div>
-	      </div>
-	   {% if forloop.last or counter == 0 %}
-	    </div>
+              <div class="col col-md-4 px-4 pt-4">
+                <div class="card border-0 rounded-4" style="height:300px;">
+                  <div class="bg-image position-relative w-100 h-100 rounded-4">
+                    <div class="related-type text-center position-absolute rounded-4">
+                      <span class="d-block text-uppercase">{{ svc.type }}</span>
+                    </div>
+                    <img class="img-fluid rounded-4 w-100 h-100"
+                         src="{{ svc.img }}" alt="{{ svc.name }}"
+                         style="object-fit:cover;overflow:hidden;">
+                  </div>
+                  <div class="card-body card-img-overlay mx-auto pb-0"
+                       style="top:75%;width:90%;background-color:white;height:50%">
+                    <h5 class="card-title crop-text-lines-2">{{ svc.title }}</h5>
+                    <div class="card-text text-muted crop-text-lines-3">
+                      {{ svc.description | markdownify }}
+                    </div>
+                  </div>
+                  <a href="{{ svc.url }}" class="stretched-link"></a>
+                </div>
+              </div>
+          {% if forloop.last or counter == 0 %}
+            </div>
           </div>
-	  {% endif %}
-	  {% endfor %}
-	</div>
+          {% endif %}
+          {% endfor %}
+      	</div>
       </div>
-      
     </div>
+    {% endif %}
   </section>
 
   {% capture quote_content %}
