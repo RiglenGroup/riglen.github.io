@@ -1,0 +1,133 @@
+---
+layout: base
+class: page
+---
+<div id="main-content" class="solutions"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-main"
+  data-bs-offset="0"
+  tabindex="0">
+
+  <section id="intro" class="intro d-flex align-items-center justify-content-center pb-0" style="padding-top:5vh;min-height:25vh;height:auto">
+    <div class="container m-auto pt-4">
+      {% include breadcrumb.html %}
+      <div class="content row align-items-center justify-content-start">
+        <div class="col-12 col-md-10 hero-text">
+          <h1 class="lato-black">{{ page.title }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="presentation" class="py-5 bg-light" style="padding-top:5vh !important">
+    <div class="container px-0">
+      <div class="jumbotron p-4 shadow-lg bg-white mb-5 position-relative rounded-2">
+	<div class="p-5 w-100 h-100 rounded-2 text-muted">
+	  {{ page.description | markdownify }}
+	</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- <section id="description" class="py-5 hidden" style="padding-top:5vh !important; padding-bottom:5vh !important"> -->
+  <!--   <div class="container m-auto py-5"> -->
+  <!--     <div class="row mb-5"> -->
+  <!-- 	<h2>Introduction</h2> -->
+  <!--     </div> -->
+  <!--     <div class="row align-items-center justify-content-start"> -->
+  <!--       <div class="description col-12 col-md-12 px-2 hero-text lato-regular text-muted"> -->
+  <!-- 	  {{ page.description | markdownify }} -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!-- </section> -->
+
+  {{ content }}
+
+  <section id="related" class="related py-5 pb-1"
+	   style="padding-top:5vh !important;background-color:rgba(236,236,237,0.5) !important">
+    {% assign related = "" | split: "," %}
+
+    {% for svc in page.related %}
+    {% if svc.slug != page.slug %}
+    {% assign service = site.services | where: 'slug', svc %}
+    {% assign related = related | push: service | uniq %}
+    {% endif %}
+    {% endfor %}
+
+    {% for solution in page.categories %}
+    {% assign sol = site.solutions | where: 'name', solution %}
+    {% assign related = related | push: sol | uniq %}
+    {% endfor %}
+    
+    {% for cat in page.categories %}
+    {% assign services = site.services | where: 'featured', true | where: 'category', cat %}
+    {% for svc in services %}
+    {% if svc.slug != page.slug %}
+    {% assign related = related | push: svc | uniq %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    
+    <div class="container m-auto pt-5">
+      <div class="row mb-2">
+	<h2>Related Services and Solutions</h2>
+      </div>
+      <div class="carousel slide carousel-fade"
+	   data-bs-ride="pause" data-bs-interval="10000">
+        <div class="carousel-inner" role="listbox" style="height:425px;">
+	  {% for svc in related limit: 9%}
+	  {% assign counter = forloop.index | modulo:3 %}
+	  {% if counter == 1 %}
+	  <div class="carousel-item h-100{% if forloop.index == 1 %} active{% endif %}">
+	    <div class="card-deck row row-cols-2 row-cols-lg-3 h-100">
+          {% endif %}
+	      <div class="col col-md-4 px-4 pt-4">
+		<div class="card border-0 rounded-4" style="height:300px;">
+		  <div class="bg-image position-relative w-100 h-100 rounded-4">
+		    <div class="related-type text-center position-absolute rounded-4">
+		      <span class="d-block text-uppercase">{{ svc.type }}</span>
+		    </div>
+		    <img class="img-fluid rounded-4 w-100 h-100"
+			 src="{{ svc.img }}" alt="{{ svc.name }}"
+			 style="object-fit:cover;overflow:hidden;">
+		  </div>
+		  <div class="card-body card-img-overlay mx-auto pb-0"
+		       style="top:75%;width:90%;background-color:white;height:50%">
+		    <h5 class="card-title crop-text-lines-2">{{ svc.title }}</h5>
+		    <div class="card-text text-muted crop-text-lines-3">
+		      {{ svc.description | markdownify }}
+		    </div>
+		  </div>
+		  <a href="{{ svc.url }}" class="stretched-link"></a>
+		</div>
+	      </div>
+	   {% if forloop.last or counter == 0 %}
+	    </div>
+          </div>
+	  {% endif %}
+	  {% endfor %}
+	</div>
+      </div>
+      
+    </div>
+  </section>
+
+  {% capture quote_content %}
+  <div class="content">
+    <p class="text-muted" style="font-size:16px;">Contact us today to learn how we can help you achieve your digital transformation goals.</p>
+  </div>
+  <div class="toolbox pt-2">
+    <button class="btn btn-primary"
+	    type="button"
+	    data-bs-toggle="modal"
+	    data-bs-target="#InquiryModal"
+	    title="Contact us">
+      Contact us
+    </button>
+  </div>
+  {% endcapture %}
+  {% include quote.html title="Get Started" subtitle="Begin your transformation journey" class="bg-light py-5" content=quote_content %}
+  {% include modal_inquiry.html %}
+  
+</div>
