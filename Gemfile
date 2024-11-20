@@ -7,3 +7,4 @@ gem 'webrick'
 gem 'rackup'
 gem "sinatra", ">= 3", "< 4"
 gem "ffi", "< 1.17.0"
+gem 'faraday-retry'
