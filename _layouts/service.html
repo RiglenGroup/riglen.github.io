@@ -50,12 +50,16 @@ class: page
 
     {% for svc in page.related %}
     {% assign service = site.services | where: 'slug', svc %}
-    {% if service.slug != page.slug %}{% assign related = related | push: service | uniq %}{% endif %}
+    {% if service != empty and service.slug != page.slug %}
+    {% assign related = related | push: service | uniq %}
+    {% endif %}
     {% endfor %}
 
     {% for solution in page.categories %}
     {% assign sol = site.solutions | where: 'name', solution %}
+    {% if sol != empty %}
     {% assign related = related | push: sol | uniq %}
+    {% endif %}
     {% endfor %}
     
     {% for cat in page.categories %}
