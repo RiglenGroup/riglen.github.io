@@ -44,9 +44,9 @@ class: page
 
   {{ content }}
 
+  {% if page.related.size > 0 %}
   <section id="related" class="related py-5 pb-1"
 	  style="padding-top:5vh !important;background-color:rgba(236,236,237,0.5) !important">
-    {% assign related = site.emptyArray %}
 
     {% for svc in page.related %}
     {% assign service = site.services | where: 'slug', svc %}
@@ -55,23 +55,6 @@ class: page
     {% endif %}
     {% endfor %}
 
-    {% for solution in page.categories %}
-    {% assign sol = site.solutions | where: 'name', solution %}
-    {% if sol != empty %}
-    {% assign related = related | push: sol | uniq %}
-    {% endif %}
-    {% endfor %}
-    
-    {% for cat in page.categories %}
-    {% assign services = site.services | where: 'featured', true | where: 'category', cat %}
-    {% for svc in services %}
-    {% if svc.slug != page.slug %}
-    {% assign related = related | push: svc | uniq %}
-    {% endif %}
-    {% endfor %}
-    {% endfor %}
-
-    {% if related != empty %}
     <div class="container m-auto pt-5">
       <div class="row mb-2">
 	      <h2>Related Services and Solutions</h2>
@@ -88,7 +71,7 @@ class: page
               <div class="col col-md-4 px-4 pt-4">
                 <div class="card border-0 rounded-4" style="height:300px;">
                   <div class="bg-image position-relative w-100 h-100 rounded-4">
-                    <div class="related-type text-center position-absolute rounded-4">
+                    <div class="related-type text-center position-absolute rounded-4 hidden">
                       <span class="d-block text-uppercase">{{ svc.type }}</span>
                     </div>
                     <img class="img-fluid rounded-4 w-100 h-100"
@@ -113,8 +96,8 @@ class: page
       	</div>
       </div>
     </div>
-    {% endif %}
   </section>
+  {% endif %}
 
   {% capture quote_content %}
   <div class="content">
