@@ -5,6 +5,5 @@
 .jekyll-cache
 .jekyll-metadata
 Gemfile.lock
-_config.yml
 _site
 vendor/

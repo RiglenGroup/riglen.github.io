@@ -1,0 +1,37 @@
+# main text of home
+name: "Riglen Group"
+description: |
+  Landing Page for Riglen Group
+  
+markdown: kramdown
+kramdown:
+  hard_wrap: true
+  
+permalink: /insights/blog/:path
+
+future: false
+unpublished: false
+
+lang: en
+
+google_analytics: 'G-7QX38F5QZS'
+
+contact:
+  headquarter: "Zurich, Switzerland"
+  email: "hello@riglen.com"
+  phone: "+41 (0) 79 749 72 47"
+
+      
+plugins:
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jemoji
+  
+exclude:
+  - "Rakefile"
+  - "README.md"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "FAQ.md"
