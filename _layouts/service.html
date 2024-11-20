@@ -49,10 +49,8 @@ class: page
     {% assign related = site.emptyArray %}
 
     {% for svc in page.related %}
-    {% if svc.slug != page.slug %}
     {% assign service = site.services | where: 'slug', svc %}
-    {% assign related = related | push: service | uniq %}
-    {% endif %}
+    {% if service.slug != page.slug %}{% assign related = related | push: service | uniq %}{% endif %}
     {% endfor %}
 
     {% for solution in page.categories %}
