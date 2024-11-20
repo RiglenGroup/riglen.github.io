@@ -44,15 +44,15 @@ class: page
 
   {{ content }}
 
-  {% assign related = "" | split: ',' %}
-  {% for svc in page.related %}
-  {% assign service = site.services | where: 'slug', svc %}
-  {% if service != empty and service.slug != page.slug %}
-  {% assign related = related | push: service | uniq %}
-  {% endif %}
-  {% endfor %}
+  {%- assign related = "" | split: ',' %}
+  {%- for svc in page.related %}
+  {%- assign service = site.services | where: 'slug', svc %}
+  {%- if service != empty and service.slug != page.slug %}
+  {%- assign related = related | push: service | uniq %}
+  {%- endif %}
+  {%- endfor %}
 
-  {% if related.size > 0 %}
+  {%- if related.size > 0 %}
   <section id="related" class="related py-5 pb-1"
 	  style="padding-top:5vh !important;background-color:rgba(236,236,237,0.5) !important">
 
@@ -63,12 +63,12 @@ class: page
       <div class="carousel slide carousel-fade"
 	         data-bs-ride="pause" data-bs-interval="10000">
         <div class="carousel-inner" role="listbox" style="height:425px;">
-          {% for svc in related limit: 9 %}
-          {% assign counter = forloop.index | modulo: 3 %}
-          {% if counter == 1 %}
+          {%- for svc in related limit: 9 %}
+          {%- assign counter = forloop.index | modulo: 3 %}
+          {%- if counter == 1 %}
           <div class="carousel-item h-100{% if forloop.index == 1 %} active{% endif %}">
             <div class="card-deck row row-cols-2 row-cols-lg-3 h-100">
-          {% endif %}
+          {%- endif %}
               <div class="col col-md-4 px-4 pt-4">
                 <div class="card border-0 rounded-4" style="height:300px;">
                   <div class="bg-image position-relative w-100 h-100 rounded-4">
@@ -89,16 +89,16 @@ class: page
                   <a href="{{ svc.url }}" class="stretched-link"></a>
                 </div>
               </div>
-          {% if forloop.last or counter == 0 %}
+          {%- if forloop.last or counter == 0 %}
             </div>
           </div>
-          {% endif %}
-          {% endfor %}
+          {%- endif %}
+          {%- endfor %}
       	</div>
       </div>
     </div>
   </section>
-  {% endif %}
+  {%- endif %}
 
   {% capture quote_content %}
   <div class="content">
