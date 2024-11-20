@@ -21,6 +21,11 @@ contact:
   email: "hello@riglen.com"
   phone: "+41 (0) 79 749 72 47"
 
+collections_dir: collections
+collections:
+  services:
+    permalink: /:collection/:slug
+    output: true
       
 plugins:
   - jekyll-gist
