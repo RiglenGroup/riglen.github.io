@@ -44,12 +44,14 @@ class: page
 
   {{ content }}
 
+  {% assign related = emptyArray %}
   {% for svc in page.related %}
   {% assign service = site.services | where: 'slug', svc %}
   {% if service != empty and service.slug != page.slug %}
   {% assign related = related | push: service | uniq %}
   {% endif %}
   {% endfor %}
+  
   {% if related.size > 0 %}
   <section id="related" class="related py-5 pb-1"
 	  style="padding-top:5vh !important;background-color:rgba(236,236,237,0.5) !important">
