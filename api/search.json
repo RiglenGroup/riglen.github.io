@@ -1,54 +1,23 @@
 ---
 layout: none
 ---
-[
-  {%- for post in site.posts %}
-  {
-    "type"        : {{ post.type | jsonify }},
-    "title"       : {{ post.title | jsonify }},
-    "url"         : {{ post.url | relative_url | jsonify }},
-    "date"        : {{ post.date | jsonify }},
-    "description" : "{{ post.description | markdownify | strip_newlines }}"
-  }{% unless forloop.last %},{% endunless %}
-  {%- endfor %}
-  {%- if site.posts.size > 0 %},{% endif %}
-  {%- for post in site.data.categories %}
-  {
-    "type"        : {{ post.type | append: " category" | jsonify }},
-    "title"       : {{ post.title | jsonify }},
-    "url"         : {{ "/" | append: post.type | append: "/" | append: post.name | jsonify }},
-    "date"        : {{ post.date | jsonify }},
-    "description" : "{{ post.description | markdownify | strip_newlines }}"
-  }{% unless forloop.last %},{% endunless %}
-  {%- endfor %}
-  {%- if site.data.categories.size > 0 %},{% endif %}
-  {%- for post in site.solutions %}
-  {
-    "type"        : {{ post.type | jsonify }},
-    "title"       : {{ post.title | jsonify }},
-    "url"         : {{ post.url | relative_url | jsonify }},
-    "date"        : {{ post.date | jsonify }},
-    "description" : "{{ post.description | markdownify | strip_newlines }}"
-  }{% unless forloop.last %},{% endunless %}
-  {%- endfor %}
-  {%- if site.solutions.size > 0 %},{% endif %}
-  {%- for post in site.services %}
-  {
-    "type"        : {{ post.type | jsonify }},
-    "title"       : {{ post.title | jsonify }},
-    "url"         : {{ post.url | relative_url | jsonify }},
-    "date"        : {{ post.date | jsonify }},
-    "description" : "{{ post.description | markdownify | strip_newlines }}"
-  }{% unless forloop.last %},{% endunless %}
-  {%- endfor %}
-  {%- if site.services.size > 0 %},{% endif %}
-  {%- for post in site.trainings %}
-  {
-    "type"        : {{ post.type | jsonify }},
-    "title"       : {{ post.title | jsonify }},
-    "url"         : {{ post.url | relative_url | jsonify }},
-    "date"        : {{ post.date | jsonify }},
-    "description" : "{{ post.description | markdownify | strip_newlines }}"
-  }{% unless forloop.last %},{% endunless %}
-  {%- endfor %}
-]
+{%- assign content = site.posts %}
+{%- assign content = content | concat: site.data.categories %}
+{%- assign content = content | concat: site.solutions %}
+{%- assign content = content | concat: site.services %}
+{%- assign content = content | concat: site.trainings %}
+{
+  "count": "{{ content.size }}",
+  "data": [
+    {%- for post in content %}
+    {
+      "date"        : {{ post.date | jsonify }},
+      "description" : "{{ post.description | markdownify | strip_newlines }}",
+      "slug"        : {{ post.slug | jsonify }},
+      "title"       : {{ post.title | jsonify }},
+      "type"        : {{ post.type | jsonify }},
+      "url"         : {{ post.url | relative_url | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+}
