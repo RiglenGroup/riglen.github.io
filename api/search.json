@@ -2,10 +2,10 @@
 layout: none
 ---
 {%- assign content = site.posts %}
-{%- assign content = content | concat: site.data.categories %}
-{%- assign content = content | concat: site.solutions %}
-{%- assign content = content | concat: site.services %}
-{%- assign content = content | concat: site.trainings %}
+{%- if site.data.categories.size > 0 %}{%- assign content = content | concat: site.data.categories %}{%- endif %}
+{%- if site.solutions.size > 0 %}{%- assign content = content | concat: site.solutions %}{%- endif %}
+{%- if site.services.size > 0 %}{%- assign content = content | concat: site.services %}{%- endif %}
+{%- if site.trainings.size > 0 %}{%- assign content = content | concat: site.trainings %}{%- endif %}
 {
   "count": "{{ content.size }}",
   "data": [
