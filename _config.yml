@@ -25,7 +25,10 @@ collections_dir: collections
 collections:
   services:
     permalink: /:collection/:slug
-    output: true
+    output: false
+  solutions:
+    permalink: /:collection/:slug
+    output: false
       
 plugins:
   - jekyll-gist
@@ -42,3 +45,9 @@ exclude:
   - "FAQ.md"
 
 emptyArray: []
+
+defaults:
+  - scope:
+      path: "assets/**"
+    values:
+      sitemap: false
