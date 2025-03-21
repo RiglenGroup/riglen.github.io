@@ -1,2 +1,5 @@
+- name: Solutions
+  link: /solutions
+  
 - name: About Us
-  link: /about
+  link: /#about

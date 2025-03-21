@@ -1,0 +1,205 @@
+---
+layout: page
+title: Services
+permalink: /services
+---
+<div id="main-content" class="solutions"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-main"
+  data-bs-offset="0"
+  tabindex="0">
+
+  <section id="intro" class="intro d-flex align-items-center justify-content-center pb-0" style="padding-top:5vh;min-height:25vh;height:auto">
+    <div class="container m-auto pt-4">
+      {% include breadcrumb.html %}
+      <div class="content row align-items-center justify-content-start">
+        <div class="col-12 col-md-10 hero-text">
+          <h1 class="lato-black">{{ page.title }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="services" class="py-5 mb-5" style="padding-top:5vh !important">
+    <div class="container m-auto pt-5">
+      <div class="row mb-5">
+      	<h2>Our Services</h2>
+      </div>
+      <div class="row">
+        <table id="table-services" class="table-autosize"
+          data-buttons-class="primary"
+          data-card-view="false"
+          data-classes="table table-bordered table-striped"
+          data-data-field="data"
+          data-detail-view-icon="true"
+          data-detail-view-by-click="true"
+          data-detail-formatter="detailFormatter"
+          data-detail-view="true"
+          data-loading-template="loadingTemplate"
+          data-icons-prefix="fa"
+          data-id-field="slug"
+          data-pagination="true"
+          data-pagination-h-align="right"
+          data-pagination-detail-h-align="left"
+          data-pagination-loop="false"
+          data-page-size="25"
+          data-page-list="[]"
+          data-row-style="rowStyle"
+          data-search="false"
+          data-select-item-name="slug"
+          data-show-header="true"
+          data-show-refresh="false"
+          data-show-toggle="false"
+          data-toggle="table"
+          data-unique-id="slug"
+          data-url="/api/services.json">
+          <thead>
+            <tr>
+              <th data-field="slug"
+                data-visible="false"
+                data-card-visible="false">
+                Slug
+              </th>
+              <th data-field="title"
+                data-visible="true"
+                data-card-visible="true"
+                data-formatter="nameFormatter">
+                Name
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  {% capture quote_content %}
+  <div class="content">
+    <p class="text-muted" style="font-size:16px;">Contact us today to learn how we can help you achieve your digital transformation goals.</p>
+  </div>
+  <div class="toolbox pt-4">
+    <button class="btn btn-primary"
+	    type="button"
+	    data-bs-toggle="modal"
+	    data-bs-target="#TrainingModal"
+	    title="Contact us">
+      Contact us
+    </button>
+  </div>
+  {% endcapture %}
+  {% include quote.html title="Get Started" subtitle="Request training session to speed up your cloud adoption journey" class="bg-light py-5" content=quote_content %}
+  {% include modal_inquiry.html %}
+  
+</div>
+
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.5/dist/bootstrap-table.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.5/dist/bootstrap-table.min.js"></script>
+
+<style>
+  #table-services {
+      /* border-collapse: separate; */
+      /* border-spacing: 0 25px; */
+      border: none;
+      overflow: hidden;
+  }
+
+  #table-services tbody tr {
+      /* padding-top: 5%; */
+      /* padding-bottom: 5%; */
+  }
+
+  #table-services > tbody > tr:hover:not(.detail-view) > * {
+      background-color: rgba(191, 49, 0, 0.85);
+      color: white;
+      cursor: pointer;
+  }
+  
+  #table-services tbody tr td {
+      padding: 0px;
+  }
+
+  #table-services tbody tr:not(.detail-view) > td {
+      padding: 1rem !important;
+  }
+  
+  #table-services tbody tr td .card-views .card-view .card-view-value {
+      padding: 1rem !important;
+  }
+
+  #table-services tbody tr.detail-view {
+      border-style: none;
+      border: none;
+  }
+  
+  #table-services tbody tr.detail-view td {
+      border: none;
+  }
+  
+  #table-services .card a.collapsed .fa {
+      transform: rotate(90deg);
+  }
+
+  #table-services .card .collapse {
+    -moz-transition: height .5s;
+    -ms-transition: height .5s;
+    -o-transition: height .5s;
+    -webkit-transition: height .5s;
+    -webkit-transition: 0.5s ease-out;
+    transition: max-height 0.5s;
+    transition-timing-function: linear;
+    transition-property: width;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 1s;
+  }
+  
+  /* #table .card:hover .collapse { */
+  /*     display: block !important; */
+  /* } */
+</style>
+
+<script>  
+  function loadingTemplate(message) {
+    return '<i class="fa fa-spinner fa-spin fa-fw fa-2x"></i>'
+  };
+
+  function rowStyle(row, index) {
+    return { classes: 'p-0 m-0' };
+  };
+
+  function nameFormatter(value, row) {
+    console.log(value, row['ready']);
+    var html = "";
+    html  = row['title'];
+    html += row['ready'] ? "<i class=\"m-auto fa-solid fa-check pull-right\"></i>" : "";
+    return html;
+  };  
+
+  function detailFormatter(value, row) {
+    var html = `
+        <div class="card pb-5 border-0 h-100">
+           <div class="row g-0 border rounded shadow-sm-hover position-relative w-100 m-auto" style="height:200px;"> 
+              <div class="col-md-4 h-100 ps-0"> 
+                 <img class="img-fluid rounded-start object-fit-cover w-100 h-100" 
+                      src="${row['img']}" 
+                      alt="${row['title']}"> 
+              </div> 
+              <div class="col-md-8 h-100 card border-0"> 
+                 <div class="card-body"> 
+                    <h5 class="card-title">${row['title']}</h5>  
+                    <p class="card-text">${row['description']}</p>  
+                 </div>
+              </div> 
+              <a class="d-block stretched-link position-absolute w-100 h-100" 
+                 href="${row['url']}" 
+                 aria-expanded="false"> 
+              </a> 
+           </div> 
+        </div>`;
+    
+    return html;
+  };
+  
+</script>
+
