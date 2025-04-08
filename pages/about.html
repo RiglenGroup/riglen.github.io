@@ -1,0 +1,420 @@
+---
+layout: page
+title: About Us
+permalink: /about
+published: true
+subtitle: "We're Building Futures Together"
+description: |
+   <p>We are a young, dynamic and forward-thinking company with several years of experience in the IT industry. Innovation is in our DNA. We specialize in IT consultancy and solutions, we excel in Cloud, Engineering, Security, and FinOps.</p>
+   <p>We believe that in the transformational journey, the challenge is not just technological but cultural. At Riglen, we understand that every partner has their own unique perspective, which is why we use the right lens to oversee and define tailored solutions that fit their specific needs.</p>
+   <p>Our deep expertise and technological insight empower us to guide your business toward success. Let’s ignite your transformation and achieve the desired results together.</p>
+---
+
+<div id="main-content" class="about"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-main"
+  data-bs-offset="0"
+  tabindex="0">
+
+  <section class="intro">
+    <div class="container m-auto">
+      <div class="content row align-items-center justify-content-start">
+        <div class="content row col-8 col-md-8 hero-text">
+          <h1 class="lato-black">{{ page.title }}</h1>
+        </div>
+        <div class="content row align-items-center justify-content-start">
+          <div class="col-12 col-md-12 pe-5 hero-text my-4">
+            <h2 class="lato-regular">{{ page.subtitle }}</h2>
+          </div>
+        </div>
+        <div class="content row align-items-center justify-content-start mt-4">
+          <div class="col-12 col-md-12 pe-5 hero-text">
+            <p class="lato-regular fs-2 mt-5">At Riglen we deliver innovative solutions designed to empower business. By partnering closely with our customers, we create tailored strategies that meet their unique needs, driving success and growth on every step of the journey.</p>
+          <div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about pb-5">
+    <div class="container m-auto">
+      <div class="row row-cols-2">
+        <div class="description col-6 pe-4">
+          {{ page.description }}
+        </div>	
+        <div class="col-6 px-5">
+          <figure class="figure px-5">
+            <img class="figure-img img-fluid rounded-4 shadow-lg m-auto" loading="lazy"
+              src="/assets/img/about/about-banner.min.jpeg"/>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  {% if site.data.partners.size > 0 %}
+  <!-- <section class="partners"> -->
+  <!--   <div class="container"> -->
+  <!--     <div class="row row-cols-2"> -->
+  <!-- 	<div class="col-6"> -->
+  <!-- 	  <h2 style="text-transform: none" -->
+  <!-- 	      class="vc_custom_heading vc_do_custom_heading"> -->
+  <!-- 	    Our Partners -->
+  <!-- 	  </h2> -->
+  <!-- 	  <h3 style="text-transform: none" -->
+  <!-- 	      class="vc_custom_heading vc_do_custom_heading"> -->
+  <!-- 	    Synergistic Ecosystem -->
+  <!-- 	  </h3> -->
+  <!-- 	  <div class="wpb_text_column wpb_content_element"> -->
+  <!-- 	    <div class="wpb_wrapper"> -->
+  <!-- 	      <p>Explore our partnership that goes beyond integration—an alliance dedicated to innovation, co-creation, and collaboration.</p> -->
+  <!-- 	      <a class="btn btn-primary" -->
+  <!-- 		 href="/about/partners/"> -->
+  <!-- 		Read more -->
+  <!-- 	      </a>	       -->
+  <!-- 	    </div> -->
+  <!-- 	  </div> -->
+  <!-- 	</div>	 -->
+  <!-- 	<div class="col-6"> -->
+  <!-- 	  <figure class="figure"> -->
+  <!-- 	    <img class="figure-img img-fluid rounded" loading="lazy" -->
+  <!-- 		 src="/assets/img/about/partners-banner.jpg"/> -->
+  <!-- 	  </figure> -->
+  <!-- 	</div> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!-- </section> -->
+
+  <!-- <section class="teams"> -->
+  <!--   <div class="container"> -->
+  <!--     <div class="row mb-4"> -->
+  <!-- 	<div class="col-lg-5"> -->
+  <!--         <h2 class="display-4 font-weight-light">Our team</h2> -->
+  <!--         <p class="font-italic text-muted"> -->
+  <!-- 	    Lorem ipsum dolor sit amet, consectetur adipisicing elit. -->
+  <!-- 	  </p> -->
+  <!-- 	</div> -->
+  <!--     </div> -->
+      
+  <!--     <div class="row row-cols-4 justify-content-center text-center"> -->
+  <!-- 	{% assign leadership = site.data.teams | where: 'team', 'leadership' | limit: 4 %} -->
+  <!-- 	{% for member in leadership %} -->
+  <!-- 	<\!-- Team item-\-> -->
+  <!-- 	<div class="col mb-5"> -->
+  <!--         <div class="py-4"> -->
+  <!-- 	    <img src="{{ member.avatar }}" -->
+  <!-- 		 alt="{{ member.name }}" width="128" height="128" -->
+  <!-- 		 class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> -->
+  <!--           <h5 class="mb-0">{{ member.name }}</h5> -->
+  <!-- 	    <span class="small text-uppercase text-muted">{{ member.title }}</span> -->
+  <!--           <ul class="social mb-0 list-inline mt-3"> -->
+  <!-- 	      <li class="list-inline-item"> -->
+  <!-- 		<a href="mailto:{{ member.email }}" class="email-link"> -->
+  <!-- 		  <i class="fa-regular fa-envelope scale-150-hover"></i> -->
+  <!-- 		</a> -->
+  <!-- 	      </li> -->
+  <!-- 	      {% for social in member.social %} -->
+  <!--             <li class="list-inline-item"> -->
+  <!-- 		{% if social.type == 'linkedin' %} -->
+  <!-- 		<a href="https://www.linkedin.com/in/{{ social.user }}" class="social-link"> -->
+  <!-- 		  <i class="fab fa-linkedin scale-150-hover"></i> -->
+  <!-- 		</a> -->
+  <!-- 		{% elsif social.type == 'github' %} -->
+  <!-- 		<a href="https://github.com/{{ social.user }}" class="social-link"> -->
+  <!-- 		  <i class="fab fa-github scale-150-hover"></i> -->
+  <!-- 		</a>		 -->
+  <!-- 		{% endif %} -->
+  <!-- 	      </li> -->
+  <!-- 	      {% endfor %} -->
+  <!--           </ul> -->
+  <!--         </div> -->
+  <!-- 	</div> -->
+  <!-- 	<\!-- End-\-> -->
+  <!-- 	{% endfor %} -->
+  <!--     </div> -->
+  <!--     <div class="row justify-content-center text-center"> -->
+  <!-- 	<div class="col-auto"> -->
+  <!-- 	  <a class="btn btn-primary" href="/about/teams/"> -->
+  <!-- 	    View all members -->
+  <!-- 	  </a> -->
+  <!-- 	</div> -->
+  <!--     </div> -->
+
+  <!--   </div> -->
+  <!-- </section> -->
+  {% endif %}
+
+  {% if site.data.customers.size > 0 %}
+  {% capture customers %}
+  {% assign customers = site.data.ccustomers %}
+  {% for customer in customers %}
+  {% assign counter = forloop.index | modulo:4 %}
+  {% if counter == 1 %}
+  <div class="carousel-item{% if forloop.index == 1 %} active{% endif %}">
+    <div class="row align-items-center justify-content-center">
+      {% endif %}
+      <div class="col-3">
+        <a href="{{ customer.url }}">
+          <img class="img-fluid d-block mx-auto"
+              src="{{ customer.logo }}" alt="{{ customer.name }}"
+              style="width:auto;height:64px;-webkit-filter:grayscale(100%);filter:grayscale(100%);"/>
+        </a>
+      </div>
+      {% if forloop.last or counter == 0 %}
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endcapture %}
+  {% include customers.html title="Riglen Customers" content=customers %}
+  {% endif %}
+
+  <section id="industries" class="industries py-5">
+    <div class="container">
+      <div class="row">
+	      <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Industries</h2>
+          <h3 class="section-subheading text-muted">Riglen has experience across the following diverse industries</h3>
+	      </div>
+      </div>
+      <div class="row my-5 justify-content-center" style="min-height: 500px">
+        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
+          <div class="card border-0 text-center" style="color: #BF3100;">
+            <i class="card-img-top py-4 fa-4x fa-solid fa-industry"></i>
+            <div class="card-body">
+              <h5 class="card-title" style="min-height:35px;">Manufacturing</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
+          <div class="card border-0 text-center" style="color: #BF3100;">
+            <i class="card-img-top py-4 fa-4x fa-solid fa-circle-dollar-to-slot"></i>
+            <div class="card-body">
+              <h5 class="card-title" style="min-height:35px;">Financial Services & Insurance</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
+          <div class="card border-0 text-center" style="color: #BF3100;">
+            <i class="card-img-top py-4 fa-4x fa-solid fa-building-columns"></i>
+            <div class="card-body">
+              <h5 class="card-title" style="min-height:35px;">Public Sector & Defense</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
+          <div class="card border-0 text-center" style="color: #BF3100;">
+            <i class="card-img-top py-4 fa-4x fa-solid fa-tower-cell"></i>
+            <div class="card-body">
+              <h5 class="card-title" style="min-height:35px;">Telecom, Media and Technology</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
+          <div class="card border-0 text-center" style="color: #BF3100;">
+            <i class="card-img-top py-4 fa-4x fa-solid fa-hospital"></i>
+            <div class="card-body">
+              <h5 class="card-title" style="min-height:35px;">Healthcare & Life Science</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
+          <div class="card border-0 text-center" style="color: #BF3100;">
+            <i class="card-img-top py-4 fa-4x fa-solid fa-truck-fast"></i>
+            <div class="card-body">
+              <h5 class="card-title" style="min-height:35px;">Retail, Transport and Logistics</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
+          <div class="card border-0 text-center" style="color: #BF3100;">
+            <i class="card-img-top py-4 fa-4x fa-solid fa-charging-station"></i>
+            <div class="card-body">
+              <h5 class="card-title" style="min-height:35px;">Energy, Oil & Utilities</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="milestones" class="milestones py-5 bg-light-gray hidden">
+    <div class="container">
+      <div class="row">
+	      <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Milestones</h2>
+          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+	      </div>
+      </div>
+      <div class="row">
+        <div class="d-grid gap-2 d-md-flex justify-content-end">
+	        <button class="btn nav-btn" type="button"
+		        data-bs-target="#carouselMilestones" data-bs-slide="prev">
+	          <span class="fa-solid fa-arrow-left" aria-hidden="true"></span>
+	          <span class="visually-hidden">Previous</span>
+	        </button>
+	        <button class="btn nav-btn" type="button"
+		        data-bs-target="#carouselMilestones" data-bs-slide="next">
+	          <span class="fa-solid fa-arrow-right" aria-hidden="true"></span>
+	          <span class="visually-hidden">Next</span>
+	        </button>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col-12">
+          <div id="carouselMilestones"
+	          class="carousel slide"
+	          data-bs-ride="false"
+	          data-bs-wrap="false">
+            <div class="carousel-inner">
+	            {% assign milestones = site.data.history | where: 'visible', true | sort: 'date' | reverse %}
+	            {% for milestone in milestones %}
+	            {% assign counter = forloop.index | modulo:3 %}
+	            {% if counter == 1 %}
+	            <div class="carousel-item{% if forloop.index == 1 %} active{% endif %}">
+		            <div class="row row-cols-2 row-cols-lg-3">
+	            {% endif %}
+                  <div class="timeline-item col col-md-4 mb-3">
+		                <div class="timeline-image">
+		                  <img class="img-circle img-responsive" src="{{ milestone.img }}" alt="{{ milestone.title }}"/>
+		                </div>
+		                <div class="timeline-panel">
+		                  <div class="timeline-heading text-center">
+			                  <h4>{{ milestone.title }}</h4>
+			                  <h6 class="subheading">{{ milestone.subtitle }}</h6>
+		                  </div>
+		                  <div class="timeline-body">
+			                  <p class="text-muted">{{ milestone.content }}</p>
+		                  </div>
+		                </div>
+		                <a href="{{ milestone.link }}" class="read-more">Read more</a>
+                  </div>		
+	            {% if forloop.last or counter == 0 %}
+		            </div>
+	            </div>
+	            {% endif %}
+	            {% endfor %}	      
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if site.data.locations.size > 0 %}
+  <section id="locations" class="location py-5">
+    <div class="container m-auto py-4">
+      <div class="row mb-5">
+	      <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Locations</h2>
+          <h3 class="section-subheading text-muted"></h3>
+	      </div>
+      </div>
+      {% if site.data.locations.size > 1 %}
+      <div class="row">
+        <div class="d-grid gap-2 d-md-flex justify-content-end">
+	        <button class="btn nav-btn" type="button"
+		        data-bs-target="#carouselLocations" data-bs-slide="prev">
+	          <span class="fa-solid fa-angle-left" aria-hidden="true"></span>
+	          <span class="visually-hidden">Previous</span>
+	        </button>
+	        <button class="btn nav-btn" type="button"
+		        data-bs-target="#carouselLocations" data-bs-slide="next">
+	          <span class="fa-solid fa-angle-right" aria-hidden="true"></span>
+	          <span class="visually-hidden">Next</span>
+	        </button>
+        </div>
+      </div>
+      {% endif %}
+      <div class="row">
+        <div id="carouselLocations" class="carousel slide" data-bs-ride="carousel" data-bs-wrap="false">
+          <div class="carousel-inner">
+            {% for location in site.data.locations %}
+            <div class="carousel-item {% if forloop.index == 1 %} active{% endif %}">
+              <div class="row align-items-center justify-content-center">
+                <div class="card mb-3 p-0 border-0" style="min-height: 300px;">
+                  <div class="row g-0 h-100 w-100 position-absolute m-0">
+                    <div class="col-md-6 p-0 h-100">
+                      <img src="{{ location.img }}" class="object-fit-cover rounded mx-auto d-block h-100 w-100 border-0" alt="{{ location.name }}"/>
+                      <span class="{{ location.icon }} position-absolute top-0 end-0 m-4 shadow-lg" style="font-size:3.5rem"></span>
+                    </div>
+                    <div class="col-md-6 pe-0 h-100">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ location.name }}</h5>
+                        <p class="card-text">{{ location.intro }}</p>
+                        <form class="my-2">
+                          {% for d in location.details %}
+                          <div class="row">
+                            <i class="col-sm-1 m-auto p-auto col-form-label {{ d.icon }}" title="{{ d.name }}"></i>
+                            <div class="col-sm-11 ps-0">
+                              <p class="form-control-plaintext">{{ d.value }}</p>
+                            </div>
+                          </div>
+                          {% endfor %}
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% if site.data.locations.size > 1 %}
+      <div class="row">
+        <ol class="carousel-indicators position-relative p-auto bottom-0">
+          {% for location in site.data.locations %}
+          <li data-bs-target="#carouselLocations"
+              data-bs-slide-to="{{ forloop.index0 }}"
+              class="w-10 h-10 my-auto {% if forloop.index == 1 %} active{% endif %}"
+              aria-current="true" aria-label="{{ forloop.index }}"></li>
+          {% endfor %}
+        </ol>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% capture numbers_content %}
+  <div class="vr"></div>
+  <div class="col">
+    <div class="counter-box">
+      <div class="number_wrap">
+        <span class="counter" data-number="{{ site.solutions | size }}"></span>
+      </div>
+      <span>Solutions</span>
+    </div>
+  </div>
+  <div class="vr"></div>
+  <div class="col">
+    <div class="counter-box">
+      <div class="number_wrap">
+        <span class="counter" data-number="{{ site.services | size }}"></span>
+      </div>
+      <span>Services</span>
+    </div>
+  </div>
+  <div class="vr"></div>
+  <div class="col">
+    <div class="counter-box">
+      <div class="number_wrap">
+	      <span class="prefix">+</span>
+        <span class="counter" data-number="{{ 'now' | date: '%Y' | minus: 2008 }}"></span>
+      </div>
+      <span>Years of Experience</span>
+    </div>
+  </div>
+  {% endcapture %}
+  {% include numbers.html title="Riglen in numbers" content=numbers_content %}
+
+</div>

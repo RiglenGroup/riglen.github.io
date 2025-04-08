@@ -1,4 +1,4 @@
-<div class="nav-path row position-relative pb-4">
+<div class="nav-path row position-relative {{ include.class | default: pb-4 }}">
   <nav aria-label="breadcrumb px-0">
     <ol class="breadcrumb" style="z-index:50;">
       {% assign url = page.url | remove:'.html' | split: "/"  %}

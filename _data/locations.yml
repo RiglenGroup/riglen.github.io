@@ -1,0 +1,18 @@
+- name: Switzerland
+  intro: |
+    This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+  img: "/assets/img/1be7f6f3-297c-48bc-8a76-220123a61dea.jpg"
+  icon: "fi fi-ch"
+  details:
+    - name: Company Name
+      icon: fa-solid fa-signature
+      value: Riglen Switzerland GmbH
+    - name: Company Number
+      icon: fa-solid fa-file-signature
+      value: CHE-235.995.093
+    - name: UID/MWST
+      icon: fa-solid fa-building-columns
+      value: CHE-235.995.093 MWST
+    - name: Headquarters
+      icon: fa-solid fa-building-flag
+      value: Böndlerstrasse 33, 8802, Kilchberg, Switzerland
