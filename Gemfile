@@ -8,3 +8,4 @@ gem 'rackup'
 gem "sinatra", ">= 3", "< 4"
 gem "ffi", "< 1.17.0"
 gem 'faraday-retry'
+gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
