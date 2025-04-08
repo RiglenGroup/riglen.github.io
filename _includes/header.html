@@ -18,7 +18,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					{%- for item in site.data.nav_header %}
           			<li class="nav-item">
-            			<a class="nav-link page-scroll" href="{{ item.link }}">{{ item.name }}</a>
+            			<a class="nav-link page-scroll {{ item.class }}" href="{{ item.link }}">{{ item.name }}</a>
           			</li>
 					{%- endfor %}
           			<li class="nav-item">
