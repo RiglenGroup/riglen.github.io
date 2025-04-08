@@ -274,7 +274,7 @@ description: |
 	          data-bs-ride="false"
 	          data-bs-wrap="false">
             <div class="carousel-inner">
-	            {% assign milestones = site.data.history | where: 'visible', true | sort: 'date' | reverse %}
+	            {% assign milestones = site.data.history | where: 'visible', true %}
 	            {% for milestone in milestones %}
 	            {% assign counter = forloop.index | modulo:3 %}
 	            {% if counter == 1 %}
