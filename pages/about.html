@@ -245,6 +245,7 @@ description: |
     </div>
   </section>
 
+  {% if site.data.history.size > 0 %}
   <section id="milestones" class="milestones py-5 bg-light-gray hidden">
     <div class="container">
       <div class="row">
@@ -307,7 +308,7 @@ description: |
       </div>
     </div>
   </section>
-
+  {% endif %}
   {% if site.data.locations.size > 0 %}
   <section id="locations" class="location py-5">
     <div class="container m-auto py-4">
@@ -415,6 +416,6 @@ description: |
     </div>
   </div>
   {% endcapture %}
-  {% include numbers.html title="Riglen in numbers" content=numbers_content %}
+  {% include numbers.html title="Riglen in numbers" content=numbers_content class="hidden" %}
 
 </div>

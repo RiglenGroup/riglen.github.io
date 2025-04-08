@@ -26,7 +26,7 @@
       <div class="row mt-3">
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-md-0 mb-4">
 	        {% for nav-item in site.data.nav_footer %}
-          <h6 class="nav-link text-uppercase fw-bold" style="margin-bottom: 2rem !important;">
+          <h6 class="nav-link text-uppercase fw-bold" style="margin-bottom: 2.1rem !important;">
 	          <a class="text-decoration-none text-black"
 		           href="{{ nav-item.link }}">
 		          {{ nav-item.name }}
@@ -34,7 +34,7 @@
 	        </h6>
 	        {% endfor %}
         </div>
-        <div class="col-md-6 col-lg-5 col-xl-5 mx-auto mb-4 hidden">
+        <div class="col-md-6 col-lg-5 col-xl-5 mx-auto mb-4">
           <h6 class="text-uppercase fw-bold mb-0">
 	          <a class="text-decoration-none text-black" href="/solutions/">Solutions</a>
 	        </h6>
@@ -43,17 +43,17 @@
             style="width: 60px; background-color: #7c4dff; height: 2px"
           />
 	        <div class="row mx-auto">
-            <!-- {% assign solutions = site.solutions | where: "featured", true %} -->
-            {% assign solutions = site.solutions | group_by: 'category' %}
-            {% for solution in solutions limit: 8 %}
-            {% assign category = site.data.categories | where: "type", "solutions" | where: 'name', solution.name | first %}
+            {% assign solutions_trending = site.solutions | where: "status","trending" %}
+            {% assign solutions_featured = site.solutions | where: "status","featured" %}
+            {% assign solutions = solutions_trending | concat: solutions_featured | concat: site.solutions | uniq %}
+            {% for solution in solutions limit: 6 %}
             {% assign counter = forloop.index | modulo:3 %}
             {% if counter == 1 %}
             <div class="col-6 px-0">
             {% endif %}
               <p class="text-wrap text-uppercase">
-                <a class="nav-link text-dark" href="/solutions/{{ category.name }}">
-                  {{ category.title }}
+                <a class="nav-link text-dark" href="{{ solution.url }}">
+                  {{ solution.title }}
                 </a>
               </p>
             {% if forloop.last or counter == 0 %}
@@ -89,13 +89,21 @@
 	            <i class="fas fa-home me-3"></i>
               {{ site.contact.headquarter }}
 	          </p>
-            <p class="text-truncate" style="max-width: 95%;">
-	            <i class="fas fa-envelope me-3"></i>
-              {{ site.contact.email }}
+            <p class="text-truncate" style="max-width: 95%;">     
+              <button class="text-left w-100 h-100 p-0"
+                type="button" 
+                data-bs-toggle="modal"
+                data-bs-target="#ContactModal">
+                <i class="fas fa-envelope me-3"></i>
+                {{ site.contact.email }}
+	    				</button>
 	          </p>
             <p class="text-truncate" style="max-width: 95%;">
-	            <i class="fas fa-phone me-3"></i>
-              {{ site.contact.phone }}
+              <a class="nav-link text-dark
+                href="tel:{{ site.contact.phone }}">
+	              <i class="fas fa-phone me-3"></i>
+                {{ site.contact.phone }}
+              </a>
 	          </p>
           </div>
         </div>

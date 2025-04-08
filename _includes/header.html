@@ -16,10 +16,11 @@
       		<!-- Collect the nav links, forms, and other content for toggling -->
       		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+					{%- for item in site.data.nav_header %}
           			<li class="nav-item">
-            			<a class="nav-link page-scroll" href="/#about">About Us</a>
+            			<a class="nav-link page-scroll" href="{{ item.link }}">{{ item.name }}</a>
           			</li>
-	  
+					{%- endfor %}
           			<li class="nav-item">
 	    				<button class="btn h-100 pe-0"
 		    					type="button" 

@@ -2,13 +2,21 @@
 layout: base
 class: page
 ---
-<div id="main-content" class="solutions"
+<nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
+  <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
+      <div class="hero-text mx-4">
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 56px;line-height: 1.2;">{{ page.title }}</h1>
+      </div>
+  </div>
+</nav>
+<div id="main-content" class="service scrollspy"
   data-bs-spy="scroll"
-  data-bs-target="#navbar-main"
-  data-bs-offset="0"
-  tabindex="0">
+  data-bs-target="#navbar-sections"
+  data-bs-root-margin="0px 0px 40%"
+  data-bs-smooth-scroll="true"
+  tabindex="0" style="padding-top:15vh">
 
-  <section id="intro" class="intro d-flex align-items-center justify-content-center pb-0" style="padding-top:5vh;min-height:25vh;height:auto">
+  <section id="intro" class="hidden intro d-flex align-items-center justify-content-center pb-0" style="padding-top:25vh;min-height:25vh;height:auto">
     <div class="container m-auto pt-4">
       {% include breadcrumb.html %}
       <div class="content row align-items-center justify-content-start">
@@ -19,28 +27,75 @@ class: page
     </div>
   </section>
 
-  <section id="presentation" class="py-5 bg-light" style="padding-top:5vh !important">
-    <div class="container px-0">
-      <div class="jumbotron p-4 shadow-lg bg-white mb-5 position-relative rounded-2">
-	<div class="p-5 w-100 h-100 rounded-2 text-muted">
-	  {{ page.description | markdownify }}
-	</div>
+  <section id="introduction" class="py-5 bg-light">
+    <div class="container py-4">
+      <div class="row mb-5">
+        <h2>Introduction</h2>
+      </div>
+      <div class="py-0 w-100 h-100 rounded-2 text-muted">
+        {{ page.description | markdownify }}
       </div>
     </div>
   </section>
-  
-  <!-- <section id="description" class="py-5 hidden" style="padding-top:5vh !important; padding-bottom:5vh !important"> -->
-  <!--   <div class="container m-auto py-5"> -->
-  <!--     <div class="row mb-5"> -->
-  <!-- 	<h2>Introduction</h2> -->
-  <!--     </div> -->
-  <!--     <div class="row align-items-center justify-content-start"> -->
-  <!--       <div class="description col-12 col-md-12 px-2 hero-text lato-regular text-muted"> -->
-  <!-- 	  {{ page.description | markdownify }} -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </div> -->
-  <!-- </section> -->
+
+  {%- if page.challenges.size > 0 %}
+  <section id="challenges" class="challenges py-5"
+    style="background-color:rgba(236,236,237,0.5) !important">
+    <div class="container m-auto py-4">
+      <div class="row mb-5">
+        <h2>Challenges</h2>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+        {%- for challenge in page.challenges %}
+        <div class="col col-md-4 mb-3">
+          <div class="card border-0 rounded-4" style="height:300px;margin-bottom:100px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;background-color: black;opacity: .95;">
+            <img class="img-fluid border-0 rounded-4 w-100 h-100"
+              src="{{ challenge.img | default: '/assets/img/placeholder-4by3.svg' }}" alt="{{ challenge.title }}"
+              style="object-fit:cover;overflow:hidden;position:relative;opacity:.75;"/>
+            <div class="card-body card-img-overlay mx-auto px-4"
+              style="top:80%;width:90%;background-color:white;height:50%;opacity:0.98;">
+              <h5 class="card-title">{{ challenge.title }}</h5>
+              <p class="card-text text-muted" style="font-size: 1.20rem !important;">
+                {{ challenge.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+  {%- endif %}
+  {%- if page.benefits.size > 0 %}
+  <section id="benefits" class="benefits py-5 bg-white">
+    <div class="container m-auto py-4">
+      <div class="row mb-5">
+        <h2>Benefits</h2>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+        {%- for benefit in page.benefits %}
+        <div class="col col-md-4 mb-5 p-4">
+          <div class="card border-0 rounded-4 bg-light" style="height:250px">
+            <div class="d-flex align-items-center justify-content-center"
+              style="height:35%;margin-top:5%">
+              <span class="col-auto">
+                <i class="fa-4x {{ benefit.icon | default: 'fa-solid fa-book' }}"></i>
+              </span>
+            </div>
+            <div class="card-body pt-2 pb-2 px-5 text-center" style="height:65%">
+              <h5 class="card-title my-3">{{ benefit.title }}</h5>
+              <p class="fs-5 card-text text-muted">
+                {{ benefit.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+        {%- endfor %}
+      </div>
+    </div>    
+  </section>
+  {%- endif %}
 
   {{ content }}
 
@@ -53,15 +108,15 @@ class: page
   {%- endfor %}
 
   {%- if related.size > 0 %}
-  <section id="related" class="related py-5 pb-1"
-	  style="padding-top:5vh !important;background-color:rgba(236,236,237,0.5) !important">
+  <section id="related" class="related py-5"
+	  style="background-color:rgba(236,236,237,0.5) !important">
 
-    <div class="container m-auto pt-5">
+    <div class="container m-auto pt-4">
       <div class="row mb-2">
-	      <h2>Related Services and Solutions</h2>
+	      <h2>Related Resources</h2>
       </div>
       <div class="carousel slide carousel-fade"
-	         data-bs-ride="pause" data-bs-interval="10000">
+	      data-bs-ride="carousel" data-bs-interval="10000">
         <div class="carousel-inner" role="listbox" style="height:425px;">
           {%- for svc in related limit: 9 %}
           {%- assign counter = forloop.index | modulo: 3 %}
@@ -70,19 +125,19 @@ class: page
             <div class="card-deck row row-cols-2 row-cols-lg-3 h-100">
           {%- endif %}
               <div class="col col-md-4 px-4 pt-4">
-                <div class="card border-0 rounded-4" style="height:300px;">
+                <div class="card border-0 rounded-4" style="height:300px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
                   <div class="bg-image position-relative w-100 h-100 rounded-4">
                     <div class="related-type text-center position-absolute rounded-4 hidden">
                       <span class="d-block text-uppercase">{{ svc.type }}</span>
                     </div>
                     <img class="img-fluid rounded-4 w-100 h-100"
                          src="{{ svc.img }}" alt="{{ svc.name }}"
-                         style="object-fit:cover;overflow:hidden;">
+                         style="object-fit:cover;overflow:hidden;"/>
                   </div>
                   <div class="card-body card-img-overlay mx-auto pb-0"
                        style="top:75%;width:90%;background-color:white;height:50%">
                     <h5 class="card-title crop-text-lines-2">{{ svc.title }}</h5>
-                    <div class="card-text text-muted crop-text-lines-3">
+                    <div class="fs-5 card-text text-muted crop-text-lines-3">
                       {{ svc.description | markdownify }}
                     </div>
                   </div>
@@ -102,7 +157,9 @@ class: page
 
   {% capture quote_content %}
   <div class="content">
-    <p class="text-muted" style="font-size:16px;">Contact us today to learn how we can help you achieve your digital transformation goals.</p>
+    <p class="text-muted" style="font-size:16px;">
+      Contact us today to learn how we can help you achieve your digital transformation goals.
+    </p>
   </div>
   <div class="toolbox pt-2">
     <button class="btn btn-primary"
@@ -116,5 +173,4 @@ class: page
   {% endcapture %}
   {% include quote.html title="Get Started" subtitle="Begin your transformation journey" class="bg-light py-5" content=quote_content %}
   {% include modal_inquiry.html %}
-  
 </div>
