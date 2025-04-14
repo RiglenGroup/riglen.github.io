@@ -1,6 +1,3 @@
-- name: Home
-  link: /
-
 - name: Terms
   link: /terms
 
@@ -9,3 +6,6 @@
 
 - name: About
   link: /about
+
+- name: Brand
+  link: /about/brand

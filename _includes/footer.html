@@ -13,7 +13,7 @@
 	        {% endif %}
 	        {% assign social = site.data.social | where: 'enabled', true | reverse %}
 	        {% for s in social %}
-          <a href="{{ s.link }}" class="text-decoration-none text-white ms-4">
+          <a href="{{ s.link }}" class="text-decoration-none text-white ms-4" target="_blank" rel="noopener noreferrer">
             <i class="{{ s.icon }} scale-150-hover" aria-hidden="true"></i>
           </a>
           {% endfor %}
