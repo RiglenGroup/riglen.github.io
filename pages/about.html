@@ -204,7 +204,7 @@ description: |
   	    <div class="col-6">
   	      <figure class="figure px-5 w-100 h-100">
   	        <img src="/assets/img/eaa9b036-47a5-4824-8e64-7c7e4ce9fbad.avif"
-                 class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-contain h-100 w-100"
+                 class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover w-100 h-100"
                  loading="lazy"/>
   	      </figure>
   	    </div>
@@ -363,7 +363,7 @@ description: |
                 <div class="card mb-3 p-0 border-0" style="min-height: 300px;">
                   <div class="row g-0 h-100 w-100 position-absolute m-0">
                     <div class="col-md-6 p-0 h-100">
-                      <img src="{{ location.img }}" class="object-fit-contain rounded mx-auto d-block w-100 border-0" alt="{{ location.name }}"/>
+                      <img src="{{ location.img }}" class="object-fit-cover rounded mx-auto d-block w-100 h-100 border-0" alt="{{ location.name }}"/>
                       <span class="{{ location.icon }} position-absolute top-0 end-0 m-4 shadow-lg" style="font-size:3.5rem"></span>
                     </div>
                     <div class="col-md-6 pe-0 h-100">
@@ -374,7 +374,7 @@ description: |
                           {% for d in location.details %}
                           <div class="row">
                             <i class="col-sm-1 m-auto p-auto col-form-label {{ d.icon }}" title="{{ d.name }}"></i>
-                            <div class="col-sm-11 ps-0">
+                            <div class="col-sm-11 ps-3">
                               <p class="form-control-plaintext">{{ d.value }}</p>
                             </div>
                           </div>

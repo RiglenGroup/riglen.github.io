@@ -19,6 +19,17 @@ function setCookie(key, value, maxAge = 30 * 60 * 60 * 1000) {
     valid:  true
   }
   localStorage.setItem("cookie-consent-settings", JSON.stringify(cookie));
+
+  const consentMode = {
+    'functionality_storage': value["necessary"] ? "granted" : "denied",
+    'security_storage': value["necessary"] ? "granted" : "denied",
+    'ad_storage': value["targeting"] ? "granted" : "denied",
+    'analytics_storage': value["tracking"] ? "granted" : "denied",
+    'personalization': value["functionality"] ? "granted" : "denied"
+  };
+
+  gtag('consent', 'update', consentMode);
+  localStorage.setItem("consentMode", JSON.stringify(consentMode));
 }
 
 function delCookie() {
@@ -35,7 +46,6 @@ function saveCookieSettings() {
       "targeting":     document.querySelector("#switchConsentTargeting").checked
     }
   );
-  addAnalytics();
 }
 
 function acceptAllCookieSettings() {
@@ -79,7 +89,6 @@ function initializeCookieBanner(){
     bsOffcanvas.show();
   } else {
     loadCookieSettings();
-    addAnalytics();
   }
 }
 

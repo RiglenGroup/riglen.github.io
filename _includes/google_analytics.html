@@ -1,16 +1,22 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
 <script>
-  function addAnalytics() {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
 
-    const cookie_consent_settings = getCookie();
-
-    if (cookie_consent_settings['data']['tracking'] || false) {
-      gtag('js', new Date());
-      gtag('config', "{{ site.google_analytics }}", {});
-    } 
+  if (localStorage.getItem('consentMode') === null) {
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'personalization_storage': 'denied',
+      'functionality_storage': 'denied',
+      'security_storage': 'denied',
+    });
+  } else {
+    gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
   }
+
+  gtag('js', new Date());
+  gtag('config', "{{ site.google_analytics }}", {});
 </script>
 
