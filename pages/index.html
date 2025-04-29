@@ -24,7 +24,7 @@ description: |
       <div class="content row align-items-center justify-content-start">
         <div class="col-12 col-md-12 pe-5 hero-text">
           <h2 class="lato-regular pe-5"
-	      style="text-transform: none">{{ page.description }}</h2>
+	          style="text-transform: none">{{ page.description }}</h2>
         </div>
       </div>
     </div>
@@ -33,23 +33,108 @@ description: |
   <section id="principles" class="principles">
     <div class="container">
       <div class="row">
-	<div class="col-lg-12 text-center">
+	      <div class="col-lg-12 text-center">
           <h2 class="section-heading">Philosophy</h2>
           <h3 class="section-subheading text-muted col-9 mx-auto mb-5">Riglen actively understands, engages, and empowers its customers</h3>
-	</div>
+	      </div>
       </div>
       <div class="row row-cols-2 row-cols-md-3 g-4 justify-content-center">
-	{% for principle in site.data.principles %}
-	<div class="col">
-	  <div class="card h-100">
-	    <div class="card-body">
-	      <h5 style="text-decoration-color: {{ principle.color | default: 'gray' }}"
-		  class="card-title">{{ principle.name }}</h5>
-	      <p class="card-text">{{ principle.description }}</p>
-	    </div>
-	  </div>
-	</div>
-	{% endfor %}
+	      {%- for principle in site.data.principles %}
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 style="text-decoration-color: {{ principle.color | default: 'gray' }}" class="card-title">{{ principle.name }}</h5>
+              <p class="card-text">{{ principle.description }}</p>
+            </div>
+          </div>
+        </div>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% assign solutions = site.pages | where: 'permalink', '/solutions' | first %}
+  <section id="solutions" class="solutions bg-light-gray">
+    <div class="container">
+      <div class="row">
+	      <div class="col-lg-12 text-center">
+          <h2 class="section-heading">{{ solutions.title }}</h2>
+          <h3 class="section-subheading text-muted col-9 mx-auto mb-5">{{ solutions.description }}</h3>
+	      </div>
+      </div>
+      <div class="row my-4">
+        <div class="col-12">
+          <div id="carouselSolutions" class="carousel slide carousel-fade"
+	          data-bs-ride="carousel" data-bs-interval="10000">
+            <div class="carousel-inner" role="listbox">
+              {% assign solutions_trending = site.solutions | where: "status", "trending" %}
+              {% assign solutions_featured = site.solutions | where: "status", "featured" %}
+              {% assign solutions = solutions_trending | concat: solutions_featured | concat: site.solutions | uniq %}
+              {% for solution in solutions limit: 9 %}
+              {% assign counter = forloop.index | modulo:3 %}
+              {% if counter == 1 %}
+              <div class="carousel-item{% if forloop.index == 1 %} active{% endif %}">
+		            <div class="card-deck row row-cols-2 row-cols-lg-3 mx-1">
+	            {% endif %}
+                  <div class="col col-md-4 mb-3">
+                    <div class="card border-3 shadow-sm-hover{% if solution.trending %} card-trending{% endif %}">
+                      <div class="card-body">
+                        <h4 class="card-title mb-4">{{ solution.title }}</h4>
+			                  <hr class="py-1" style="background-color:#1f2938;opacity:1;width:65%;transition: width .5s"></hr>
+                        <div class="card-text pe-4">{{ solution.description | markdownify }}</div>
+			                  <a href="{{ solution.url }}" class="stretched-link"></a>
+                      </div>
+		                  <div class="card-footer py-3 bg-transparent border-top-0">
+			                  <div class="d-flex align-items-center justify-content-start">
+			                    {% if solution.status == "trending" %}
+			                    <span class="col-auto me-4">
+			                      <i class="fa-solid fa-fire fa-fade"></i>
+			                    </span>
+                          {% elsif solution.status == "featured" %}
+                          <span class="col-auto me-4">
+                            <i class="fa-solid fa-star fa-fade"></i>
+                          </span>
+			                    {% endif %}
+			                    <span class="col-auto me-4">
+			                      <i class="fa-solid fa-cubes me-2" aria-hidden="true"></i>
+			                      {{ site.services | where: 'categories', solution.name | size }}
+			                    </span>
+			                  </div>
+		                  </div>
+                    </div>
+                  </div>		
+              {% if forloop.last or counter == 0 %}
+		            </div>
+	            </div>
+	            {% endif %}
+	            {% endfor %}	      
+            </div>
+            {% if solutions.size > 3 %}
+            {% assign indicators = solutions.size | divided_by: 3 %}
+	          <div class="row align-items-center justify-content-center my-4">
+	            <button class="col-auto carousel-indicators-btn" type="button"
+		            data-bs-target="#carouselSolutions" data-bs-slide="prev">
+		            <span class="d-flex fa-solid fa-angle-left" aria-hidden="true" style="width: 100%;height: 100%;"></span>
+		            <span class="visually-hidden">Previous</span>
+	            </button>
+	            <div class="carousel-indicators col-auto my-auto mx-5">		            
+		            {% for i in (1..indicators) %}
+		            <button type="button"
+			            data-bs-target="#carouselSolutions"
+			            data-bs-slide-to="{{ forloop.index0 }}"
+			            class="{% if forloop.index == 1 %} active{% endif %}"
+			            aria-current="true" aria-label="Slide {{ forloop.index }}"></button>
+		            {% endfor %}
+	            </div>
+	            <button class="col-auto carousel-indicators-btn" type="button"
+		            data-bs-target="#carouselSolutions" data-bs-slide="next">
+		            <span class="d-flex fa-solid fa-angle-right" aria-hidden="true"></span>
+		            <span class="visually-hidden">Next</span>
+	            </button>
+	          </div>
+            {% endif %}
+	        </div>
+	      </div>
       </div>
     </div>
   </section>
@@ -57,27 +142,58 @@ description: |
   <section id="about" class="about d-flex align-items-center pt-5 py-4">
     <div class="container m-auto">
       <div class="row">
-	<div class="col-lg-12 text-center">
+	      <div class="col-lg-12 text-center">
           <h2 class="section-heading">About Us</h2>
           <h3 class="section-subheading text-muted col-9 mx-auto mb-5">Riglen, Building Futures Together</h3>
-	</div>
+	      </div>
       </div>
       <div class="row row-cols-2">
-	<div class="description col-6 pe-4">
-	  <p>
-      We are a young, dynamic and forward-thinking company with several years of experience in the IT industry. Innovation is in our DNA. We specialize in IT consultancy and solutions, we excel in Cloud, Engineering, Security, and FinOps.
-      We believe that in the transformational journey, the challenge is not just technological but also cultural. At Riglen, we understand that every partner has their own unique perspective, which is why we use the right lens to oversee and define tailored solutions that fit their specific needs.
-      Our deep expertise and technological insight empower us to guide our partners’ business toward success. Let’s ignite your transformation and achieve the desired results together.
-    </p>
-	</div>	
-	<div class="col-6 px-5">
-	  <figure class="figure px-5">
-	    <img class="figure-img img-fluid rounded-4 shadow-lg m-auto" loading="lazy"
-		 src="/assets/img/about/about-banner.jpeg"/>
-	  </figure>
-	</div>
+	      <div class="description col-6 pe-4">
+	        <p>
+            We are a young, dynamic and forward-thinking company with several years of experience in the IT industry. Innovation is in our DNA. We specialize in IT consultancy and solutions, we excel in Cloud, Engineering, Security, and FinOps.
+            We believe that in the transformational journey, the challenge is not just technological but also cultural. At Riglen, we understand that every partner has their own unique perspective, which is why we use the right lens to oversee and define tailored solutions that fit their specific needs.
+            Our deep expertise and technological insight empower us to guide our partners’ business toward success. Let’s ignite your transformation and achieve the desired results together.
+          </p>
+	      </div>	
+	      <div class="col-6 px-5">
+	        <figure class="figure px-5">
+	          <img class="figure-img img-fluid rounded-4 shadow-lg m-auto" loading="lazy"
+		          src="/assets/img/about/about-banner.jpeg"/>
+	        </figure>
+	      </div>
       </div>
     </div>
   </section>
-</div>
 
+  {% capture numbers_content %}
+  <div class="vr"></div>
+  <div class="col">
+    <div class="counter-box">
+      <div class="number_wrap">
+        <span class="counter" data-number="{{ site.solutions | size }}"></span>
+      </div>
+      <span><i class="fa-solid fa-cubes px-2"></i>Solutions</span>
+    </div>
+  </div>
+  <div class="vr"></div>
+  <div class="col">
+    <div class="counter-box">
+      <div class="number_wrap">
+        <span class="counter" data-number="{{ site.services | size }}"></span>
+      </div>
+      <span><i class="fa-solid fa-cube px-2"></i>Services</span>
+    </div>
+  </div>
+  <div class="vr"></div>
+  <div class="col">
+    <div class="counter-box">
+      <div class="number_wrap">
+	      <span class="prefix">+</span>
+        <span class="counter" data-number="{{ 'now' | date: '%Y' | minus: 2008 }}"></span>
+      </div>
+      <span><i class="fa-solid fa-award px-2"></i>Years of Experience</span>
+    </div>
+  </div>
+  {% endcapture %}
+  {% include numbers.html title="Riglen in numbers" content=numbers_content %}
+</div>

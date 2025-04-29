@@ -1,0 +1,123 @@
+---
+layout: base
+class: page
+---
+<nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
+  <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
+      <div class="hero-text mx-4">
+        {% include breadcrumb.html class="fs-5 pb-2" %}
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 42px;line-height: 1.2;">{{ page.title }}</h1>
+      </div>
+  </div>
+</nav>
+<div id="main-content" class="solutions solution"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-sections"
+  data-bs-root-margin="0px 0px 40%"
+  data-bs-smooth-scroll="true"
+  tabindex="0" style="padding-top:15vh">
+
+  <section id="intro" class="hidden intro d-flex align-items-center justify-content-center pb-0" style="padding-top:5vh;min-height:25vh;height:auto">
+    <div class="container m-auto pt-4">
+      {% include breadcrumb.html %}
+      <div class="content row align-items-center justify-content-start">
+        <div class="col-12 col-md-10 hero-text">
+          <h1 class="lato-black">{{ page.title }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="overview" class="py-5 bg-light">
+    <div class="container py-4">
+      <div class="row mb-5">
+        <h2>Overview</h2>
+      </div>
+      <div class="py-0 w-100 h-100 rounded-2 text-muted text-justify fs-4">
+        {{ page.subtitle | markdownify }}
+        {{ page.description | markdownify }}
+      </div>
+    </div>
+  </section>
+
+  <section id="presentation" class="hidden py-5 bg-light" style="padding-top:5vh !important">
+    <div class="container px-0">
+      <div class="jumbotron p-4 shadow-lg bg-white mb-5 position-relative rounded-2">
+	      <div class="p-5 w-100 h-100 rounded-2 text-muted">
+	        {{ page.description | markdownify }}
+	      </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- <section id="description" class="py-5 mb-5 hidden" style="padding-top:5vh !important"> -->
+  <!--   <div class="container m-auto pt-5"> -->
+  <!--     <div class="row mb-5"> -->
+  <!-- 	<h2>Introduction</h2> -->
+  <!--     </div> -->
+  <!--     <div class="row align-items-center justify-content-start"> -->
+  <!--       <div class="description col-12 col-md-12 px-2 hero-text lato-regular text-muted"> -->
+  <!-- 	  {{ page.description | markdownify }} -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!-- </section> -->
+  
+  {{ content }}
+
+  <section id="services" class="services py-5 mb-5">
+    <div class="container">
+      <div class="row mb-5">
+	      <h2>Our Services</h2>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-start">
+	      {% assign services = site.services | where: 'category', page.name %}
+	      {% for svc in services %}
+	      <div class="col mb-5">
+	      <div class="card shadow-sm rounded-2 border h-100">
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+	          {% if svc.status == "trending" %}
+            <div class="highlight-box text-center">
+		          <span><i class="fa-solid fa-fire fa-fade"></i></span>
+            </div>	      
+	          {% elsif svc.status == "featured" %}
+            <div class="highlight-box text-center">
+		          <span><i class="fa-solid fa-star fa-flip"></i></span>
+            </div>
+	          {% endif %}
+            <img alt="{{ svc.title }}" class="img-fluid lazy" height="435" loading="lazy"
+		          src="{{ svc.img }}"
+		          style="object-fit:cover;height:300px;width:100%" width="975"/>
+            </div>        
+            <div class="card-body">
+              <h2 class="card-title crop-text-lines-2 font-weight-bold">{{ svc.title }}</h2>
+              <p class="card-text text-muted crop-text-lines-3">{{ svc.description }}</p>
+              <a href="{{ svc.url }}" class="mt-4 stretched-link" aria-label="Read">
+		            <span class="sr-only">Read</span>
+              </a>
+            </div>
+	        </div>
+	      </div>
+	      {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% capture quote_content %}
+  <div class="content">
+    <p class="text-muted" style="font-size:16px;">Contact us today to learn how we can help you achieve your digital transformation goals.</p>
+  </div>
+  <div class="toolbox pt-2">
+    <button class="btn btn-primary"
+	    type="button"
+	    data-bs-toggle="modal"
+	    data-bs-target="#InquiryModal"
+	    title="Contact us">
+      Contact us
+    </button>
+  </div>
+  {% endcapture %}
+  {% include quote.html title="Get Started" subtitle="Begin your transformation journey" class="bg-light py-5" content=quote_content %}
+  {% include modal_inquiry.html %}
+  
+</div>

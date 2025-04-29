@@ -1,11 +1,10 @@
 ---
-ready: true
+id: PS005
 layout: service
 class: service
 category:
 - cloud-assessment
-- finops-assessment
-id: PS002
+- finops-and-greenops
 type: service
 related:
 - finops-maturity-assessment
@@ -15,178 +14,52 @@ tags:
 - advise
 - transformation
 slug: finops-rapid-assessment
-featured: true
-trending: true
+status: trending
 title: "FinOps Rapid Assessment"
-subtitle: "Beginning"
+subtitle: 
 description: |
   Understand your organization’s current financial operations process and identify areas for improvement, such as the budgeting process, cost management strategies, and overall financial goals.
-img: "/assets/img/placeholder-4by3.svg"
+img: "/assets/img/732a4d75-8635-4b26-92a2-f46e2ab7e89a.jpg"
+challenges:
+- title: Practice Uncertainty
+  img: "/assets/img/01bab826-b443-4e97-806d-18b6b8c4cf38.avif"
+  description: |
+    Despite of having an existing FinOps practice there is still uncertainty about taking the right actions to control cloud costs
+- title: Unplanned Cloud Strategy
+  img: "/assets/img/1076c5f7-3118-4a38-8a3d-bca244f4ec8f.avif"
+  description: |
+    Rapid cloud adoption without a clear strategy defined usually trigger a lift and shift migration
+- title: Budget Definitions
+  img: "/assets/img/b593f58d-6bac-4a89-a614-7ef7e9d185da.avif"
+  description: |
+    After a period of time after Cloud Adoption the cost limits not properly defined and the cost consumption is over budgets
+- title: Lack of Visibility
+  img: "/assets/img/b50cbf2a-4623-4834-93f1-9e971b8a7e18.avif"
+  description: |
+    Billing information is not structure, generating lack of visibility of the cost consumption and traceability
+- title: Reporting
+  img: "/assets/img/7fe0684e-24c6-4612-872c-5d55d25ab4e1.jpg"
+  description: |
+    Not able to generate meaningful reports to identify potential cost reductions
+benefits:
+- title: Meaningful Report
+  icon: fa-4x fa-solid fa-magnifying-glass-chart
+  description: |
+    Comprehensive report to translate results into an understandable language for main stakeholders and helping to define concrete actions
+- title: Shared Responsibility
+  icon: fa-4x fa-solid fa-people-group
+  description: |
+    Foster and improve collaboration across your organization to increase accountability, reduce risk, and enhance efficiency.
+- title: Raise Awareness
+  icon: fa-4x fa-solid fa-bullhorn
+  description: |
+    Empower your organization sharing ownership and raising awareness about your organization's FinOps practice, leading to higher engagement and increse motivation
+- title: Architecture Review
+  icon: fa-4x fa-solid fa-compass-drafting
+  description: |
+    Having an Executive Summary report with the findings and recommendations will help to initiate architecture design review to address them
+- title: Cost Reduction
+  icon: fa-4x fa-solid fa-scale-unbalanced-flip
+  description: |
+    With a concrete roadmap and action plan of the current scenario will help generate a cost reduction in a short or mid term for your organization
 ---
-<section id="challenges" class="challenges py-5"
-	 style="background-color:rgba(236,236,237,0.5) !important">
-  <div class="container">
-    <div class="row mb-5">
-      <h2>Challenges</h2>
-    </div>
-    
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
-
-      <div class="col col-md-4 mb-3">
-	<div class="card border-0 rounded-4" style="height:300px;margin-bottom:75px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
-	  <img class="img-fluid border-0 rounded-4 w-100 h-100"
-	       src="/assets/img/placeholder-4by3.svg" alt="IT Strategy"
-	       style="object-fit:cover;overflow:hidden;position:relative;">
-	  <div class="card-body card-img-overlay mx-auto px-4 rounded-2"
-	       style="top:65%;width:90%;background-color:white;height:60%">
-	    <h5 class="card-title">Practice Uncertainty</h5>
-	    <p class="fs-5 card-text text-muted">Despite of having an existing FinOps practice there is still uncertainty about taking the right actions to control cloud costs</p>
-	  </div>
-	</div>
-      </div>
-
-      <div class="col col-md-4 mb-3">
-	<div class="card border-0 rounded-4" style="height:300px;margin-bottom:75px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
-	  <img class="img-fluid border-0 rounded-4 w-100 h-100"
-	       src="/assets/img/placeholder-4by3.svg" alt="IT Strategy"
-	       style="object-fit:cover;overflow:hidden;position:relative;">
-	  <div class="card-body card-img-overlay mx-auto px-4 rounded-2"
-	       style="top:65%;width:90%;background-color:white;height:60%">
-	    <h5 class="card-title">Unplanned Cloud Strategy</h5>
-	    <p class="fs-5 card-text text-muted">Rapid cloud adoption without a clear strategy defined usually trigger a lift and shift migration</p>
-	  </div>
-	</div>
-      </div>
-
-      <div class="col col-md-4 mb-3">
-	<div class="card border-0 rounded-4" style="height:300px;margin-bottom:75px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
-	  <img class="img-fluid border-0 rounded-4 w-100 h-100"
-	       src="/assets/img/placeholder-4by3.svg" alt="IT Strategy"
-	       style="object-fit:cover;overflow:hidden;position:relative;">
-	  <div class="card-body card-img-overlay mx-auto px-4 rounded-2"
-	       style="top:65%;width:90%;background-color:white;height:60%">
-	    <h5 class="card-title">Budget Definitions</h5>
-	    <p class="fs-5 card-text text-muted">After a period of time after Cloud Adoption the cost limits not properly defined and the cost consumption is over budgets</p>
-	  </div>
-	</div>
-      </div>
-
-      <div class="col col-md-4 mb-3">
-	<div class="card border-0 rounded-4" style="height:300px;margin-bottom:75px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
-	  <img class="img-fluid border-0 rounded-4 w-100 h-100"
-	       src="/assets/img/placeholder-4by3.svg" alt="IT Strategy"
-	       style="object-fit:cover;overflow:hidden;position:relative;">
-	  <div class="card-body card-img-overlay mx-auto px-4 rounded-2"
-	       style="top:65%;width:90%;background-color:white;height:60%">
-	    <h5 class="card-title">Lack of Visibility</h5>
-	    <p class="fs-5 card-text text-muted">Billing information is not structure, generating lack of visibility of the cost consumption and traceability</p>
-	  </div>
-	</div>
-      </div>
-
-      <div class="col col-md-4 mb-3">
-	<div class="card border-0 rounded-4" style="height:300px;margin-bottom:75px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
-	  <img class="img-fluid border-0 rounded-4 w-100 h-100"
-	       src="/assets/img/placeholder-4by3.svg" alt="Security Controls"
-	       style="object-fit:cover;overflow:hidden;position:relative;">
-	  <div class="card-body card-img-overlay mx-auto px-4 rounded-2"
-	       style="top:65%;width:90%;background-color:white;height:60%">
-	    <h5 class="card-title">Reporting</h5>
-	    <p class="fs-5 card-text text-muted">Not able to generate meaningful reports to identify potential cost reductions</p>
-	  </div>
-	</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="benefits" class="benefits py-5 mb-5 bg-white">
-  <div class="container">
-    <div class="row mb-5">
-      <h2>Benefits</h2>
-    </div>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
-      <div class="col col-md-4 my-5 p-4">
-	<div class="card border-0 rounded-4 bg-light" style="height:250px">
-	  <div class="d-flex align-items-center justify-content-center"
-	       style="height:35%;margin-top:5%">
-	    <span class="col-auto">
-	      <i class="fa-4x fa-solid fa-magnifying-glass-chart"></i>
-	    </span>
-	  </div>
-	  <div class="card-body pt-2 pb-2 px-5 text-center" style="height:65%">
-	    <h5 class="card-title my-3">Meaningful Report</h5>
-	    <p class="card-text text-muted">
-	      
-	    </p>
-	  </div>
-	</div>
-      </div>
-      <div class="col col-md-4 my-5 p-4">
-	<div class="card border-0 rounded-4 bg-light" style="height:250px">
-	  <div class="d-flex align-items-center justify-content-center"
-	       style="height:35%;margin-top:5%">
-	    <span class="col-auto">
-	      <i class="fa-4x fa-solid fa-people-group"></i>
-	    </span>
-	  </div>
-	  <div class="card-body pt-2 pb-2 px-5 text-center" style="height:65%">
-	    <h5 class="card-title my-3">Shared Responsibility</h5>
-	    <p class="card-text text-muted">
-	      
-	    </p>
-	  </div>
-	</div>
-      </div>
-      <div class="col col-md-4 my-5 p-4">
-	<div class="card border-0 rounded-4 bg-light" style="height:250px">
-	  <div class="d-flex align-items-center justify-content-center"
-	       style="height:35%;margin-top:5%">
-	    <span class="col-auto">
-	      <i class="fa-4x fa-solid fa-bullhorn"></i>
-	    </span>
-	  </div>
-	  <div class="card-body pt-2 pb-2 px-5 text-center" style="height:65%">
-	    <h5 class="card-title my-3">Raise Awareness</h5>
-	    <p class="card-text text-muted">
-	      
-	    </p>
-	  </div>
-	</div>
-      </div>
-      <div class="col col-md-4 my-5 p-4">
-	<div class="card border-0 rounded-4 bg-light" style="height:250px">
-	  <div class="d-flex align-items-center justify-content-center"
-	       style="height:35%;margin-top:5%">
-	    <span class="col-auto">
-	      <i class="fa-4x fa-solid fa-compass-drafting"></i>
-	    </span>
-	  </div>
-	  <div class="card-body pt-2 pb-2 px-5 text-center" style="height:65%">
-	    <h5 class="card-title my-3">Architect Review</h5>
-	    <p class="card-text text-muted">
-	      
-	    </p>
-	  </div>
-	</div>
-      </div>
-      <div class="col col-md-4 my-5 p-4">
-	<div class="card border-0 rounded-4 bg-light" style="height:250px">
-	  <div class="d-flex align-items-center justify-content-center"
-	       style="height:35%;margin-top:5%">
-	    <span class="col-auto">
-	      <i class="fa-4x fa-solid fa-scale-unbalanced-flip"></i>
-	    </span>
-	  </div>
-	  <div class="card-body pt-2 pb-2 px-5 text-center" style="height:65%">
-	    <h5 class="card-title my-3">Cost Reduction</h5>
-	    <p class="card-text text-muted">
-	      
-	    </p>
-	  </div>
-	</div>
-      </div>
-    </div>
-  </div>    
-</section>

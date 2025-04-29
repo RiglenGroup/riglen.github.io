@@ -25,10 +25,13 @@ collections_dir: collections
 collections:
   services:
     permalink: /:collection/:slug
-    output: false
+    output: true
   solutions:
     permalink: /:collection/:slug
-    output: false
+    output: true
+  # partners:
+  #   permalink: /about/:collection/:slug
+  #   output: true
       
 plugins:
   - jekyll-gist

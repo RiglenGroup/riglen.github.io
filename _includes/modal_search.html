@@ -36,7 +36,7 @@
 		   autocomplete="off"
 		   autocorrect="off"
 		   autocapitalize="off"
-		   enterkeyhint="go"
+		   enterkeyhint="search"
 		   spellcheck="false"
 		   autofocus="true"
 		   placeholder="Search"
@@ -95,7 +95,7 @@
     </div>
   </div>
 
-  <script src="/assets/js/simple-jekyll-search.min.js" type="text/javascript"></script>
+  <script src="/assets/js/simple-jekyll-search.js" type="text/javascript"></script>
   <script>
     var sjs = SimpleJekyllSearch({
       searchInput: document.getElementById('search-input'),
@@ -107,7 +107,7 @@
             <span class="text-uppercase text-muted post-meta">{type}</span>
          </li>
       `,
-      json: '/api/search.json'
+      json: '/api/search/simple.json'
     });
   </script>
   

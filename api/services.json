@@ -9,7 +9,6 @@ layout: none
       "categories":  {{- svc.categories | jsonify }},
       "class":       {{- svc.class | jsonify }},
       "description": {{- svc.description | jsonify }},
-      "featured":    {{- svc.featured | jsonify }},
       "img":         {{- svc.img | jsonify }},
       "name":        {{- svc.name | jsonify }},
       "ready":       {{- svc.ready | jsonify }},
@@ -17,7 +16,7 @@ layout: none
       "subtitle":    {{- svc.subtitle | jsonify }},
       "tags":        {{- svc.tags | jsonify }},
       "title":       {{- svc.title | jsonify }},
-      "trending":    {{- svc.trending | jsonify }},
+      "status":      {{- svc.status | jsonify }},
       "type":        {{- svc.type | jsonify }},
       "url":         {{- svc.url | relative_url | jsonify }}
     }{% unless forloop.last %},{% endunless %}  

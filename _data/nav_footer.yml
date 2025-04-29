@@ -4,8 +4,8 @@
 - name: Privacy
   link: /privacy
 
-- name: About
-  link: /about
-
 - name: Brand
   link: /about/brand
+
+- name: Services
+  link: /services

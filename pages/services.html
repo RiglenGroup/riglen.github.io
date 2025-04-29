@@ -2,27 +2,38 @@
 layout: page
 title: Services
 permalink: /services
+description: |
+  Riglen provides a diverse range of services across multiple domains that are applicable for multi industries. We specialize in delivering comprehensive services to help organizations to meet their goals, driving operational efficiency, accelerate digital transformation, and achieve sustainable growth over time.
 ---
+<nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
+  <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
+      <div class="hero-text mx-4">
+        {% include breadcrumb.html class="fs-5 pb-2" %}
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 42px;line-height: 1.2;">{{ page.title }}</h1>
+      </div>
+  </div>
+</nav>
 <div id="main-content" class="solutions"
   data-bs-spy="scroll"
-  data-bs-target="#navbar-main"
-  data-bs-offset="0"
-  tabindex="0">
+  data-bs-target="#navbar-sections"
+  data-bs-root-margin="0px 0px 40%"
+  data-bs-smooth-scroll="true"
+  tabindex="0" style="padding-top:15vh">
 
-  <section id="intro" class="intro d-flex align-items-center justify-content-center pb-0" style="padding-top:5vh;min-height:25vh;height:auto">
-    <div class="container m-auto pt-4">
-      {% include breadcrumb.html %}
-      <div class="content row align-items-center justify-content-start">
-        <div class="col-12 col-md-10 hero-text">
-          <h1 class="lato-black">{{ page.title }}</h1>
-        </div>
+  <section id="overview" class="py-5 bg-light">
+    <div class="container py-4">
+      <div class="row mb-5">
+        <h2>Overview</h2>
+      </div>
+      <div class="py-0 w-100 h-100 rounded-2 text-muted text-justify fs-4">
+        {{ page.description | markdownify }}
       </div>
     </div>
   </section>
   
-  <section id="services" class="py-5 mb-5" style="padding-top:5vh !important">
-    <div class="container m-auto pt-5">
-      <div class="row mb-5">
+  <section id="services" class="py-5 bg-white">
+    <div class="container py-4">
+      <div class="row">
       	<h2>Our Services</h2>
       </div>
       <div class="row">
@@ -35,22 +46,26 @@ permalink: /services
           data-detail-view-by-click="true"
           data-detail-formatter="detailFormatter"
           data-detail-view="true"
+          data-fixed-scroll="true"
           data-loading-template="loadingTemplate"
+          data-height="700"
           data-icons-prefix="fa"
+          data-icons-size="sm"
           data-id-field="slug"
           data-pagination="true"
           data-pagination-h-align="right"
           data-pagination-detail-h-align="left"
           data-pagination-loop="false"
-          data-page-size="25"
+          data-page-size="15"
           data-page-list="[]"
           data-row-style="rowStyle"
           data-search="true"
           data-select-item-name="slug"
           data-show-header="true"
-          data-show-refresh="false"
+          data-show-refresh="true"
           data-show-toggle="false"
           data-toggle="table"
+          data-total="count"
           data-unique-id="slug"
           data-url="/api/services.json">
           <thead>
@@ -169,9 +184,10 @@ permalink: /services
   };
 
   function nameFormatter(value, row) {
-    console.log(value, row['ready']);
     var html = "";
     html  = row['title'];
+    html += row['status'] === "trending" ? "<i class=\"pt-1 fa-solid fa-fire pull-right\"></i>" : "";
+    html += row['status'] === "featured" ? "<i class=\"pt-1 fa-solid fa-star pull-right\"></i>" : "";
     html += row['ready'] ? "<i class=\"m-auto fa-solid fa-check pull-right\"></i>" : "";
     return html;
   };  

@@ -65,27 +65,29 @@ layout: compress
     
     <script>
       function scrollFunction() {
-	var pos = document.body.scrollTop || document.documentElement.scrollTop;
-	if ( pos > $("#main-header").outerHeight() ) {
-	  $("#main-header").removeClass("transparent");
-	  
-	} else {
-	  $("#main-header").addClass("transparent");
-	}
+	      var pos = document.body.scrollTop || document.documentElement.scrollTop;
+	      if ( pos > $("#main-header").outerHeight() ) {
+	        $("#main-header").removeClass("transparent");
+	      } else {
+	        $("#main-header").addClass("transparent");
+	      }
       };
       window.addEventListener('load', scrollFunction);
       window.addEventListener('scroll', scrollFunction);
 
       $('.counter').each(function () {
-	$(this).prop('Counter', 0).animate({
-          Counter: $(this).data("number")
-	}, {
-          duration: 2500,
-          easing: 'swing',
-          step: function (now) {
-            $(this).text(Math.ceil(now).toLocaleString("{{ site.lang }}"));
-          }
-	});
+	      $(this).prop('Counter', 0).animate(
+          {
+            Counter: $(this).data("number")
+	        },
+          {
+            duration: 2500,
+            easing: 'swing',
+            step: function (now) {
+              $(this).text(Math.ceil(now).toLocaleString("{{ site.lang }}"));
+            }
+	        }
+        );
       });    
     </script>
   </body>    

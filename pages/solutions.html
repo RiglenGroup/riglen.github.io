@@ -1,0 +1,99 @@
+---
+layout: page
+title: Solutions
+permalink: /solutions
+description: |
+  Our solutions are designed to <strong>empower</strong> our partners and enhance their transformation journey. We focus on adding <strong>business value</strong> and driving <strong>innovation</strong>, helping them to gain a <strong>competitive edge</strong> in today’s dynamic market.
+---
+<nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
+  <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
+      <div class="hero-text mx-4">
+        {% include breadcrumb.html class="fs-5 pb-2" %}
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 42px;line-height: 1.2;">{{ page.title }}</h1>
+      </div>
+  </div>
+</nav>
+<div id="main-content" class="solutions"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-sections"
+  data-bs-root-margin="0px 0px 40%"
+  data-bs-smooth-scroll="true"
+  tabindex="0" style="padding-top:15vh">
+  
+  <section id="intro" class="hidden intro d-flex align-items-center justify-content-center pb-0" style="padding-top:5vh;min-height:25vh;height:auto">
+    <div class="container m-auto pt-4">
+      {% include breadcrumb.html %}
+      <div class="content row align-items-center justify-content-start">
+        <div class="col-12 col-md-10 hero-text">
+          <h1 class="lato-black">{{ page.title }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="overview" class="py-5 bg-light">
+    <div class="container py-4">
+      <div class="row mb-5">
+        <h2>Overview</h2>
+      </div>
+      <div class="py-0 w-100 h-100 rounded-2 text-muted text-justify fs-4">
+        {{ page.description | markdownify }}
+      </div>
+    </div>
+  </section>
+
+  <section id="presentation" class="hidden py-5 bg-light" style="padding-top:5vh !important">
+    <div class="container px-0">
+      <div class="jumbotron p-4 shadow-lg bg-white mb-5 position-relative rounded-2">
+	<div class="p-5 w-100 h-100 rounded-2 text-muted">
+	  {{ page.description | markdownify }}
+	</div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="services" class="services py-5 mb-5" style="padding-top:5vh !important">
+    <div class="container m-auto pt-5">
+      <div class="row mb-5">
+	      <h2>Our Solutions</h2>
+      </div>
+      <div class="row row-cols-1 g-5 justify-content-center">
+        {% assign solutions_trending = site.solutions | where: "status","trending" %}
+        {% assign solutions_featured = site.solutions | where: "status","featured" %}
+        {% assign solutions = solutions_trending | concat: solutions_featured | concat: site.solutions | uniq %}
+	      {% for solution in solutions %}
+	      <div class="col px-0 my-5">
+	        <div class="card shadow-5 border-0 rounded-2 w-100 h-100">
+	          <div class="row g-0 mx-0">
+              <div class="col-md-4 bg-image hover-overlay ripple px-0 rounded-start" data-mdb-ripple-color="light">
+		            {% if solution.status == "trending" %}
+		            <div class="highlight-box text-center">
+		              <span><i class="fa-solid fa-fire fa-fade"></i></span>
+		            </div>	      
+		            {% elsif solution.status == "featured" %}
+		            <div class="highlight-box text-center">
+		              <span><i class="fa-solid fa-star fa-flip"></i></span>
+		            </div>
+		            {% endif %}
+		            <img alt="{{ solution.title }}" class="img-fluid lazy" height="435" loading="lazy"
+		              src="{{ solution.img }}"
+		              style="object-fit:cover;height:300px;width:100%" width="975"/>
+              </div>
+	            <div class="col-md-8 rounded-end">
+		            <div class="card-body">
+		              <h2 class="card-title crop-text-lines-2 font-weight-bold">{{ solution.title }}</h2>
+		              <p class="card-text text-muted crop-text-lines-3">{{ solution.description | markdownify }}</p>
+		            </div>
+              </div>
+              <a href="{{ solution.url }}" class="stretched-link" aria-label="Read">
+                <span class="sr-only">Read</span>
+              </a>
+	          </div>
+	        </div>
+	      </div>
+	      {% endfor %}
+      </div>
+    </div>
+  </section>
+
+</div>

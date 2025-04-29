@@ -5,7 +5,8 @@ class: page
 <nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
   <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
       <div class="hero-text mx-4">
-        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 56px;line-height: 1.2;">{{ page.title }}</h1>
+        {% include breadcrumb.html class="fs-5 pb-2" %}
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 42px;line-height: 1.2;">{{ page.title }}</h1>
       </div>
   </div>
 </nav>
@@ -27,12 +28,13 @@ class: page
     </div>
   </section>
 
-  <section id="introduction" class="py-5 bg-light">
+  <section id="overview" class="py-5 bg-light">
     <div class="container py-4">
       <div class="row mb-5">
         <h2>Overview</h2>
       </div>
-      <div class="py-0 w-100 h-100 rounded-2 text-muted">
+      <div class="py-0 w-100 h-100 rounded-2 text-muted text-justify fs-4">
+        {{ page.subtitle | markdownify }}
         {{ page.description | markdownify }}
       </div>
     </div>
@@ -49,10 +51,10 @@ class: page
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
         {%- for challenge in page.challenges %}
         <div class="col col-md-4 mb-3">
-          <div class="card border-0 rounded-4" style="height:300px;margin-bottom:100px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;background-color: black;opacity: .95;">
+          <div class="card border-0 rounded-4 bg-black" style="height:300px;margin-bottom:100px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
             <img class="img-fluid border-0 rounded-4 w-100 h-100"
               src="{{ challenge.img | default: '/assets/img/placeholder-4by3.svg' }}" alt="{{ challenge.title }}"
-              style="object-fit:cover;overflow:hidden;position:relative;opacity:.75;"/>
+              style="object-fit:cover;overflow:hidden;position:relative;opacity:.85;"/>
             <div class="card-body card-img-overlay mx-auto px-4"
               style="top:80%;width:90%;background-color:white;height:50%;opacity:0.98;">
               <h5 class="card-title">{{ challenge.title }}</h5>
@@ -126,13 +128,13 @@ class: page
           {%- endif %}
               <div class="col col-md-4 px-4 pt-4">
                 <div class="card border-0 rounded-4" style="height:300px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
-                  <div class="bg-image position-relative w-100 h-100 rounded-4">
+                  <div class="bg-image position-relative w-100 h-100 rounded-4 bg-black">
                     <div class="related-type text-center position-absolute rounded-4 hidden">
                       <span class="d-block text-uppercase">{{ svc.type }}</span>
                     </div>
                     <img class="img-fluid rounded-4 w-100 h-100"
                          src="{{ svc.img }}" alt="{{ svc.name }}"
-                         style="object-fit:cover;overflow:hidden;"/>
+                         style="object-fit:cover;overflow:hidden;opacity:.85;"/>
                   </div>
                   <div class="card-body card-img-overlay mx-auto pb-0"
                        style="top:75%;width:90%;background-color:white;height:50%">
@@ -144,16 +146,16 @@ class: page
                   <a href="{{ svc.url }}" class="stretched-link"></a>
                 </div>
               </div>
-          {%- if forloop.last or counter == 0 %}
+          {%- if forloop.last or counter == 0 -%}
             </div>
           </div>
-          {%- endif %}
-          {%- endfor %}
+          {%- endif -%}
+          {%- endfor -%}
       	</div>
       </div>
     </div>
   </section>
-  {%- endif %}
+  {%- endif -%}
 
   {% capture quote_content %}
   <div class="content">

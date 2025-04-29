@@ -3,6 +3,7 @@ layout: none
 ---
 {%- assign content = site.posts %}
 {%- if site.data.categories.size > 0 %}{%- assign content = content | concat: site.data.categories %}{%- endif %}
+{%- if site.partners.size > 0 -%}{%- assign content = contnet | concat: site.partners -%}{%- endif -%}
 {%- if site.solutions.size > 0 %}{%- assign content = content | concat: site.solutions %}{%- endif %}
 {%- if site.services.size > 0 %}{%- assign content = content | concat: site.services %}{%- endif %}
 {%- if site.trainings.size > 0 %}{%- assign content = content | concat: site.trainings %}{%- endif %}
@@ -12,7 +13,9 @@ layout: none
     {%- for post in content %}
     {
       "date"        : {{ post.date | jsonify }},
-      "description" : "{{ post.description | markdownify | strip_newlines }}",
+      "description" : {{ post.description | markdownify | strip_newlines | jsonify }},
+      "category"    : {{ post.category | jsonify }},
+      "tags"        : {{ post.tags | jsonify }},
       "slug"        : {{ post.slug | jsonify }},
       "title"       : {{ post.title | jsonify }},
       "type"        : {{ post.type | jsonify }},

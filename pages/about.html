@@ -279,7 +279,7 @@ description: |
 
   {%- assign leadership = site.data.people | where: 'team', 'leadership' -%}
   {%- if leadership.size > 0 -%}
-  <section id="leadership" class="leadership d-flex align-items-center bg-light-gray" style="min-height:450px;max-height:auto;">
+  <section id="leadership" class="leadership py-5 d-flex align-items-center bg-light-gray" style="min-height:450px;max-height:auto;">
     <div class="container m-auto">
       <div class="row">
 	      <div class="col-lg-12 text-center">
@@ -330,7 +330,7 @@ description: |
   {%- endif -%}
 
   {%- if site.data.locations.size > 0 -%}
-  <section id="locations" class="location d-flex align-items-center" style="min-height:450px;max-height:auto;">
+  <section id="locations" class="location py-5 d-flex align-items-center" style="min-height:450px;max-height:auto;">
     <div class="container m-auto py-4">
       <div class="row mb-5">
 	      <div class="col-lg-12 text-center">
@@ -413,7 +413,7 @@ description: |
       <div class="number_wrap">
         <span class="counter" data-number="{{ site.solutions | size }}"></span>
       </div>
-      <span>Solutions</span>
+      <span><i class="fa-solid fa-cubes px-2"></i>Solutions</span>
     </div>
   </div>
   <div class="vr"></div>
@@ -422,7 +422,7 @@ description: |
       <div class="number_wrap">
         <span class="counter" data-number="{{ site.services | size }}"></span>
       </div>
-      <span>Services</span>
+      <span><i class="fa-solid fa-cube px-2"></i>Services</span>
     </div>
   </div>
   <div class="vr"></div>
@@ -432,10 +432,10 @@ description: |
 	      <span class="prefix">+</span>
         <span class="counter" data-number="{{ 'now' | date: '%Y' | minus: 2008 }}"></span>
       </div>
-      <span>Years of Experience</span>
+      <span><i class="fa-solid fa-award px-2"></i>Years of Experience</span>
     </div>
   </div>
   {% endcapture %}
-  {% include numbers.html title="Riglen in numbers" content=numbers_content class="hidden" %}
+  {% include numbers.html title="Riglen in numbers" content=numbers_content %}
 
 </div>

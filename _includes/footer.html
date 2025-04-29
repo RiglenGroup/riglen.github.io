@@ -24,7 +24,7 @@
   <section class="" style="padding:0px;color:black">
     <div class="container text-center text-md-start mt-1">
       <div class="row mt-3">
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-md-0 mb-4">
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-md-0 mb-4 pe-2">
 	        {% for nav-item in site.data.nav_footer %}
           <h6 class="nav-link text-uppercase fw-bold" style="margin-bottom: 2.1rem !important;">
 	          <a class="text-decoration-none text-black"
@@ -34,7 +34,7 @@
 	        </h6>
 	        {% endfor %}
         </div>
-        <div class="col-md-6 col-lg-5 col-xl-5 mx-auto mb-4">
+        <div class="col-md-6 col-lg-5 col-xl-5 mx-auto mb-4 px-2">
           <h6 class="text-uppercase fw-bold mb-0">
 	          <a class="text-decoration-none text-black" href="/solutions/">Solutions</a>
 	        </h6>
@@ -62,50 +62,48 @@
             {% endfor %}	      
           </div>
         </div>
-	      <div class="col"></div>
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 hidden">
-            <h6 class="text-uppercase fw-bold mb-0">Insights</h6>
-            <hr
+	      <div class="col px-2"></div>
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 px-2 hidden">
+          <h6 class="text-uppercase fw-bold mb-0">Insights</h6>
+          <hr
+            class="my-1 d-inline-block mx-auto"
+            style="width: 60px; background-color: #7c4dff; height: 2px"
+          />
+          <p class="text-uppercase">
+            <a class="nav-link text-dark" href="/insights/blog">Blog</a>
+          </p>
+          <p class="text-uppercase">
+            <a class="nav-link text-dark" href="/insights/press">Press</a>
+          </p>
+          <p class="text-uppercase">
+            <a class="nav-link text-dark" href="/insights/stories">Stories</a>
+          </p>
+        </div>
+        <div class="col-md-2 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 ps-2">
+          <h6 class="text-uppercase fw-bold mb-0">Contact</h6>
+          <hr
               class="my-1 d-inline-block mx-auto"
               style="width: 60px; background-color: #7c4dff; height: 2px"
-            />
-            <p class="text-uppercase">
-              <a class="nav-link text-dark" href="/insights/blog/">Blog</a>
-            </p>
-            <p class="text-uppercase">
-              <a class="nav-link text-dark" href="/insights/press">Press</a>
-            </p>
-            <p class="text-uppercase">
-              <a class="nav-link text-dark" href="/insights/stories">Stories</a>
-            </p>
-          </div>
-          <div class="col-md-2 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <h6 class="text-uppercase fw-bold mb-0">Contact</h6>
-            <hr
-                class="my-1 d-inline-block mx-auto"
-                style="width: 60px; background-color: #7c4dff; height: 2px"
-            />
-            <p class="text-truncate" style="max-width: 95%;">
-	            <i class="fas fa-home me-3"></i>
-              {{ site.contact.headquarter }}
-	          </p>
-            <p class="text-truncate" style="max-width: 95%;">     
-              <button class="text-left w-100 h-100 p-0"
-                type="button" 
-                data-bs-toggle="modal"
-                data-bs-target="#ContactModal">
-                <i class="fas fa-envelope me-3"></i>
-                {{ site.contact.email }}
-	    				</button>
-	          </p>
-            <p class="text-truncate" style="max-width: 95%;">
-              <a class="nav-link text-dark
-                href="tel:{{ site.contact.phone }}">
-	              <i class="fas fa-phone me-3"></i>
-                {{ site.contact.phone }}
-              </a>
-	          </p>
-          </div>
+          />
+          <p class="text-truncate fs-5" style="max-width: 95%;">
+            <i class="fas fa-building-flag me-2"></i>
+            {{ site.contact.headquarter }}
+          </p>
+          <p class="text-truncate fs-5" style="max-width: 95%;">     
+            <button class="text-left w-100 h-100 p-0"
+              type="button" 
+              data-bs-toggle="modal"
+              data-bs-target="#ContactModal">
+              <i class="fas fa-envelope me-2"></i>
+              {{ site.contact.email }}
+            </button>
+          </p>
+          <p class="text-truncate fs-5" style="max-width: 95%;">
+            <a class="nav-link text-dark href="tel:{{ site.contact.phone }}">
+              <i class="fas fa-phone me-2"></i>
+              {{ site.contact.phone }}
+            </a>
+          </p>
         </div>
       </div>
     </section>
