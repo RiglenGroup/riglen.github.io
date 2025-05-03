@@ -2,14 +2,14 @@
 
 @import "base/variables";
 @import "base/general";
+
 @import "components/home";
 @import "components/numbers";
 @import "components/solutions";
+@import "components/related";
+@import "components/modal-contact";
+@import "components/modal-search";
 
 @import "pages/solutions";
 
-
-@import "components/related";
-
-@import "components/modal-contact";
-@import "components/modal-search";
+@import "layouts/mobile";
