@@ -13,25 +13,14 @@ description: |
       </div>
   </div>
 </nav>
-<div id="main-content" class="solutions"
+<div id="main-content" class="solutions alternate-colors"
   data-bs-spy="scroll"
   data-bs-target="#navbar-sections"
   data-bs-root-margin="0px 0px 40%"
   data-bs-smooth-scroll="true"
   tabindex="0" style="padding-top:15vh">
-  
-  <section id="intro" class="hidden intro d-flex align-items-center justify-content-center pb-0" style="padding-top:5vh;min-height:25vh;height:auto">
-    <div class="container m-auto pt-4">
-      {% include breadcrumb.html %}
-      <div class="content row align-items-center justify-content-start">
-        <div class="col-12 col-md-10 hero-text">
-          <h1 class="lato-black">{{ page.title }}</h1>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="overview" class="py-5 bg-light">
+  <section id="overview" class="py-5">
     <div class="container py-4">
       <div class="row mb-5">
         <h2>Overview</h2>
@@ -41,18 +30,8 @@ description: |
       </div>
     </div>
   </section>
-
-  <section id="presentation" class="hidden py-5 bg-light" style="padding-top:5vh !important">
-    <div class="container px-0">
-      <div class="jumbotron p-4 shadow-lg bg-white mb-5 position-relative rounded-2">
-	<div class="p-5 w-100 h-100 rounded-2 text-muted">
-	  {{ page.description | markdownify }}
-	</div>
-      </div>
-    </div>
-  </section>
   
-  <section id="services" class="services py-5 mb-5" style="padding-top:5vh !important">
+  <section id="services" class="services py-5" style="padding-top:5vh !important">
     <div class="container m-auto pt-5">
       <div class="row mb-5">
 	      <h2>Our Solutions</h2>
@@ -95,5 +74,22 @@ description: |
       </div>
     </div>
   </section>
+
+  {% capture quote_content %}
+  <div class="content">
+    <p class="text-muted" style="font-size:16px;">Contact us today to learn how we can help you achieve your digital transformation goals.</p>
+  </div>
+  <div class="toolbox pt-4">
+    <button class="btn btn-primary"
+	    type="button"
+	    data-bs-toggle="modal"
+	    data-bs-target="#ContactModal"
+	    title="Contact us">
+      Contact us
+    </button>
+  </div>
+  {% endcapture %}
+  {% include quote.html title="Get Started" subtitle="Request training session to speed up your cloud adoption journey" class="inquiry py-5" content=quote_content %}
+  {% include modal_inquiry.html %}
 
 </div>

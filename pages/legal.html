@@ -1,0 +1,80 @@
+---
+layout: page
+title: Legal
+permalink: /legal
+published: true
+subtitle: "Riglen Group Legal"
+description: |
+  The following agreements and specifications have been prepared solely for Partners, Customers, and Distribution Partners of Riglen Group.
+  Access to these definition and specification documents are subject always to the terms of the non-disclosure agreement, Order Form(s) and Master Services Agreement entered into by Customer and Riglen Group.
+---
+<nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
+  <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
+      <div class="hero-text mx-4">
+        {% include breadcrumb.html class="fs-5 pb-2" %}
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 42px;line-height: 1.2;">{{ page.title }}</h1>
+      </div>
+  </div>
+</nav>
+<div id="main-content" class="legal alternate-colors"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-sections"
+  data-bs-root-margin="0px 0px 40%"
+  data-bs-smooth-scroll="true"
+  tabindex="0" style="padding-top:15vh">
+
+  <section id="overview" class="py-5">
+    <div class="container py-4">
+      <div class="row mb-5">
+        <h2>Overview</h2>
+      </div>
+      <div class="py-0 w-100 h-100 rounded-2 text-muted text-justify fs-4">
+        {{ page.description | markdownify }}
+      </div>
+    </div>
+  </section>
+
+  <section id="general" class="py-5">
+    <div class="container m-auto py-4">
+      <div class="row mb-5">
+        <h2>General</h2>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="list-group list-group-flush w-100">
+            <a href="/legal/privacy" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <h5>Privacy Policy</h5>
+                    <small>May 2025</small>
+                </div>
+                <small>Updated on 1st of May 2025</small>
+            </a>
+            <a href="/legal/terms" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <h5>Terms and Conditions</h5>
+                    <small>May 2025</small>
+                </div>
+                <small>Updated on 1st of May 2025</small>
+            </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% capture quote_content %}
+  <div class="content">
+    <p class="text-muted" style="font-size:16px;">Contact us today to learn more about our agreements and specifications.</p>
+  </div>
+  <div class="toolbox pt-4">
+    <button class="btn btn-primary"
+	    type="button"
+	    data-bs-toggle="modal"
+	    data-bs-target="#ContactModal"
+	    title="Contact us">
+      Contact us
+    </button>
+  </div>
+  {% endcapture %}
+  {% include quote.html title="Get Started" subtitle="Request more information about our legal content" class="inquiry py-5" content=quote_content %}
+  {% include modal_inquiry.html %}
+
+</div>

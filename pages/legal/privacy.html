@@ -3,25 +3,22 @@ layout: page
 title: Privacy Policy
 permalink: /legal/privacy
 ---
-
-<div id="main-content" class="solutions"
-  data-bs-spy="scroll"
-  data-bs-target="#navbar-main"
-  data-bs-offset="0"
-  tabindex="0">
-
-  <section id="intro" class="intro d-flex align-items-center justify-content-center pb-0" style="padding-top:5vh;min-height:25vh;height:auto">
-    <div class="container m-auto pt-4">
-      {% include breadcrumb.html %}
-      <div class="content row align-items-center justify-content-start">
-        <div class="col-12 col-md-10 hero-text">
-          <h1 class="lato-black">{{ page.title }}</h1>
-        </div>
+<nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
+  <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
+      <div class="hero-text mx-4">
+        {% include breadcrumb.html class="fs-5 pb-2" %}
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 42px;line-height: 1.2;">{{ page.title }}</h1>
       </div>
-    </div>
-  </section>
+  </div>
+</nav>
+<div id="main-content" class="privacy"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-sections"
+  data-bs-root-margin="0px 0px 40%"
+  data-bs-smooth-scroll="true"
+  tabindex="0" style="padding-top:15vh">
   
-  <section class="privacy" style="padding-top: 2%">
+  <section class="privacy py-5">
     <div class="container text-justify">
       <div class="pt-4">
         <h3></h3>

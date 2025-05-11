@@ -13,14 +13,14 @@ description: |
       </div>
   </div>
 </nav>
-<div id="main-content" class="solutions"
+<div id="main-content" class="services alternate-colors"
   data-bs-spy="scroll"
   data-bs-target="#navbar-sections"
   data-bs-root-margin="0px 0px 40%"
   data-bs-smooth-scroll="true"
   tabindex="0" style="padding-top:15vh">
 
-  <section id="overview" class="py-5 bg-light">
+  <section id="overview" class="py-5">
     <div class="container py-4">
       <div class="row mb-5">
         <h2>Overview</h2>
@@ -31,7 +31,7 @@ description: |
     </div>
   </section>
   
-  <section id="services" class="py-5 bg-white">
+  <section id="services" class="py-5">
     <div class="container py-4">
       <div class="row">
       	<h2>Our Services</h2>
@@ -96,13 +96,13 @@ description: |
     <button class="btn btn-primary"
 	    type="button"
 	    data-bs-toggle="modal"
-	    data-bs-target="#TrainingModal"
+	    data-bs-target="#ContactModal"
 	    title="Contact us">
       Contact us
     </button>
   </div>
   {% endcapture %}
-  {% include quote.html title="Get Started" subtitle="Request training session to speed up your cloud adoption journey" class="bg-light py-5" content=quote_content %}
+  {% include quote.html title="Get Started" subtitle="Request training session to speed up your cloud adoption journey" class="inquiry py-5" content=quote_content %}
   {% include modal_inquiry.html %}
   
 </div>

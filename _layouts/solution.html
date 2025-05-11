@@ -10,25 +10,14 @@ class: page
       </div>
   </div>
 </nav>
-<div id="main-content" class="solutions solution"
+<div id="main-content" class="solution alternate-colors"
   data-bs-spy="scroll"
   data-bs-target="#navbar-sections"
   data-bs-root-margin="0px 0px 40%"
   data-bs-smooth-scroll="true"
   tabindex="0" style="padding-top:15vh">
 
-  <section id="intro" class="hidden intro d-flex align-items-center justify-content-center pb-0" style="padding-top:5vh;min-height:25vh;height:auto">
-    <div class="container m-auto pt-4">
-      {% include breadcrumb.html %}
-      <div class="content row align-items-center justify-content-start">
-        <div class="col-12 col-md-10 hero-text">
-          <h1 class="lato-black">{{ page.title }}</h1>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="overview" class="py-5 bg-light">
+  <section id="overview" class="py-5">
     <div class="container py-4">
       <div class="row mb-5">
         <h2>Overview</h2>
@@ -39,33 +28,10 @@ class: page
       </div>
     </div>
   </section>
-
-  <section id="presentation" class="hidden py-5 bg-light" style="padding-top:5vh !important">
-    <div class="container px-0">
-      <div class="jumbotron p-4 shadow-lg bg-white mb-5 position-relative rounded-2">
-	      <div class="p-5 w-100 h-100 rounded-2 text-muted">
-	        {{ page.description | markdownify }}
-	      </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- <section id="description" class="py-5 mb-5 hidden" style="padding-top:5vh !important"> -->
-  <!--   <div class="container m-auto pt-5"> -->
-  <!--     <div class="row mb-5"> -->
-  <!-- 	<h2>Introduction</h2> -->
-  <!--     </div> -->
-  <!--     <div class="row align-items-center justify-content-start"> -->
-  <!--       <div class="description col-12 col-md-12 px-2 hero-text lato-regular text-muted"> -->
-  <!-- 	  {{ page.description | markdownify }} -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </div> -->
-  <!-- </section> -->
   
   {{ content }}
 
-  <section id="services" class="services py-5 mb-5">
+  <section id="services" class="py-5">
     <div class="container">
       <div class="row mb-5">
 	      <h2>Our Services</h2>
@@ -117,7 +83,7 @@ class: page
     </button>
   </div>
   {% endcapture %}
-  {% include quote.html title="Get Started" subtitle="Begin your transformation journey" class="bg-light py-5" content=quote_content %}
+  {% include quote.html title="Get Started" subtitle="Begin your transformation journey" class="inquiry py-5" content=quote_content %}
   {% include modal_inquiry.html %}
   
 </div>
