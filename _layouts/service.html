@@ -100,7 +100,7 @@ class: page
           <ul class="nav nav-pills nav-fill flex-column">
             {%- for featured in page.featured %}
             <li class="nav-item pb-4" role="presentation">
-              <button class="text-muted text-uppercase nav-link text-left p-3 {% if forloop.index == 1 %}active{% endif %}"
+              <button class="text-muted nav-link text-left p-3 {% if forloop.index == 1 %}active{% endif %}"
                 id="featured-{{ forloop.index }}-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#featured-{{ forloop.index }}"
