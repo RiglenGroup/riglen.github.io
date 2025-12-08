@@ -373,7 +373,16 @@ description: |
                         <form class="my-2">
                           {% for d in location.details %}
                           <div class="row">
-                            <i class="col-sm-1 m-auto p-auto col-form-label {{ d.icon }}" title="{{ d.name }}"></i>
+                            {%- if d.link -%}
+                            <a class="text-black col-sm-1 m-auto p-auto col-form-label text-decoration-none hover-zoom"
+                               href="{{ d.link }}"
+                               target="_blank"
+                               title="{{ d.name }}">
+                              <i class="{{ d.icon }}"></i>
+                            </a>
+                            {%- else -%}
+                            <i class="text-black col-sm-1 m-auto p-auto col-form-label {{ d.icon }}" title="{{ d.name }}"></i>
+                            {%- endif -%}
                             <div class="col-sm-11 ps-3">
                               <p class="form-control-plaintext">{{ d.value }}</p>
                             </div>

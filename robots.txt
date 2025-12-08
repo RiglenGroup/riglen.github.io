@@ -4,5 +4,8 @@ Disallow: /*.xls$
 Disallow: /*.pdf$
 Disallow: /*.png$
 Disallow: /*.jpg$
+Disallow: /*.zip$
+Disallow: /api/*
+Disallow: /assets/*
 
 Sitemap: https://www.riglen.com/sitemap.xml

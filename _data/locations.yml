@@ -7,12 +7,16 @@
     - name: Company Name
       icon: fa-solid fa-signature
       value: Riglen Switzerland GmbH
+      link: "https://www.zefix.ch/en/search/entity/list/firm/1660405"
     - name: Company Number
       icon: fa-solid fa-file-signature
       value: CHE-235.995.093
+      link: "https://zh.chregister.ch/cr-portal/auszug/auszug.xhtml?uid=CHE-235.995.093"
     - name: UID/MWST
       icon: fa-solid fa-building-columns
       value: CHE-235.995.093 MWST
+      link: "https://www.uid.admin.ch/Detail.aspx?uid_id=CHE235995093"
     - name: Headquarters
       icon: fa-solid fa-building-flag
       value: Böndlerstrasse 33, 8802, Kilchberg, Switzerland
+      link: "https://maps.app.goo.gl/pGHg6tVX9sgKzA9y5"
