@@ -4,15 +4,18 @@
   img: "/assets/img/1be7f6f3-297c-48bc-8a76-220123a61dea.jpg"
   icon: "fi fi-ch"
   details:
-    - name: Company Name
+    - name: Legal Name
       icon: fa-solid fa-signature
       value: Riglen Switzerland GmbH
       link: "https://www.zefix.ch/en/search/entity/list/firm/1660405"
-    - name: Company Number
+    - name: CH-ID
+      icon: fa-solid fa-file-contract
+      value: CH-020-4085866-3
+    - name: UID
       icon: fa-solid fa-file-signature
       value: CHE-235.995.093
       link: "https://zh.chregister.ch/cr-portal/auszug/auszug.xhtml?uid=CHE-235.995.093"
-    - name: UID/MWST
+    - name: VAT Number
       icon: fa-solid fa-building-columns
       value: CHE-235.995.093 MWST
       link: "https://www.uid.admin.ch/Detail.aspx?uid_id=CHE235995093"
