@@ -88,27 +88,27 @@ class: page
 
   {{ content }}
 
-  {%- if page.featured.size > 0-%}
-  <section id="featured" class="featured py-5" style="min-height:450px;height:auto">
+  {%- if page.specialties.size > 0-%}
+  <section id="specialties" class="specialties py-5" style="min-height:450px;height:auto">
     <div class="container m-auto py-4">
       <div class="row mb-5">
-        <h2>Featured</h2>
+        <h2>Specialties</h2>
       </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
         <div class="col col-md-4 mb-5 p-4">
           <!-- Tab navs -->
           <ul class="nav nav-pills nav-fill flex-column">
-            {%- for featured in page.featured %}
+            {%- for specialty in page.specialties %}
             <li class="nav-item pb-4" role="presentation">
               <button class="text-muted nav-link text-left p-3 {% if forloop.index == 1 %}active{% endif %}"
-                id="featured-{{ forloop.index }}-tab"
+                id="specialty-{{ forloop.index }}-tab"
                 data-bs-toggle="tab"
-                data-bs-target="#featured-{{ forloop.index }}"
+                data-bs-target="#specialty-{{ forloop.index }}"
                 type="button" 
                 role="tab"
                 aria-controls="home" 
                 aria-selected="true">
-                {{ featured.title }}
+                {{ specialty.title }}
             </button>
             </li>
             {%- endfor -%}
@@ -119,14 +119,14 @@ class: page
         <div class="col col-md-8 mb-5 p-4">
           <!-- Tab content -->
           <div class="tab-content">
-            {%- for featured in page.featured %}
+            {%- for specialty in page.specialties %}
             <div class="tab-pane {% if forloop.index == 1 %}active{% endif %}"
-              id="featured-{{ forloop.index }}"
+              id="specialty-{{ forloop.index }}"
               role="tabpanel"
-              aria-labelledby="featured-{{ forloop.index }}-tab">
+              aria-labelledby="specialty-{{ forloop.index }}-tab">
               <figure class="text-center">
-                <img src="{{ featured.img }}" class="figure-img img-fluid rounded object-fit-contain w-75" alt="{{ featured.title }}"/>
-                <figcaption class="figure-caption text-left pt-4">{{ featured.description | markdownify }}</figcaption>
+                <img src="{{ specialty.img }}" class="figure-img img-fluid rounded rounded-2 object-fit-contain w-75" alt="{{ specialty.title }}"/>
+                <figcaption class="figure-caption text-left pt-4 text-justify">{{ specialty.description | markdownify }}</figcaption>
               </figure>
             </div>
             {%- endfor -%}
