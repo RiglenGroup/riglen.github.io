@@ -4,6 +4,8 @@ layout: compress
 <!DOCTYPE html>
 <html lang="{{ site.lang }}">
   <head>
+    {% include structured_data_org.html %}
+
     {% if site.google_analytics %}{% include google_analytics.html %}{% endif %}
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -14,7 +16,7 @@ layout: compress
     
     {%- seo -%}
     {% include favicon.html %}
-        
+    
     <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
     <link
       rel="stylesheet"
