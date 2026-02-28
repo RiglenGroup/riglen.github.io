@@ -82,7 +82,7 @@ description: |
                         <h4 class="card-title mb-4">{{ solution.title }}</h4>
 			                  <hr class="py-1" style="background-color:#1f2938;opacity:1;width:65%;transition: width .5s"></hr>
                         <div class="card-text pe-4">{{ solution.description | markdownify }}</div>
-			                  <a href="{{ solution.url }}" class="stretched-link"></a>
+			                  <a href="{{ solution.url }}" class="stretched-link" aria-label="{{ solution.title }}" title="{{ solution.title }}"></a>
                       </div>
 		                  <div class="card-footer py-3 bg-transparent border-top-0">
 			                  <div class="d-flex align-items-center justify-content-start">
