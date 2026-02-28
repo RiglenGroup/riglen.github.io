@@ -66,7 +66,7 @@ description: |
         <div class="col-12">
           <div id="carouselSolutions" class="carousel slide carousel-fade"
 	          data-bs-ride="carousel" data-bs-interval="10000">
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner">
               {% assign solutions_trending = site.solutions | where: "status", "trending" %}
               {% assign solutions_featured = site.solutions | where: "status", "featured" %}
               {% assign solutions = solutions_trending | concat: solutions_featured | concat: site.solutions | uniq %}
