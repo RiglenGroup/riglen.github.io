@@ -39,9 +39,7 @@ class: page
         {%- for challenge in page.challenges %}
         <div class="col col-md-4 mb-3">
           <div class="card border-0 rounded-4 bg-black border border-light" style="height:300px;margin-bottom:100px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
-            <img class="img-fluid border-0 rounded-4 w-100 h-100"
-              src="{{ challenge.img | default: '/assets/img/placeholder-4by3.svg' }}" alt="{{ challenge.title }}"
-              style="object-fit:cover;overflow:hidden;position:relative;opacity:.85;"/>
+            {% include images.html name=challenge.img alt=challenge.title class="img-fluid border-0 rounded-4 w-100 h-100" style="object-fit:cover;overflow:hidden;position:relative;opacity:.85;" %}
             <div class="card-body card-img-overlay mx-auto px-4 border border-light shadow-lg"
               style="top:80%;width:90%;background-color:white;height:50%;opacity:0.98;">
               <h5 class="card-title">{{ challenge.title }}</h5>
@@ -126,7 +124,7 @@ class: page
               role="tabpanel"
               aria-labelledby="specialty-{{ forloop.index }}-tab">
               <figure class="text-center">
-                <img src="{{ specialty.img }}" class="figure-img img-fluid rounded rounded-2 object-fit-contain w-75" alt="{{ specialty.title }}"/>
+                {% include images.html name=specialty.img alt=specialty.title class="figure-img img-fluid rounded rounded-2 object-fit-contain w-75" %}
                 <figcaption class="figure-caption text-left pt-4 text-justify">{{ specialty.description | markdownify }}</figcaption>
               </figure>
             </div>

@@ -54,9 +54,7 @@ description: |
 		              <span><i class="fa-solid fa-star fa-flip"></i></span>
 		            </div>
 		            {% endif %}
-		            <img alt="{{ solution.title }}" class="img-fluid lazy" height="435" loading="lazy"
-		              src="{{ solution.img }}"
-		              style="object-fit:cover;height:300px;width:100%" width="975"/>
+                {% include images.html name=solution.img alt=solution.title class="img-fluid lazy" style="object-fit:cover;height:300px;width:100%" height="435" loading="lazy" %}
               </div>
 	            <div class="col-md-8 rounded-end">
 		            <div class="card-body">

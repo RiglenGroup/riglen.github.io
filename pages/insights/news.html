@@ -110,9 +110,7 @@ description: |
                 <div class="card shadow-5 border-0 rounded-2 w-100 h-100 scale-105-hover hover-zoom shadow-sm-hover">
                   <div class="row g-0 mx-0 h-100">
                     <div class="col-md-3 bg-image hover-overlay h-100 px-0 rounded-start bg-black">
-                      <img alt="${item.title}" class="img-fluid lazy h-100 opacity-50" loading="lazy"
-                        src="${item.img}"
-                        style="object-fit:cover;height:300px;width:100%" width="975"/>
+                      {% include images.html name="${item.img}" alt="${item.title}" class="img-fluid lazy h-100 opacity-75" style="object-fit:cover;height:300px;width:100%" %}
                     </div>
                     <div class="col-md-7 rounded-end h-100">
                       <div class="card-body h-100 d-flex flex-column">

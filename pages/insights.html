@@ -41,9 +41,7 @@ description: |
               <div class="col col-md-4 px-4 pt-4">
                 <div class="card border-0 rounded-4" style="height:300px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
                   <div class="bg-image position-relative w-100 h-100 rounded-4 bg-black border border-light">
-                    <img class="img-fluid rounded-4 w-100 h-100"
-                         src="{{ blog.img }}" alt="{{ blog.title }}"
-                         style="object-fit:cover;overflow:hidden;opacity:.5;"/>
+                    {% include images.html name=blog.img alt=blog.title class="img-fluid rounded-4 w-100 h-100" style="object-fit:cover;overflow:hidden;opacity:.5;" %}
                     {% if blog.category %}
                     <div class="category text-center position-absolute rounded-4">
                       <span class="d-block text-uppercase">{{ blog.category | capitalize }}</span>
@@ -127,9 +125,7 @@ description: |
               <div class="col col-md-4 p-4 rounded-4">
                 <div class="card border-0 rounded-4 h-100 shadow" style="height:300px;">
                   <div class="bg-image position-relative w-100 h-100 rounded-4 bg-black">
-                    <img class="img-fluid rounded-4 w-100 h-100 opacity-25 object-fit-cover"
-                         src="{{ news.img }}" alt="{{ news.title }}"
-                         style="overflow:hidden;"/>
+                    {% include images.html name=news.img alt=news.title class="img-fluid rounded-4 w-100 h-100 opacity-25 object-fit-cover" style="overflow:hidden;" %}
                     {% if news.category %}
                     <div class="category text-center position-absolute rounded-4">
                       <span class="d-block text-uppercase">{{ news.category | capitalize }}</span>

@@ -58,9 +58,7 @@ description: |
   	    </div>
         <div class="col-6">
           <figure class="figure px-5 w-100 h-100">
-            <img src="/assets/img/9a326766-4d19-4b60-8849-a61566567d16.jpg"
-                 class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover h-100 w-100"
-                 loading="lazy"/>
+            {% include images.html name="/assets/img/9a326766-4d19-4b60-8849-a61566567d16" alt="Partner Ecosystem" class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover h-100 w-100" %}
           </figure>
         </div>
       </div>
@@ -75,14 +73,12 @@ description: |
           <h3 class="text-left section-subheading text-muted"></h3>
 	      </div>
       </div>
-      <div class="row row-cols-1 row-cols-sm-2 gx-5 gy-2 justify-content-center card-group">
+      <div class="row row-cols-1 row-cols-md-2 gx-5 gy-2 justify-content-center card-group">
 
 	      <div class="col mb-5">
           <div class="card border h-100 border-0">
             <div class="bg-image hover-overlay ripple rounded-2" data-mdb-ripple-color="light">
-              <img alt="Solutions Providers" class="img-fluid lazy" height="435" loading="lazy"
-                src="/assets/img/5aa9dff5-b272-4706-9ec8-0e50092982fc.jpg"
-                style="object-fit:cover;height:300px;width:100%" width="975"/>
+              {% include images.html name="/assets/img/5aa9dff5-b272-4706-9ec8-0e50092982fc" alt="Solutions Providers" class="img-fluid lazy" style="object-fit:cover;height:300px;width:100%" %}
             </div>        
             <div class="card-body">
               <h2 class="card-title crop-text-lines-2 font-weight-bold" style="line-height: 1.2;font-size: 18px;font-weight: 500;color: #BF3100;">
@@ -100,9 +96,7 @@ description: |
         <div class="col mb-5">
           <div class="card h-100 border-0">
             <div class="bg-image hover-overlay ripple rounded-2" data-mdb-ripple-color="light">
-              <img alt="Independent Software Vendors" class="img-fluid lazy" height="435" loading="lazy"
-                src="/assets/img/aef6d8ab-42c3-4149-91ab-cd8cf2c6d39b.jpg"
-                style="object-fit:cover;height:300px;width:100%" width="975"/>
+              {% include images.html name="/assets/img/aef6d8ab-42c3-4149-91ab-cd8cf2c6d39b" alt="Independent Software Vendors" class="img-fluid lazy" style="object-fit:cover;height:300px;width:100%" %}
             </div>        
             <div class="card-body">
               <h2 class="card-title crop-text-lines-2 font-weight-bold" style="line-height: 1.2;font-size: 18px;font-weight: 500;color: #BF3100;">
@@ -120,9 +114,7 @@ description: |
         <div class="col mb-5">
           <div class="card border h-100 border-0">
             <div class="bg-image hover-overlay ripple rounded-2" data-mdb-ripple-color="light">
-              <img alt="Resellers and Consultants" class="img-fluid lazy" height="435" loading="lazy"
-                src="/assets/img/5c9593ec-4840-4fb4-9dfa-3bfbfe6cf830.jpg"
-                style="object-fit:cover;height:300px;width:100%" width="975"/>
+              {% include images.html name="/assets/img/5c9593ec-4840-4fb4-9dfa-3bfbfe6cf830" alt="Resellers and Consultants" class="img-fluid lazy" style="object-fit:cover;height:300px;width:100%" %}
             </div>        
             <div class="card-body">
               <h2 class="card-title crop-text-lines-2 font-weight-bold" style="line-height: 1.2;font-size: 18px;font-weight: 500;color: #BF3100;">
@@ -140,9 +132,7 @@ description: |
         <div class="col mb-5">
           <div class="card border h-100 border-0">
             <div class="bg-image hover-overlay ripple rounded-2" data-mdb-ripple-color="light">
-              <img alt="Resellers and Consultants" class="img-fluid lazy" height="435" loading="lazy"
-                src="/assets/img/d7638f04-8a00-451e-8f5e-97bc831ac718.jpg"
-                style="object-fit:cover;height:300px;width:100%" width="975"/>
+              {% include images.html name="/assets/img/d7638f04-8a00-451e-8f5e-97bc831ac718" alt="Managed Services Providers" class="img-fluid lazy" style="object-fit:cover;height:300px;width:100%" %}
             </div>        
             <div class="card-body">
               <h2 class="card-title crop-text-lines-2 font-weight-bold" style="line-height: 1.2;font-size: 18px;font-weight: 500;color: #BF3100;">
@@ -186,10 +176,7 @@ description: |
         {%- for partner in partners -%}
         <div class="col">
           <div class="card h-100 text-center border-0">
-            <img src="{{ partner.img }}"
-                 class="card-img-top object-fit-contain m-auto p-2"
-                 alt="{{ partner.title }}"
-                 style="max-height:200px;">
+            {% include images.html name=partner.img alt=partner.title class="card-img-top object-fit-contain m-auto p-2" style="max-height:200px;" %}
             <div class="card-body">
               <h5 class="card-title">{{ partner.title }}</h5>
               <p class="card-text">{{ partner.description }}</p>
@@ -217,7 +204,7 @@ description: |
       <div class="card service-card service-card-{{ forloop.index }}" id="{{ item.slug }}">
         <div class="c-element_wrap">
           <div class="c-element_image">
-            <img fetchpriority="high" decoding="async" width="576" height="562" src="{{ item.image }}" class="img-fluid" alt="{{ item.title }}" title="{{ item.title }}" />
+            {% include images.html name=item.image alt=item.title class="img-fluid" %}
           </div>
           <div class="c-element__content">
             <h3 class="c-element__title">{{ item.title }}</h3>

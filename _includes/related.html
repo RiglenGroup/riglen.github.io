@@ -33,9 +33,7 @@
               <div class="col col-md-4 px-4 pt-4">
                 <div class="card border-0 rounded-4" style="height:300px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
                   <div class="bg-image position-relative w-100 h-100 rounded-4 bg-black border border-light">
-                    <img class="img-fluid rounded-4 w-100 h-100"
-                         src="{{ svc.img }}" alt="{{ svc.name }}"
-                         style="object-fit:cover;overflow:hidden;opacity:.5;"/>
+                    {% include images.html name=svc.img alt=svc.title class="img-fluid rounded-4 w-100 h-100" style="object-fit:cover;overflow:hidden;opacity:.5;" %}
                     <div class="related-type text-center position-absolute rounded-4">
                       <span class="d-block text-uppercase">{{ svc.layout | capitalize }}</span>
                     </div>

@@ -1,0 +1,27 @@
+{% assign name = include.name %}
+{% assign ext = include.ext | default: "jpg" %}
+{% assign alt = include.alt | default: "" %}
+{% assign class = include.class | default: "" %}
+{% assign sizes = include.sizes | default: "" %}
+{% assign style = include.style | default: "" %}
+<picture class="w-100 h-100 position-relative">
+    <source type="image/webp"
+        srcset="
+            {{ name }}-w400.webp 400w,
+            {{ name }}-w800.webp 800w,
+            {{ name }}-w1600.webp 1600w">
+
+    <source
+        srcset="
+            {{ name }}-w400.{{ ext }} 400w,
+            {{ name }}-w800.{{ ext }} 800w,
+            {{ name }}-w1600.{{ ext }} 1600w">
+
+    <img src="{{ name }}-w800.{{ ext }}"
+        alt="{{ alt }}"
+        loading="lazy"
+        decoding="async"
+        class="{{ class }}"
+        sizes="{{ sizes }}"
+        style="{{ style }}">
+</picture>

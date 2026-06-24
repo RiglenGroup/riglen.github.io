@@ -1,7 +1,7 @@
 - name: Switzerland
   intro: |
     Riglen was born in Switzerland in October 2024 to serve its customers and partners from an strategic location
-  img: "/assets/img/1be7f6f3-297c-48bc-8a76-220123a61dea.jpg"
+  img: "/assets/img/1be7f6f3-297c-48bc-8a76-220123a61dea"
   icon: "fi fi-ch"
   details:
     - name: Legal Name

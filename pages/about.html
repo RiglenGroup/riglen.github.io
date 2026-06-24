@@ -44,9 +44,7 @@ description: |
         </div>	
         <div class="col-6">
           <figure class="figure px-5 w-100 h-100">
-            <img src="/assets/img/3349cb72-698a-4388-9c3b-e6c7a022d0c8.jpg"
-                 class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover h-100 w-100"
-                 loading="lazy"/>
+            {% include images.html name="/assets/img/3349cb72-698a-4388-9c3b-e6c7a022d0c8" alt="About Us" class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover h-100 w-100" %}
           </figure>
         </div>
       </div>
@@ -58,9 +56,7 @@ description: |
       <div class="row row-cols-2">
         <div class="col-6">
   	      <figure class="figure px-5 w-100 h-100">
-  	        <img src="/assets/img/9a326766-4d19-4b60-8849-a61566567d16.jpg"
-                 class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover h-100 w-100"
-                 loading="lazy"/>
+  	        {% include images.html name="/assets/img/9a326766-4d19-4b60-8849-a61566567d16" alt="Our Partners" class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover h-100 w-100" %}
   	      </figure>
   	    </div>
   	    <div class="col-6 ps-4 position-relative">
@@ -121,9 +117,7 @@ description: |
             {% endif %}
             <div class="col-3">
               <a href="{{ customer.url }}">
-                <img class="img-fluid d-block mx-auto"
-                    src="{{ customer.logo }}" alt="{{ customer.name }}"
-                    style="width:auto;height:64px;-webkit-filter:grayscale(100%);filter:grayscale(100%);"/>
+                {% include images.html name=customer.logo alt=customer.name class="figure-img d-block mx-auto" style="width:auto;height:64px;-webkit-filter:grayscale(100%);filter:grayscale(100%);"%}
               </a>
             </div>
             {%- if forloop.last or counter == 0 -%}
@@ -152,9 +146,7 @@ description: |
   	    </div>	
   	    <div class="col-6">
   	      <figure class="figure px-5 w-100 h-100">
-  	        <img src="/assets/img/eaa9b036-47a5-4824-8e64-7c7e4ce9fbad.jpg"
-                 class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover w-100 h-100"
-                 loading="lazy"/>
+  	        {% include images.html name="/assets/img/eaa9b036-47a5-4824-8e64-7c7e4ce9fbad" alt="Branding" class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover w-100 h-100" %}
   	      </figure>
   	    </div>
       </div>
@@ -208,7 +200,7 @@ description: |
 	            {% endif %}
                   <div class="timeline-item col col-md-4 mb-3">
 		                <div class="timeline-image">
-		                  <img class="img-circle img-responsive h-100 w-auto object-fit-cover" src="{{ milestone.img }}" alt="{{ milestone.title }}"/>
+		                  {% include images.html name=milestone.img alt=milestone.title class="img-circle img-responsive h-100 w-auto object-fit-cover" %}
 		                </div>
 		                <div class="timeline-panel">
 		                  <div class="timeline-heading text-center">
@@ -250,7 +242,7 @@ description: |
   	    {%- for member in leadership limit: 4 -%}
   	    <div class="col mb-5">
           <div class="py-4">
-  	        <img src="{{ member.avatar }}" alt="{{ member.name }}" width="128" height="128" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"/>
+  	        {% include images.html name=member.avatar alt=member.name class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm" width="128" height="128" %}
             <h5 class="mb-0">{{ member.name }}</h5>
   	        <span class="small text-uppercase text-muted">{{ member.title }}</span>
             <ul class="social mb-0 list-inline mt-3">
@@ -322,7 +314,7 @@ description: |
                 <div class="card mb-3 p-0 border-0" style="min-height: 300px;">
                   <div class="row g-0 h-100 w-100 position-absolute m-0">
                     <div class="col-md-6 p-0 h-100">
-                      <img src="{{ location.img }}" class="object-fit-cover rounded mx-auto d-block w-100 h-100 border-0" alt="{{ location.name }}"/>
+                      {% include images.html name=location.img alt=location.name class="object-fit-cover rounded mx-auto d-block w-100 h-100 border-0" %}
                       <span class="{{ location.icon }} position-absolute top-0 end-0 m-4 shadow-lg" style="font-size:3.5rem"></span>
                     </div>
                     <div class="col-md-6 pe-0 h-100">

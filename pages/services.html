@@ -202,9 +202,7 @@ description: |
         <div class="card pb-5 border-0 h-100">
            <div class="row g-0 border rounded shadow-sm-hover position-relative w-100 m-auto" style="height:200px;"> 
               <div class="col-md-4 h-100 ps-0"> 
-                 <img class="img-fluid rounded-start object-fit-cover w-100 h-100" 
-                      src="${row['img']}" 
-                      alt="${row['title']}"> 
+                 {% include images.html name="${row['img']}" alt="${row['title']}" class="img-fluid rounded-start object-fit-cover w-100 h-100" %}
               </div> 
               <div class="col-md-8 h-100 card border-0"> 
                  <div class="card-body"> 
