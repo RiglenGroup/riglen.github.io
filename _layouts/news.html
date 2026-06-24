@@ -25,7 +25,7 @@ class: page
                 {{ content }}
             </article>
             <aside class="col-12 col-lg-4 blog-sidebar">
-                <div class="blog-sidebar-wrap sidebar-card authors p-4 rounded-4 shadow-sm bg-light">
+                <div class="blog-sidebar-wrap sidebar-card authors p-4 rounded-4 shadow-sm bg-light hidden">
                     {%- assign author = site.staff | where: "email", page.author | first %}
                     <div class="profile d-flex flex-column align-items-center justify-content-between">
                         <div class="img-container img-fluid mb-4 px-5">
