@@ -1,0 +1,140 @@
+---
+layout: page
+title: News
+permalink: /insights/news
+published: true
+subtitle: "Riglen Group has defined the following brand to represent the principles and values of its branding."
+description: |
+  This page describes Riglen Group's visual identity including its logo, typeface and colours.
+---
+<nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
+  <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
+      <div class="hero-text mx-4">
+        {% include breadcrumb.html class="fs-5 pb-2" %}
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 42px;line-height: 1.2;">{{ page.title }}</h1>
+      </div>
+  </div>
+</nav>
+<div id="main-content" class="news alternate-colors"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-sections"
+  data-bs-root-margin="0px 0px 40%"
+  data-bs-smooth-scroll="true"
+  tabindex="0" style="padding-top:15vh">
+
+  <section id="overview" class="py-5">
+    <div class="container py-4">
+      <div class="row mb-5">
+        <h2>Overview</h2>
+      </div>
+      <div class="py-0 w-100 h-100 rounded-2 text-muted text-justify fs-4">
+        {{ page.description | markdownify }}
+      </div>
+    </div>
+  </section>
+  
+  <section id="services" class="posts py-5">
+    <div class="container m-auto py-4">
+      <div class="row mb-5">
+	      <h2>Latest News</h2>
+      </div>
+      <div id="news-container" class="row row-cols-1 justify-content-center my-5">
+        {%- for post in (1..9) %}
+        <div class="col px-0 mb-4" style="height:200px;">
+	        <div class="card shadow-5 border-0 rounded-2 w-100 h-100 scale-105-hover hover-zoom shadow-sm-hover">
+	          <div class="row g-0 mx-0 h-100">
+              <div class="col-md-3 bg-image hover-overlay h-100 px-0 rounded-start bg-black">
+		            <img alt="{{ post.title }}" class="img-fluid lazy h-100 opacity-75" loading="lazy"
+		              src="/assets/img/placeholder-4by3.svg"
+		              style="object-fit:cover;height:300px;width:100%" width="975"/>
+              </div>
+	            <div class="col-md-7 rounded-end h-100">
+		            <div class="card-body h-100">
+                  <p class="card-text placeholder-glow"><span class="placeholder col-4"></span></p>
+		              <h3 class="card-title placeholder-glow"><span class="placeholder col-10"></span></h3>
+		            </div>
+              </div>
+	          </div>
+	        </div>
+	      </div>
+        {%- endfor %}
+      </div>
+      <div id="news-pagination" class="row"></div>
+    </div>
+  </section>
+
+  {% capture quote_content %}
+  <div class="content">
+    <p class="text-muted" style="font-size:16px;">Contact us today to learn how we can help you achieve your digital transformation goals.</p>
+  </div>
+  <div class="toolbox pt-4">
+    <button class="btn btn-primary"
+	    type="button"
+	    data-bs-toggle="modal"
+	    data-bs-target="#ContactModal"
+	    title="Contact us">
+      Contact us
+    </button>
+  </div>
+  {% endcapture %}
+  {% include quote.html title="Get Started" subtitle="Request training session to speed up your cloud adoption journey" class="inquiry py-5" content=quote_content %}
+  {% include modal_inquiry.html %}
+
+</div>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/paginationjs@2.6.0/dist/pagination.css"/>
+<script src="//cdn.jsdelivr.net/npm/paginationjs@2.6.0/dist/pagination.min.js"></script>
+<script>
+  let params = new URLSearchParams(document.location.search);
+  $('#news-pagination').pagination({
+    dataSource: function(done) {
+      $.ajax({
+        type: 'GET',
+        url: '/api/news.json',
+        success: function(response) {
+          done(response.data);
+        }
+      });
+    },
+    pageSize: 9,
+    pageNumber: parseInt(params.get("page")) || 1,
+    alias: {
+      pageNumber: 'page',
+      pageSize: 'limit'
+    },
+    callback: function(data, pagination) {
+        var html = "";
+        data.forEach(item => {
+            html += `
+              <div class="col px-0 mb-4" style="height:200px;">
+                <div class="card shadow-5 border-0 rounded-2 w-100 h-100 scale-105-hover hover-zoom shadow-sm-hover">
+                  <div class="row g-0 mx-0 h-100">
+                    <div class="col-md-3 bg-image hover-overlay h-100 px-0 rounded-start bg-black">
+                      <img alt="${item.title}" class="img-fluid lazy h-100 opacity-50" loading="lazy"
+                        src="${item.img}"
+                        style="object-fit:cover;height:300px;width:100%" width="975"/>
+                    </div>
+                    <div class="col-md-7 rounded-end h-100">
+                      <div class="card-body h-100 d-flex flex-column">
+                        <p class="card-text placeholder-glow">${formatJsonDateSafe(item.date)}</p>
+                        <h3 class="card-title placeholder-glow">${item.title}</h3>
+                      </div>
+                    </div>
+                    <a href="${item.url}" class="stretched-link" aria-label="Read">
+                      <span class="sr-only">Read</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            `;
+        });
+        $('#news-container').html(html);
+    },
+    afterPageOnClick: function(event, pageNumber) {
+      event.preventDefault();
+      let url = new URL(document.location);
+      url.searchParams.set('page', pageNumber);
+      history.pushState(null, '', url);
+    }
+  });
+</script>

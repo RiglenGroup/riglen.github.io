@@ -1,0 +1,28 @@
+---
+layout: none
+---
+{%- assign news = site.news | sort: "date" | reverse %}
+{
+  "count": {{ news | size }},
+  "data": [
+    {%- for post in news %}
+    {
+      "categories":  {{- post.categories | jsonify }},
+      "class":       {{- post.class | jsonify }},
+      "date":        {{- post.date | jsonify }},
+      "description": {{- post.description | jsonify }},
+      "id":          {{- post.id | jsonify }},
+      "img":         {{- post.img | jsonify }},
+      "name":        {{- post.name | jsonify }},
+      "ready":       {{- post.ready | jsonify }},
+      "slug":        {{- post.slug | jsonify }},
+      "subtitle":    {{- post.subtitle | jsonify }},
+      "tags":        {{- post.tags | jsonify }},
+      "title":       {{- post.title | jsonify }},
+      "status":      {{- post.status | jsonify }},
+      "type":        {{- post.type | jsonify }},
+      "url":         {{- post.url | relative_url | jsonify }}
+    }{%- unless forloop.last %},{%- endunless %}  
+    {%- endfor %}
+  ]
+}

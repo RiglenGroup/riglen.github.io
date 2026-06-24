@@ -9,6 +9,7 @@ layout: none
       "categories":  {{- svc.categories | jsonify }},
       "class":       {{- svc.class | jsonify }},
       "description": {{- svc.description | jsonify }},
+      "id":          {{- svc.id | jsonify }},
       "img":         {{- svc.img | jsonify }},
       "name":        {{- svc.name | jsonify }},
       "ready":       {{- svc.ready | jsonify }},

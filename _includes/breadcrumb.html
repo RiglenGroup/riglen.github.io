@@ -6,14 +6,16 @@
       {% assign path = url | slice: 0, forloop.index | join: "/" %}
       {% if forloop.first %}
       <li class="breadcrumb-item">
-	<a href="/"><i class="fa-solid fa-house"></i></a>
+	      <a class="px-2" href="/"><i class="fa-solid fa-house"></i></a>
       </li>
       {% elsif forloop.last %}
-      <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+      <li class="breadcrumb-item ps-0 text-capitalize active" aria-current="page">
+        <span class="px-2">{{ page.title }}</span>
+      </li>
       {% else %}
       {% assign bread = site.pages | where: 'permalink', path | first %}
-      <li class="breadcrumb-item">
-	<a href="{{ path }}">{{ bread.title | default: item }}</a>
+      <li class="breadcrumb-item ps-0 text-capitalize">
+	      <a class="px-2" href="{{ path }}">{{ bread.title | default: item }}</a>
       </li>
       {% endif %}
       {% endfor %}	    

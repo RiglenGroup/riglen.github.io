@@ -1,0 +1,108 @@
+
+  {%- assign content = site.posts %}
+  {%- assign content = content | concat: site.pages %}
+  {%- if site.partners.size > 0 -%}{%- assign content = contnet | concat: site.partners -%}{%- endif -%}
+  {%- if site.solutions.size > 0 %}{%- assign content = content | concat: site.solutions %}{%- endif %}
+  {%- if site.services.size > 0 %}{%- assign content = content | concat: site.services %}{%- endif %}
+  {%- if site.blogs.size > 0 %}{%- assign content = content | concat: site.blogs %}{%- endif %}
+
+  {%- assign related = "" | split: ',' %}
+  {%- for rel in page.related %}
+  {%- assign link = content | where: 'url', rel %}
+  {%- if link != empty and link[0].slug != page.slug %}
+  {%- assign related = related | push: link[0] | uniq %}
+  {%- endif %}
+  {%- endfor %}
+  {%- assign related = related | limit: 15 -%}
+
+  {%- if related.size > 0 -%}
+  <section id="related" class="related py-5">
+    <div class="container m-auto pt-4">
+      <div class="row mb-2">
+	      <h2>Related Resources</h2>
+      </div>
+      <div id="carouselRelated" class="carousel slide carousel-fade"
+	      data-bs-ride="carousel" data-bs-interval="10000">
+        <div class="carousel-inner" role="listbox" style="height:425px;">
+          {%- for svc in related %}
+          {%- assign counter = forloop.index | modulo: 3 %}
+          {%- if counter == 1 %}
+          <div class="carousel-item h-100{% if forloop.index == 1 %} active{% endif %}">
+            <div class="card-deck row row-cols-2 row-cols-lg-3 h-100">
+          {%- endif %}
+              <div class="col col-md-4 px-4 pt-4">
+                <div class="card border-0 rounded-4" style="height:300px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
+                  <div class="bg-image position-relative w-100 h-100 rounded-4 bg-black border border-light">
+                    <img class="img-fluid rounded-4 w-100 h-100"
+                         src="{{ svc.img }}" alt="{{ svc.name }}"
+                         style="object-fit:cover;overflow:hidden;opacity:.5;"/>
+                    <div class="related-type text-center position-absolute rounded-4">
+                      <span class="d-block text-uppercase">{{ svc.layout | capitalize }}</span>
+                    </div>
+                    {%- if svc.date %}
+                    <div class="related-date text-center position-absolute rounded-4">
+                      <span>{{ svc.date | date: "%b"  }}</span>
+                      <label>{{ svc.date | date: "%Y" }}</label>
+                    </div>
+                    {%- endif%}
+                  </div>
+                  <div class="card-body card-img-overlay mx-auto pb-0 border border-light shadow-lg"
+                       style="top:75%;width:90%;background-color:white;height:50%">
+                    <h5 class="card-title crop-text-lines-2">{{ svc.title }}</h5>
+                    {%- if svc.layout == "blogs" %}
+                    {%- assign author = site.staff | where: "email", svc.author | first %}
+                    <div class="card-description d-flex align-items-center mt-3">
+                      <div class="author-avatar mt-2">
+                        <img src="{{ author.avatar }}"
+                            class="img-fluid rounded-pill mr-3 shadow lazy"
+                            alt="{{ author.name }}"/>
+                      </div>
+                      <div class="author-name mt-2">
+                        <label>{{ author.name }}</label>
+                      </div>
+                    </div>
+                    {%- else %}
+                    <div class="fs-5 card-text text-muted crop-text-lines-4">
+                      {{ svc.description | markdownify }}
+                    </div>
+                    {%- endif %}
+                  </div>
+                  <a href="{{ svc.url }}" class="stretched-link"></a>
+                </div>
+              </div>
+          {%- if forloop.last or counter == 0 -%}
+            </div>
+          </div>
+          {%- endif -%}
+          {%- endfor -%}
+      	</div>
+        <div class="row align-items-center justify-content-center my-4 mx-auto">
+          {% if related.size > 3 %}
+          {% assign indicators = related.size | divided_by: 3.0 | ceil %}
+          <div class="indicators align-items-center justify-content-center ms-auto w-auto d-flex px-0">
+            <button class="col-auto carousel-indicators-btn" type="button"
+              data-bs-target="#carouselRelated" data-bs-slide="prev">
+              <span class="d-flex fa-solid fa-angle-left" aria-hidden="true" style="width: 100%;height: 100%;"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <div class="carousel-indicators col-auto my-auto mx-2">		            
+              {% for i in (1..indicators) %}
+              <button type="button"
+                data-bs-target="#carouselRelated"
+                data-bs-slide-to="{{ forloop.index0 }}"
+                class="{% if forloop.index == 1 %} active{% endif %}"
+                aria-current="true" aria-label="Slide {{ forloop.index }}"></button>
+              {% endfor %}
+            </div>
+            <button class="col-auto carousel-indicators-btn" type="button"
+              data-bs-target="#carouselRelated" data-bs-slide="next">
+              <span class="d-flex fa-solid fa-angle-right" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {%- endif -%}

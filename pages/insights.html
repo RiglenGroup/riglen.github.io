@@ -1,0 +1,312 @@
+---
+layout: page
+title: Insights
+permalink: /insights
+published: true
+subtitle: "Riglen Group has defined the following brand to represent the principles and values of its branding."
+description: |
+  This page describes Riglen Group's visual identity including its logo, typeface and colours.
+---
+<nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
+  <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
+      <div class="hero-text mx-4">
+        {% include breadcrumb.html class="fs-5 pb-2" %}
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 42px;line-height: 1.2;">{{ page.title }}</h1>
+      </div>
+  </div>
+</nav>
+<div id="main-content" class="insights scrollspy alternate-colors"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-sections"
+  data-bs-root-margin="0px 0px 40%"
+  data-bs-smooth-scroll="true"
+  tabindex="0" style="padding-top:15vh">
+
+  {%- if site.blogs.size > 0 -%}
+  <section id="insights-blogs" class="insights-blogs py-5">
+    <div class="container m-auto pt-4">
+      <div class="row mb-2">
+	      <h2>Blogs</h2>
+      </div>
+      <div id="carouselBlogs" class="carousel slide carousel-fade"
+	      data-bs-ride="carousel" data-bs-interval="10000">
+        <div class="carousel-inner" role="listbox" style="height:425px;">
+          {% assign blogs = site.blogs | sort: "date" | reverse | limit: 9 %}
+          {%- for blog in blogs %}
+          {%- assign counter = forloop.index | modulo: 3 %}
+          {%- if counter == 1 %}
+          <div class="carousel-item h-100{% if forloop.index == 1 %} active{% endif %}">
+            <div class="card-deck row row-cols-2 row-cols-lg-3 h-100">
+          {%- endif %}
+              <div class="col col-md-4 px-4 pt-4">
+                <div class="card border-0 rounded-4" style="height:300px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
+                  <div class="bg-image position-relative w-100 h-100 rounded-4 bg-black border border-light">
+                    <img class="img-fluid rounded-4 w-100 h-100"
+                         src="{{ blog.img }}" alt="{{ blog.title }}"
+                         style="object-fit:cover;overflow:hidden;opacity:.5;"/>
+                    {% if blog.category %}
+                    <div class="category text-center position-absolute rounded-4">
+                      <span class="d-block text-uppercase">{{ blog.category | capitalize }}</span>
+                    </div>
+                    {% endif %}
+                    {% if blog.date %}
+                    <div class="date text-center position-absolute rounded-4">
+                      <span>{{ blog.date | date: "%d %^b" }}</span>
+                      <label>{{ blog.date | date: "%Y" }}</label>
+                    </div>
+                    {% endif%}
+                  </div>
+                  <div class="card-body card-img-overlay mx-auto pb-0 border border-light shadow-lg"
+                       style="top:75%;width:90%;background-color:white;height:50%">
+                    <h5 class="card-title crop-text-lines-2">{{ blog.title }}</h5>
+                    <div class="fs-5 card-text text-muted crop-text-lines-4">
+                      {{ blog.description | markdownify }}
+                    </div>
+                  </div>
+                  <a href="{{ blog.url }}" class="stretched-link"></a>
+                </div>
+              </div>
+          {%- if forloop.last or counter == 0 -%}
+            </div>
+          </div>
+          {%- endif -%}
+          {%- endfor -%}
+      	</div>
+        <div class="row align-items-center justify-content-center my-4 mx-auto">
+          <div class="blogs-link blogs-link me-auto w-auto d-flex px-0">
+            <a href="/insights/blogs" class="btn btn-primary rounded-4 px-4 py-3" aria-label="View all blogs" title="View all blogs">
+              View all blogs
+            </a>
+          </div>
+          {% if blogs.size > 3 %}
+          {% assign indicators = blogs.size | divided_by: 3.0 | ceil %}
+          <div class="indicators align-items-center justify-content-center ms-auto w-auto d-flex px-0">
+            <button class="col-auto carousel-indicators-btn" type="button"
+              data-bs-target="#carouselBlogs" data-bs-slide="prev">
+              <span class="d-flex fa-solid fa-angle-left" aria-hidden="true" style="width: 100%;height: 100%;"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <div class="carousel-indicators col-auto my-auto mx-2">  
+              {% for i in (1..indicators) %}
+              <button type="button"
+                data-bs-target="#carouselBlogs"
+                data-bs-slide-to="{{ forloop.index0 }}"
+                class="{% if forloop.index == 1 %} active{% endif %}"
+                aria-current="true" aria-label="Slide {{ forloop.index }}"></button>
+              {% endfor %}
+            </div>
+            <button class="col-auto carousel-indicators-btn" type="button"
+              data-bs-target="#carouselBlogs" data-bs-slide="next">
+              <span class="d-flex fa-solid fa-angle-right" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- if site.news.size > 0 -%}
+  <section id="insights-blogs" class="insights-blogs py-5">
+    <div class="container m-auto pt-4">
+      <div class="row mb-2">
+	      <h2>News</h2>
+      </div>
+      <div id="carouselNews" class="carousel slide carousel-fade"
+	      data-bs-ride="carousel" data-bs-interval="10000">
+        <div class="carousel-inner" role="listbox" style="height:425px;">
+          {% assign news = site.news | sort: "date" | reverse | limit: 9 %}
+          {%- for news in news %}
+          {%- assign counter = forloop.index | modulo: 3 %}
+          {%- if counter == 1 %}
+          <div class="carousel-item h-100{% if forloop.index == 1 %} active{% endif %}">
+            <div class="card-deck row row-cols-2 row-cols-lg-3 h-100">
+          {%- endif %}
+              <div class="col col-md-4 p-4 rounded-4">
+                <div class="card border-0 rounded-4 h-100 shadow" style="height:300px;">
+                  <div class="bg-image position-relative w-100 h-100 rounded-4 bg-black">
+                    <img class="img-fluid rounded-4 w-100 h-100 opacity-25 object-fit-cover"
+                         src="{{ news.img }}" alt="{{ news.title }}"
+                         style="overflow:hidden;"/>
+                    {% if news.category %}
+                    <div class="category text-center position-absolute rounded-4">
+                      <span class="d-block text-uppercase">{{ news.category | capitalize }}</span>
+                    </div>
+                    {% endif %}
+                    {% if news.date %}
+                    <div class="date text-center position-absolute rounded-4">
+                      <span>{{ news.date | date: "%d %^b" }}</span>
+                      <label>{{ news.date | date: "%Y" }}</label>
+                    </div>
+                    {% endif%}
+                  </div>
+                  <div class="card-body card-img-overlay mx-auto pb-0 rounded-bottom-4 top-25 w-100"
+                       style="height:25%;top:75%;">
+                    <h5 class="card-title crop-text-lines-2 text-white">{{ news.title }}</h5>
+                    <div class="fs-5 card-text text-muted crop-text-lines-4">
+                      {{ news.description | markdownify }}
+                    </div>
+                  </div>
+                  <a alt="{{ news.title }}" href="{{ news.url }}" class="stretched-link"></a>
+                </div>
+              </div>
+          {%- if forloop.last or counter == 0 -%}
+            </div>
+          </div>
+          {%- endif -%}
+          {%- endfor -%}
+      	</div>
+        <div class="row align-items-center justify-content-center my-4 mx-auto">
+          <div class="blogs-link blogs-link me-auto w-auto d-flex px-0">
+            <a href="/insights/news" class="btn btn-primary rounded-4 px-4 py-3" aria-label="View all news" title="View all news">
+              View all news
+            </a>
+          </div>
+          {% if news.size > 3 %}
+          {% assign indicators = news.size | divided_by: 3.0 | ceil %}
+          <div class="indicators align-items-center justify-content-center ms-auto w-auto d-flex px-0">
+            <button class="col-auto carousel-indicators-btn" type="button"
+              data-bs-target="#carouselNews" data-bs-slide="prev">
+              <span class="d-flex fa-solid fa-angle-left" aria-hidden="true" style="width: 100%;height: 100%;"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <div class="carousel-indicators col-auto my-auto mx-2">		            
+              {% for i in (1..indicators) %}
+              <button type="button"
+                data-bs-target="#carouselNews"
+                data-bs-slide-to="{{ forloop.index0 }}"
+                class="{% if forloop.index == 1 %} active{% endif %}"
+                aria-current="true" aria-label="Slide {{ forloop.index }}"></button>
+              {% endfor %}
+            </div>
+            <button class="col-auto carousel-indicators-btn" type="button"
+              data-bs-target="#carouselNews" data-bs-slide="next">
+              <span class="d-flex fa-solid fa-angle-right" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+</div>
+
+
+<style>
+  .insights .carousel-indicators {
+    bottom: 0px;
+    position: relative;
+    width: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .insights .carousel-indicators-btn {
+      height: 100%;
+      background-color: transparent;
+      /* color: #BF3100; */
+      color: #1f2938;
+      border: none;
+  }
+
+  .insights .carousel-indicators [data-bs-target] {
+      box-sizing: content-box;
+      flex: 0 1 auto;
+      width: 5px;
+      height: 5px;
+      padding: 0;
+      margin-right: 3px;
+      margin-left: 3px;
+      text-indent: -999px;
+      cursor: pointer;
+      background-clip: padding-box;
+      border: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      transition: opacity .6s ease;
+      border-radius: 50%;
+      opacity: 0.2;
+      background-color: #1f2938;
+  }
+
+  .insights .carousel-indicators .active {
+      opacity: 1 !important;
+      width: 5px !important;
+      height: 5px !important;
+  }
+
+  .card .card-body .card-text p {
+    font-size: 0.95em;
+  }
+
+  .card .bg-image .category {
+    color: white;
+    padding: 8px 15px;
+    right: .75em;
+    top: .75em;
+    border-radius: 4px;
+    background-color: #BF3100;
+  }
+  
+  .card .bg-image .category span {
+    font-size: 12px;
+    line-height: 22px;
+    text-transform: uppercase;
+    font-size: 12px;
+    display: block;
+    line-height: 22px;
+    font-weight: 700;
+  }
+  
+  .card .bg-image .date {
+    color: white; /* #ffffff; */
+    padding: 8px 15px;
+    left: .75em;
+    top: .75em;
+    background-color: #BF3100;
+    z-index: 100;
+    /* opacity: 0.8; */
+  }
+
+  .card .bg-image .date label {
+      font-size: 12px;
+      margin: 0;
+      text-transform: uppercase;
+  }
+
+  .card .bg-image .date span {
+      font-size: 12px;
+      display: block;
+      line-height: 22px;
+      font-weight: 700;
+  }
+
+  .card .card-description .author-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      /* overflow: hidden; */
+      margin-right: 1rem !important;
+  }
+
+  .card .card-description .author-avatar img {
+      vertical-align: middle;
+      border-style: none;
+  }
+
+  .card .card-description .author-name label {
+      font-weight: 600;
+      color: #BF3100;
+      margin: 0;
+  }
+
+  .card .card-description .author-name span {
+      display: block;
+      font-size: 12px;
+  }
+</style>

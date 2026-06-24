@@ -37,7 +37,10 @@ class: page
 	      <h2>Our Services</h2>
       </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-start">
-	      {% assign services = site.services | where: 'category', page.name %}
+        {% assign services_trending = site.services | where: "status","trending" %}
+        {% assign services_featured = site.services | where: "status","featured" %}
+        {% assign services = services_trending | concat: services_featured | concat: site.services | uniq %}
+	      {% assign services = services | where: 'type', 'advisory' | where: 'category', page.name %}
 	      {% for svc in services %}
 	      <div class="col mb-5">
 	      <div class="card shadow-sm rounded-2 border h-100">

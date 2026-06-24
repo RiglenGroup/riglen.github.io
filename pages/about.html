@@ -10,7 +10,7 @@ description: |
    <p>Our deep expertise and technological insight empower us to guide your business toward success. Let’s ignite your transformation and achieve the desired results together.</p>
 ---
 
-<div id="main-content" class="about"
+<div id="main-content" class="about alternate-colors"
   data-bs-spy="scroll"
   data-bs-target="#navbar-main"
   data-bs-offset="0"
@@ -37,14 +37,14 @@ description: |
   </section>
 
   <section id="about" class="about d-flex align-items-center" style="min-height:450px;max-height:auto;">
-    <div class="container m-auto">
+    <div class="container m-auto py-4">
       <div class="row row-cols-2">
         <div class="description col-6 pe-4">
           {{ page.description }}
         </div>	
         <div class="col-6">
           <figure class="figure px-5 w-100 h-100">
-            <img src="/assets/img/about/about-banner.min.jpeg"
+            <img src="/assets/img/3349cb72-698a-4388-9c3b-e6c7a022d0c8.jpg"
                  class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover h-100 w-100"
                  loading="lazy"/>
           </figure>
@@ -53,8 +53,8 @@ description: |
     </div>
   </section>
 
-  <section id="partnership" class="partnership bg-light-gray d-flex align-items-center" style="min-height:450px;">
-    <div class="container m-auto">
+  <section id="partnership" class="partnership d-flex align-items-center" style="min-height:450px;">
+    <div class="container m-auto py-4">
       <div class="row row-cols-2">
         <div class="col-6">
   	      <figure class="figure px-5 w-100 h-100">
@@ -80,8 +80,9 @@ description: |
     </div>
   </section>
 
-  <section id="industries" class="industries d-flex align-items-center" style="min-height:450px;max-height:auto;">
-    <div class="container">
+  {%- if site.industries.size > 0 %}
+  <section id="industries" class="industries py-5 d-flex align-items-center" style="min-height:450px;max-height:auto;">
+    <div class="container m-auto py-4">
       <div class="row">
 	      <div class="col-lg-12 text-center">
           <h2 class="text-left section-heading">Industries</h2>
@@ -92,90 +93,25 @@ description: |
 	      </div>
       </div>
       <div class="row mb-5 justify-content-center" style="min-height: 500px">
+        {%- for industry in site.industries %}
         <div class="col-sm-6 col-md-4 col-lg-3 py-4">
-          <div class="card border-0 text-center" style="color: #BF3100;">
-            <i class="card-img-top py-4 fa-4x fa-solid fa-industry"></i>
+          <div class="card border-0 text-center h-100 rounded-3 shadow" style="color: #BF3100;">
+            <i class="card-img-top pt-5 pb-4 fa-4x {{ industry.icon }}"></i>
             <div class="card-body">
-              <h5 class="card-title" style="min-height:35px;">Manufacturing</h5>
-              <p class="card-text text-muted fs-5">
-                Manufacturers rely on us to modernize operations, streamline processes, and enhance workforce productivity.
-              </p>
+              <h5 class="card-title" style="min-height:35px;">{{ industry.title }}</h5>
+              <p class="card-text text-muted fs-5">{{ industry.subtitle }}</p>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
-          <div class="card border-0 text-center" style="color: #BF3100;">
-            <i class="card-img-top py-4 fa-4x fa-solid fa-circle-dollar-to-slot"></i>
-            <div class="card-body">
-              <h5 class="card-title" style="min-height:35px;">Financial Services & Insurance</h5>
-              <p class="card-text text-muted fs-5">
-                We support financial institutions and insurers in strengthening digital capabilities, improving customer engagement, and navigating regulatory complexity.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
-          <div class="card border-0 text-center" style="color: #BF3100;">
-            <i class="card-img-top py-4 fa-4x fa-solid fa-building-columns"></i>
-            <div class="card-body">
-              <h5 class="card-title" style="min-height:35px;">Public Sector & Defense</h5>
-              <p class="card-text text-muted fs-5">
-                Public‑sector organizations trust us to deliver transparent, reliable, and citizen‑focused digital solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
-          <div class="card border-0 text-center" style="color: #BF3100;">
-            <i class="card-img-top py-4 fa-4x fa-solid fa-tower-cell"></i>
-            <div class="card-body">
-              <h5 class="card-title" style="min-height:35px;">Telecom, Media & Technology</h5>
-              <p class="card-text text-muted fs-5">
-                We work with TMT organizations to accelerate innovation and deliver scalable digital platforms.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
-          <div class="card border-0 text-center" style="color: #BF3100;">
-            <i class="card-img-top py-4 fa-4x fa-solid fa-hospital"></i>
-            <div class="card-body">
-              <h5 class="card-title" style="min-height:35px;">Healthcare & Life Science</h5>
-              <p class="card-text text-muted fs-5">
-                Our empathetic, human‑centered approach aligns with the needs of healthcare and life‑science organizations focused on improving patient and practitioner experiences.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
-          <div class="card border-0 text-center" style="color: #BF3100;">
-            <i class="card-img-top py-4 fa-4x fa-solid fa-truck-fast"></i>
-            <div class="card-body">
-              <h5 class="card-title" style="min-height:35px;">Retail, Transport & Logistics</h5>
-              <p class="card-text text-muted fs-5">
-                We help organizations in fast‑moving sectors improve efficiency, strengthen customer engagement, and optimize supply‑chain operations.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 py-4">
-          <div class="card border-0 text-center" style="color: #BF3100;">
-            <i class="card-img-top py-4 fa-4x fa-solid fa-charging-station"></i>
-            <div class="card-body">
-              <h5 class="card-title" style="min-height:35px;">Energy, Oil & Utilities</h5>
-              <p class="card-text text-muted fs-5">
-                Energy and utility providers partner with us to modernize operations and strengthen communication with customers and stakeholders.
-              </p>
-            </div>
-          </div>
-        </div>
+        {%- endfor %}
       </div>
     </div>
   </section>
+  {%- endif %}
 
   {%- if site.data.customers > 0 -%}
-  <section id="customers" class="customers d-flex align-items-center" style="min-height:450px;max-height:auto;">
-    <div class="container m-auto">
+  <section id="customers" class="customers py-5 d-flex align-items-center" style="min-height:450px;max-height:auto;">
+    <div class="container m-auto py-4">
       <div class="carousel slide" data-bs-ride="carousel">
         {%- for customer in site.data.customers -%}
         {%- assign counter = forloop.index | modulo:4 -%}
@@ -200,8 +136,8 @@ description: |
   </section>
   {%- endif -%}
 
-  <section id="branding" class="branding py-5 d-flex align-items-center bg-light-gray" style="min-height:450px;">
-    <div class="container m-auto">
+  <section id="branding" class="branding py-5 d-flex align-items-center" style="min-height:450px;">
+    <div class="container m-auto py-4">
       <div class="row row-cols-2">
   	    <div class="col-6 pe-4 position-relative">
   	      <h2 class="section-heading">Branding</h2>
@@ -216,7 +152,7 @@ description: |
   	    </div>	
   	    <div class="col-6">
   	      <figure class="figure px-5 w-100 h-100">
-  	        <img src="/assets/img/eaa9b036-47a5-4824-8e64-7c7e4ce9fbad.avif"
+  	        <img src="/assets/img/eaa9b036-47a5-4824-8e64-7c7e4ce9fbad.jpg"
                  class="figure-img img-fluid rounded-4 shadow-lg m-auto object-fit-cover w-100 h-100"
                  loading="lazy"/>
   	      </figure>
@@ -225,13 +161,22 @@ description: |
     </div>
   </section>
 
-  {% if site.data.history.size > 0 %}
-  <section id="milestones" class="milestones py-5 hidden">
-    <div class="container">
+  {%- assign milestones = site.news | where: 'type', 'milestone' | sort: 'date' | reverse -%}
+  {%- if milestones.size > 0 %}
+  <section id="milestones" class="milestones py-5 d-flex align-items-center" style="min-height:450px;max-height:auto;">
+    <div class="container m-auto py-4">
       <div class="row">
 	      <div class="col-lg-12 text-center">
           <h2 class="text-left section-heading">Milestones</h2>
-          <h3 class="text-left section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h3 class="text-left section-subheading text-muted">
+            Riglen’s journey is marked by a series of meaningful milestones that
+            reflect its growth, innovation, and commitment to excellence. From its
+            early foundations to key achievements that shaped its direction, each
+            milestone represents a step forward in strengthening capabilities,
+            expanding impact, and delivering value. Together, these moments tell
+            the story of evolution, resilience, and continuous progress that
+            defines Riglen today.
+          </h3>
 	      </div>
       </div>
       <div class="row">
@@ -255,45 +200,46 @@ description: |
 	          data-bs-ride="false"
 	          data-bs-wrap="false">
             <div class="carousel-inner">
-	            {% assign milestones = site.data.history | where: 'visible', true %}
-	            {% for milestone in milestones %}
-	            {% assign counter = forloop.index | modulo:3 %}
-	            {% if counter == 1 %}
+	            {%- for milestone in milestones %}
+	            {%- assign counter = forloop.index | modulo:3 %}
+	            {%- if counter == 1 %}
 	            <div class="carousel-item{% if forloop.index == 1 %} active{% endif %}">
 		            <div class="row row-cols-2 row-cols-lg-3">
 	            {% endif %}
                   <div class="timeline-item col col-md-4 mb-3">
 		                <div class="timeline-image">
-		                  <img class="img-circle img-responsive" src="{{ milestone.img }}" alt="{{ milestone.title }}"/>
+		                  <img class="img-circle img-responsive h-100 w-auto object-fit-cover" src="{{ milestone.img }}" alt="{{ milestone.title }}"/>
 		                </div>
 		                <div class="timeline-panel">
 		                  <div class="timeline-heading text-center">
-			                  <h4>{{ milestone.title }}</h4>
-			                  <h6 class="subheading">{{ milestone.subtitle }}</h6>
+			                  <h4>
+                          <a href="{{ milestone.url }}" class="nav-link text-decoration-none stretched-link" style="color: #BF3100;">{{ milestone.date | date: "%B %Y" }}</a>
+                        </h4>
+			                  <h5 class="subheading mt-4">{{ milestone.title }}</h5>
 		                  </div>
-		                  <div class="timeline-body">
-			                  <p class="text-muted">{{ milestone.content }}</p>
+		                  <div class="timeline-body text-center">
+			                  <p class="text-muted"></p>
 		                  </div>
 		                </div>
-		                <a href="{{ milestone.link }}" class="read-more">Read more</a>
+		                
                   </div>		
-	            {% if forloop.last or counter == 0 %}
+	            {%- if forloop.last or counter == 0 %}
 		            </div>
 	            </div>
-	            {% endif %}
-	            {% endfor %}	      
+	            {%- endif %}
+	            {%- endfor %}	      
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  {% endif %}
+  {%- endif %}
 
   {%- assign leadership = site.data.people | where: 'team', 'leadership' -%}
   {%- if leadership.size > 0 -%}
   <section id="leadership" class="leadership py-5 d-flex align-items-center bg-light-gray" style="min-height:450px;max-height:auto;">
-    <div class="container m-auto">
+    <div class="container m-auto py-4">
       <div class="row">
 	      <div class="col-lg-12 text-center">
           <h2 class="text-left section-heading">Our Leadership</h2>

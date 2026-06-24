@@ -81,6 +81,11 @@ description: |
                 data-formatter="nameFormatter">
                 Name
               </th>
+              <th data-field="type"
+                data-visible="true"
+                data-card-visible="true" data-class="text-capitalize">
+                Type
+              </th>
             </tr>
           </thead>
         </table>
@@ -190,7 +195,7 @@ description: |
     html += row['status'] === "featured" ? "<i class=\"pt-1 fa-solid fa-star pull-right\"></i>" : "";
     html += row['ready'] ? "<i class=\"m-auto fa-solid fa-check pull-right\"></i>" : "";
     return html;
-  };  
+  };
 
   function detailFormatter(value, row) {
     var html = `
@@ -206,6 +211,9 @@ description: |
                     <h5 class="card-title">${row['title']}</h5>  
                     <p class="card-text">${row['description']}</p>  
                  </div>
+                 <div class="card-footer border-0 bg-transparent"> 
+                    <small class="d-flex justify-content-end text-muted text-capitalize">${row['type']}</small>
+                </div>
               </div> 
               <a class="d-block stretched-link position-absolute w-100 h-100" 
                  href="${row['url']}" 

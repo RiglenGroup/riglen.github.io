@@ -1,0 +1,173 @@
+---
+layout: base
+class: page
+---
+<nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
+  <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
+      <div class="hero-text mx-4">
+        {% include breadcrumb.html class="fs-5 pb-2" %}
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 42px;line-height: 1.2;">{{ page.title }}</h1>
+      </div>
+  </div>
+</nav>
+
+<div id="main-content" class="{{ page.class }} scrollspy alternate-colors"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-sections"
+  data-bs-root-margin="0px 0px 40%"
+  data-bs-smooth-scroll="true"
+  tabindex="0" style="padding-top:15vh">
+
+  <section id="blog-content" class="overview py-5">
+    <div class="container m-auto py-4">
+        <div class="row row-cols-1 row-cols-lg-2 g-5">
+            <article class="col-12 col-lg-8 py-0 rounded-2 text-muted text-justify fs-4">
+                {{ content }}
+            </article>
+            <aside class="col-12 col-lg-4 blog-sidebar">
+                {%- assign author = site.staff | where: "email", page.author | first %}
+                {%- if author %}
+                <div class="blog-sidebar-wrap sidebar-card authors p-4 rounded-4 shadow-sm bg-light">
+                    <div class="profile d-flex flex-column align-items-center justify-content-between">
+                        <div class="img-container img-fluid mb-4 px-5">
+                            
+                                <img width="294" height="294" src="{{ author.avatar }}" class="img-fluid object-fit-cover rounded-circle" alt="{{ author.name }}" title="{{ author.name }}" decoding="async" srcset="{{ author.avatar }} 294w, {{ author.avatar }}-32x32.jpg 32w" sizes="(max-width: 294px) 100vw, 294px"/>
+                            
+                        </div>
+                        <div class="blog-author-details text-center">
+                            <h4 class="name text-dark">
+                                {{ author.name }}
+                            </h4>
+                            <p class="author-title text-decoration-none text-dark">{{ author.title }}</p>
+                            <div class="footer-social-menu-container">
+                                <div class="social_box d-flex align-items-center justify-content-center gap-3">
+                                    {%- for social in author.social %}
+                                    <a href="{{ social.url }}" aria-label="{{ author.name }} - {{ social.type | capitalize }}"
+                                       class="text-decoration-none text-dark" target="_blank" rel="nofollow">
+                                        <i class="{{ social.icon }} scale-150-hover" aria-hidden="true"></i>
+                                    </a>
+                                    {%- endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%- endif %}
+            </aside>
+        </div>
+    </div>
+  </section>
+
+  {% include related.html %}
+
+  {% capture quote_content %}
+  <div class="content">
+    <p class="text-muted" style="font-size:16px;">Contact us today to learn how we can help you achieve your digital transformation goals.</p>
+  </div>
+  <div class="toolbox pt-4">
+    <button class="btn btn-primary"
+	    type="button"
+	    data-bs-toggle="modal"
+	    data-bs-target="#ContactModal"
+	    title="Contact us">
+      Contact us
+    </button>
+  </div>
+  {% endcapture %}
+  {% include quote.html title="Get Started" subtitle="Request a workshop with us to speed up your transformation journey." class="inquiry py-5" content=quote_content %}
+  {% include modal_inquiry.html %}
+</div>
+
+<style>
+  .related .carousel-indicators {
+    bottom: 0px;
+    position: relative;
+    width: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .related .carousel-indicators-btn {
+      height: 100%;
+      background-color: transparent;
+      /* color: #BF3100; */
+      color: #1f2938;
+      border: none;
+  }
+
+  .related .carousel-indicators [data-bs-target] {
+      box-sizing: content-box;
+      flex: 0 1 auto;
+      width: 5px;
+      height: 5px;
+      padding: 0;
+      margin-right: 3px;
+      margin-left: 3px;
+      text-indent: -999px;
+      cursor: pointer;
+      background-clip: padding-box;
+      border: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      transition: opacity .6s ease;
+      border-radius: 50%;
+      opacity: 0.2;
+      background-color: #1f2938;
+  }
+
+  .related .carousel-indicators .active {
+      opacity: 1 !important;
+      width: 5px !important;
+      height: 5px !important;
+  }
+  .card .card-body .card-text p {
+    font-size: 0.95em;
+  }
+
+  .card .bg-image .related-date {
+    color: white; /* #ffffff; */
+    padding: 8px 15px;
+    left: .75em;
+    top: .75em;
+    background-color: #BF3100;
+    z-index: 100;
+    /* opacity: 0.8; */
+  }
+
+  .card .bg-image .related-date label {
+      font-size: 12px;
+      margin: 0;
+      text-transform: uppercase;
+  }
+
+  .card .bg-image .related-date span {
+      font-size: 16px;
+      display: block;
+      line-height: 22px;
+      font-weight: 700;
+  }
+
+  .card .card-description .author-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      /* overflow: hidden; */
+      margin-right: 1rem !important;
+  }
+
+  .card .card-description .author-avatar img {
+      vertical-align: middle;
+      border-style: none;
+  }
+
+  .card .card-description .author-name label {
+      font-weight: 600;
+      color: #BF3100;
+      margin: 0;
+  }
+
+  .card .card-description .author-name span {
+      display: block;
+      font-size: 12px;
+  }
+</style>

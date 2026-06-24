@@ -6,10 +6,8 @@ description: |
 markdown: kramdown
 kramdown:
   hard_wrap: true
-  
-permalink: /insights/blog/:path
 
-future: false
+# future: true
 unpublished: false
 
 lang: en
@@ -29,9 +27,27 @@ collections:
   solutions:
     permalink: /:collection/:slug
     output: true
-  # partners:
-  #   permalink: /about/:collection/:slug
-  #   output: true
+  blogs:
+    permalink: /insights/:collection/:path
+    output: true
+  news:
+    permalink: /insights/:collection/:path
+    output: true
+  stories:
+    permalink: /insights/:collection/:slug
+    output: false
+  locations:
+    permalink: /about/:collection/:slug
+    output: false
+  staff:
+    permalink: /about/:collection/:slug
+    output: false
+  industries:
+    permalink: /about/:collection/:slug
+    output: false
+  partners:
+    permalink: /about/:collection/:slug
+    output: false
       
 plugins:
   - jekyll-gist

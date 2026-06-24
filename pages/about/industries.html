@@ -1,0 +1,80 @@
+---
+layout: page
+title: Industries
+permalink: /about/industries
+published: true
+---
+<nav class="navbar navbar-expand-lg bg-primary" style="margin-top: 5vh !important;z-index: 99;position: fixed;width: 100%;height: 10vh;min-height: auto; background-image: linear-gradient(to right, #BF3100, #565656);border-radius: 0px;">
+  <div class="nav container m-auto flex-column align-items-start justify-content-center h-100">
+      <div class="hero-text mx-4">
+        {% include breadcrumb.html class="fs-5 pb-2" %}
+        <h1 class="lato-black m-auto" style="font-weight: 600;font-size: 42px;line-height: 1.2;">{{ page.title }}</h1>
+      </div>
+  </div>
+</nav>
+<div id="main-content" class="news alternate-colors"
+  data-bs-spy="scroll"
+  data-bs-target="#navbar-sections"
+  data-bs-root-margin="0px 0px 40%"
+  data-bs-smooth-scroll="true"
+  tabindex="0" style="padding-top:15vh">
+  
+  <section id="services" class="posts py-5">
+    <div class="container m-auto py-4">
+      <div class="row mb-5">
+        <h2>Overview</h2>
+      </div>
+      <div class="py-0 w-100 h-100 rounded-2 text-muted text-justify fs-4">
+        {{ page.description | markdownify }}
+      </div>
+      <div class="row row-cols-2 g-0 justify-content-center my-5">
+        {%- for industry in site.industries %}
+        <div class="col px-0" style="height:350px;">
+	        <div class="card card-img-hover shadow-5 border-0 rounded-0 w-100 h-100">
+	          <div class="row g-0 mx-0 h-100">
+              <div class="bg-image position-relative w-100 h-100 bg-black">
+                <img alt="{{ industry.title }}" class="scale-105-hover card-img img-fluid lazy h-100 w-100 object-fit-cover opacity-40 rounded-0 border-0" loading="lazy"
+                  src="{{ industry.img }}"
+                  style="opacity:.25;" width="975"/>
+              </div>
+              <div class="card-body h-100 w-100 p-4 card-img-overlay p-5 text-white">
+                <h2 class="card-title mb-5">{{ industry.title }}</h2>
+                <p class="card-text">{{ industry.subtitle }}</p>
+              </div>
+              
+	          </div>
+	        </div>
+	      </div>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% capture quote_content %}
+  <div class="content">
+    <p class="text-muted" style="font-size:16px;">Contact us today to learn how we can help you achieve your digital transformation goals.</p>
+  </div>
+  <div class="toolbox pt-4">
+    <button class="btn btn-primary"
+	    type="button"
+	    data-bs-toggle="modal"
+	    data-bs-target="#ContactModal"
+	    title="Contact us">
+      Contact us
+    </button>
+  </div>
+  {% endcapture %}
+  {% include quote.html title="Get Started" subtitle="Request a workshop to speed up your transformation journey" class="inquiry py-5" content=quote_content %}
+  {% include modal_inquiry.html %}
+
+</div>
+<style>
+  .card-img-hover:hover img {
+    transform: scale(1.25);
+    transition: all 1s ease;
+    opacity: .15 !important;
+  }
+  /* .card-img-hover:hover {
+    border: 4px solid #BF3100 !important;
+  } */
+</style>

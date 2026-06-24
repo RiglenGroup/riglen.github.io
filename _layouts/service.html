@@ -10,7 +10,7 @@ class: page
       </div>
   </div>
 </nav>
-<div id="main-content" class="service scrollspy alternate-colors"
+<div id="main-content" class="{{ page.class }} scrollspy alternate-colors"
   data-bs-spy="scroll"
   data-bs-target="#navbar-sections"
   data-bs-root-margin="0px 0px 40%"
@@ -42,7 +42,7 @@ class: page
             <img class="img-fluid border-0 rounded-4 w-100 h-100"
               src="{{ challenge.img | default: '/assets/img/placeholder-4by3.svg' }}" alt="{{ challenge.title }}"
               style="object-fit:cover;overflow:hidden;position:relative;opacity:.85;"/>
-            <div class="card-body card-img-overlay mx-auto px-4 border border-light"
+            <div class="card-body card-img-overlay mx-auto px-4 border border-light shadow-lg"
               style="top:80%;width:90%;background-color:white;height:50%;opacity:0.98;">
               <h5 class="card-title">{{ challenge.title }}</h5>
               <p class="card-text text-muted" style="font-size: 1.20rem !important;">
@@ -56,6 +56,7 @@ class: page
     </div>
   </section>
   {%- endif -%}
+
   {%- if page.benefits.size > 0 -%}
   <section id="benefits" class="benefits py-5">
     <div class="container m-auto py-4">
@@ -138,64 +139,68 @@ class: page
   </section>
   {%- endif -%}
 
-  {%- assign related = "" | split: ',' %}
-  {%- for svc in page.related %}
-  {%- assign service = site.services | where: 'slug', svc %}
-  {%- if service != empty and service.slug != page.slug %}
-  {%- assign related = related | push: service | uniq %}
-  {%- endif %}
-  {%- endfor %}
-
-  {%- if related.size > 0 -%}
-  <section id="related" class="related py-5">
-    <div class="container m-auto pt-4">
-      <div class="row mb-2">
-	      <h2>Related Resources</h2>
+  {%- if page.tiers.size > 0 -%}
+  <section id="tiers" class="tiers py-5">
+    <div class="container m-auto py-4">
+      <div class="row mb-5">
+        <h2>Service Tiers</h2>
       </div>
-      <div class="carousel slide carousel-fade"
-	      data-bs-ride="carousel" data-bs-interval="10000">
-        <div class="carousel-inner" role="listbox" style="height:425px;">
-          {%- for svc in related limit: 9 %}
-          {%- assign counter = forloop.index | modulo: 3 %}
-          {%- if counter == 1 %}
-          <div class="carousel-item h-100{% if forloop.index == 1 %} active{% endif %}">
-            <div class="card-deck row row-cols-2 row-cols-lg-3 h-100">
-          {%- endif %}
-              <div class="col col-md-4 px-4 pt-4">
-                <div class="card border-0 rounded-4" style="height:300px;box-shadow: 0 1px 3px rgba(17,24,39,.09);border: 1px solid #e2e8f0;">
-                  <div class="bg-image position-relative w-100 h-100 rounded-4 bg-black border border-light">
-                    <div class="related-type text-center position-absolute rounded-4 hidden">
-                      <span class="d-block text-uppercase">{{ svc.type }}</span>
-                    </div>
-                    <img class="img-fluid rounded-4 w-100 h-100"
-                         src="{{ svc.img }}" alt="{{ svc.name }}"
-                         style="object-fit:cover;overflow:hidden;opacity:.85;"/>
-                  </div>
-                  <div class="card-body card-img-overlay mx-auto pb-0 border border-light"
-                       style="top:75%;width:90%;background-color:white;height:50%">
-                    <h5 class="card-title crop-text-lines-2">{{ svc.title }}</h5>
-                    <div class="fs-5 card-text text-muted crop-text-lines-3">
-                      {{ svc.description | markdownify }}
-                    </div>
-                  </div>
-                  <a href="{{ svc.url }}" class="stretched-link"></a>
-                </div>
-              </div>
-          {%- if forloop.last or counter == 0 -%}
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center justify-content-center">
+        {%- for tier in page.tiers %}
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow h-100 border-2 {% if tier.name == 'Enterprise' -%}border-riglen-primary{% endif %}">
+            <div class="card-header py-3 {% if tier.name == 'Enterprise' -%}text-white bg-riglen-primary border-riglen-primary{% endif %}">
+              <h3 class="my-0 fw-normal">{{ tier.name }}</h3>
             </div>
+            <div class="card-body">
+              <p class="card-text text-muted my-4">
+                {{ tier.description }}
+              </p>
+              <ul class="list-group list-unstyled my-2 fs-5 text-start">
+                {%- for feature in tier.includes %}
+                <li class="list-group-item d-flex justify-content-start align-items-center border-0">
+                  <i class="fa-solid fa-check ms-2 me-4"></i>
+                  {{ feature }}
+                </li>
+                {%- endfor %}
+              </ul>
+            </div>
+            {%- if tier.price %}
+            <div class="card-footer border-0 bg-white py-3">
+              <div class="card-text pricing-card text-center pb-4">
+                <h2 class="my-2">$ {{ tier.price }}</h2>
+                <small class="text-muted fw-light">CHF / month</small>
+              </div>
+              <button type="button" class="hidden w-100 btn btn {% if tier.name == 'Essential' %}btn-outline-primary{% else %}btn-primary{% endif %}">Get Quote</button>
+            </div>
+            {%- endif %}
           </div>
-          {%- endif -%}
-          {%- endfor -%}
-      	</div>
+        </div>
+        {% endfor -%}
+      </div>     
+      <div class="row d-flex pt-3 mb-2">
+        <div class="content">
+          <p class="text-muted fs-4">
+            Contact us for a personalized consultation and to learn more about how our <b>{{ page.title }}</b> service can benefit your organization.
+          </p>
+        </div>
+        <div class="toolbox pt-2">
+          <button class="btn btn-primary"
+	          type="button"
+	          data-bs-toggle="modal"
+	          data-bs-target="#InquiryModal"
+	          title="Get a Quote">
+            Get a Quote
+          </button>
+        </div>
       </div>
-    </div>
+    </div>    
   </section>
-  {%- endif -%}
-
-  {% capture quote_content %}
+  {%- else -%}  
+  {%- capture quote_content %}
   <div class="content">
     <p class="text-muted" style="font-size:16px;">
-      Contact us today to learn how we can help you achieve your digital transformation goals.
+      Contact us for a personalized consultation and to learn more about how our <b>{{ page.title }}</b> service can benefit your organization.
     </p>
   </div>
   <div class="toolbox pt-2">
@@ -203,11 +208,108 @@ class: page
 	    type="button"
 	    data-bs-toggle="modal"
 	    data-bs-target="#InquiryModal"
-	    title="Contact us">
-      Contact us
+	    title="Get a Quote">
+      Get a Quote
     </button>
   </div>
-  {% endcapture %}
-  {% include quote.html title="Get Started" subtitle="Begin your transformation journey" class="inquiry py-5" content=quote_content %}
-  {% include modal_inquiry.html %}
+  {%- endcapture %}
+  {% include quote.html title="Get Started" subtitle="Contact us for Pricing" class="inquiry py-5" content=quote_content %}
+  {%- endif -%}
+  {% include related.html %}
 </div>
+
+{% include modal_inquiry.html %}
+
+<style>
+  .related .carousel-indicators {
+    bottom: 0px;
+    position: relative;
+    width: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .related .carousel-indicators-btn {
+      height: 100%;
+      background-color: transparent;
+      /* color: #BF3100; */
+      color: #1f2938;
+      border: none;
+  }
+
+  .related .carousel-indicators [data-bs-target] {
+      box-sizing: content-box;
+      flex: 0 1 auto;
+      width: 5px;
+      height: 5px;
+      padding: 0;
+      margin-right: 3px;
+      margin-left: 3px;
+      text-indent: -999px;
+      cursor: pointer;
+      background-clip: padding-box;
+      border: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      transition: opacity .6s ease;
+      border-radius: 50%;
+      opacity: 0.2;
+      background-color: #1f2938;
+  }
+
+  .related .carousel-indicators .active {
+      opacity: 1 !important;
+      width: 5px !important;
+      height: 5px !important;
+  }
+  .card .card-body .card-text p {
+    font-size: 0.95em;
+  }
+
+  .card .bg-image .related-date {
+    color: white; /* #ffffff; */
+    padding: 8px 15px;
+    left: .75em;
+    top: .75em;
+    background-color: #BF3100;
+    z-index: 100;
+    /* opacity: 0.8; */
+  }
+
+  .card .bg-image .related-date label {
+      font-size: 12px;
+      margin: 0;
+      text-transform: uppercase;
+  }
+
+  .card .bg-image .related-date span {
+      font-size: 16px;
+      display: block;
+      line-height: 22px;
+      font-weight: 700;
+  }
+
+  .card .card-description .author-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      /* overflow: hidden; */
+      margin-right: 1rem !important;
+  }
+
+  .card .card-description .author-avatar img {
+      vertical-align: middle;
+      border-style: none;
+  }
+
+  .card .card-description .author-name label {
+      font-weight: 600;
+      color: #BF3100;
+      margin: 0;
+  }
+
+  .card .card-description .author-name span {
+      display: block;
+      font-size: 12px;
+  }
+</style>
