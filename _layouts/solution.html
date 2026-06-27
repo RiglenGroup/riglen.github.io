@@ -45,6 +45,7 @@ class: page
 	      <div class="col mb-5">
 	      <div class="card shadow-sm rounded-2 border h-100">
           <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            {% include images.html name=svc.img alt=svc.title class="img-fluid lazy" style="object-fit:cover;height:300px;width:100%" %}
 	          {% if svc.status == "trending" %}
             <div class="highlight-box text-center">
 		          <span><i class="fa-solid fa-fire fa-fade"></i></span>
@@ -54,7 +55,6 @@ class: page
 		          <span><i class="fa-solid fa-star fa-flip"></i></span>
             </div>
 	          {% endif %}
-            {% include images.html name=svc.img alt=svc.title class="img-fluid lazy" style="object-fit:cover;height:300px;width:100%" %}
             </div>        
             <div class="card-body">
               <h2 class="card-title crop-text-lines-2 font-weight-bold">{{ svc.title }}</h2>
